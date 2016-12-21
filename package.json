@@ -1,0 +1,20 @@
+{
+  "name": "stephanmax.is",
+  "version": "1.0.0",
+  "description": "Sources of my personal website stephanmax.is",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanmax/stephanmax.is.git"
+  },
+  "keywords": [],
+  "author": "Stephan Max <stephan.max@gmail.com> (http://stephanmax.is/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stephanmax/stephanmax.is/issues"
+  },
+  "homepage": "https://github.com/stephanmax/stephanmax.is#readme"
+}
