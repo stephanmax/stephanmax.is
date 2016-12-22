@@ -2,6 +2,9 @@ var metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
 var dateInFileName = require('metalsmith-date-in-filename');
+var collections = require('metalsmith-collections');
+var serve = require('metalsmith-serve');
+var watch = require('metalsmith-watch');
 var handlebars = require('handlebars');
 
 metalsmith(__dirname)
@@ -21,14 +24,30 @@ metalsmith(__dirname)
     override: true
   }))
   .use(markdown())
+  .use(collections({
+    posts: {
+      pattern: 'posts/*.html',
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
   .use(layouts({
     engine: 'handlebars',
     directory: 'src/_layouts',
-    default: 'default.html',
+    default: 'post.html',
     pattern: '*.html',
     partials: {
       header: 'partials/header',
       footer: 'partials/footer'
+    }
+  }))
+  .use(serve({
+    port: 8083,
+    verbose: true
+  }))
+  .use(watch({
+    paths: {
+      "${source}/**/*": true
     }
   }))
   .build(function (err) {
