@@ -2,9 +2,10 @@
   "name": "stephanmax.is",
   "version": "1.0.0",
   "description": "Sources of my personal website stephanmax.is",
-  "main": "index.js",
+  "main": "build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "npm install",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/stephanmax/stephanmax.is/issues"
   },
-  "homepage": "https://github.com/stephanmax/stephanmax.is#readme"
+  "homepage": "https://github.com/stephanmax/stephanmax.is#readme",
+  "devDependencies": {
+    "metalsmith": "^2.1.0"
+  }
 }
