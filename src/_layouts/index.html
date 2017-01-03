@@ -1,0 +1,13 @@
+{{> header}}
+
+  <h1>My Blog</h1>
+
+  <ul>
+  {{#each posts}}
+    <li>
+      <span><a href="{{path.dhref}}{{path.name}}">{{title}}</a></span> | <span>{{date}}</span>
+    </li>
+  {{/each}}
+  </ul>
+
+{{> footer}}

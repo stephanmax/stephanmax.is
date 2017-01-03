@@ -2,6 +2,11 @@ var metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
 var dateInFileName = require('metalsmith-date-in-filename');
+var dateFormatter = require('metalsmith-date-formatter');
+var collections = require('metalsmith-collections');
+var drafts = require('metalsmith-drafts');
+var paths = require('metalsmith-paths');
+
 var handlebars = require('handlebars');
 
 metalsmith(__dirname)
@@ -17,15 +22,31 @@ metalsmith(__dirname)
   .ignore([
     '_**'
   ])
+  .use(drafts())
   .use(dateInFileName({
     override: true
   }))
+  .use(dateFormatter({
+    dates: 'date'
+  }))
+  .use(collections({
+    posts: {
+      pattern: 'posts/*.md',
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
   .use(markdown())
+  .use(paths())
   .use(layouts({
     engine: 'handlebars',
     directory: 'src/_layouts',
-    default: 'default.html',
-    pattern: '*.html'
+    default: 'post.html',
+    pattern: '*.html',
+    partials: {
+      header: 'partials/header',
+      footer: 'partials/footer'
+    }
   }))
   .build(function (err) {
     if (err) {
