@@ -1,0 +1,23 @@
+* {
+	box-sizing: inherit;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  color: #333;
+  font-family: georgia, serif;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+* + * {
+  margin-top: 1.5em;
+}
+
+body, li {
+  margin-top: 0;m st
+}
