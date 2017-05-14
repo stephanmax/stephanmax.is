@@ -5,7 +5,8 @@
   "main": "build.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "node . && node_modules/.bin/http-server build"
+    "start": "node . && node_modules/.bin/http-server build",
+    "deploy": "rsync -vrc --exclude=.DS_Store build/ webfaction:webapps/main/"
   },
   "repository": {
     "type": "git",

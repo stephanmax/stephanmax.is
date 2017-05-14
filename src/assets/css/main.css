@@ -61,6 +61,7 @@ a:hover::before {
 ul {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 192px;
   grid-gap: 24px;
   list-style: none;
   margin-top: 72px;
@@ -68,15 +69,20 @@ ul {
 }
 
 li {
-  background-color: #eee;
+  align-items: flex-end;
   display: flex;
-  height: 192px;
 }
 
 li a {
+  background: rgba(0, 0, 0, .5);
   border: none;
-  display: block;
-  height: 100%;
+  color: #fff;
+  flex: 1 1 auto;
+  padding: 12px;
+}
+
+li a:hover {
+  color: #FF9DBF;
 }
 
 @media (min-width: 500px) {
