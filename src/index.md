@@ -1,3 +1,3 @@
 ---
-layout: index.html
+model: projects
 ---

@@ -6,6 +6,7 @@ var dateFormatter = require('metalsmith-date-formatter');
 var collections = require('metalsmith-collections');
 var drafts = require('metalsmith-drafts');
 var paths = require('metalsmith-paths');
+var models = require('metalsmith-models');
 
 var handlebars = require('handlebars');
 
@@ -14,7 +15,8 @@ metalsmith(__dirname)
     site: {
       author: 'Stephan Max',
       name: 'stephanmax.is',
-      description: 'Portfolio, blog, and digital playground of software engineer Stephan Max'
+      description: 'Portfolio, blog, and digital playground of software engineer Stephan Max',
+      location: 'Hamburg'
     }
   })
   .source('./src')
@@ -37,11 +39,14 @@ metalsmith(__dirname)
     }
   }))
   .use(markdown())
+  .use(models({
+    directory: 'src/_models'
+  }))
   .use(paths())
   .use(layouts({
     engine: 'handlebars',
     directory: 'src/_layouts',
-    default: 'post.html',
+    default: 'index.html',
     pattern: '*.html',
     partials: {
       header: 'partials/header',
