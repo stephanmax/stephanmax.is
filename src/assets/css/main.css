@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   color: #333;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -33,72 +33,67 @@ main > p:first-child {
   font-weight: 300;
 }
 
-a {
-  border-bottom: 1px dotted #FA5072;
+p a {
+  border-bottom: 1px dotted #4CAF50;
   padding: 0 .1em;
   position: relative;
   text-decoration: none;
   transition: border-color 250ms;
 }
-a::before{
+p a::before{
   content: "";
   width: 100%;
   height: 0%;
-  background: #FF9DBF;
+  background: #C8E6C9;
   bottom: 0;
   left: 0;
   position: absolute;
   transition: height 250ms;
   z-index: -1;
 }
-a:hover {
+p a:hover {
   border-color: transparent;
 }
-a:hover::before {
+p a:hover::before {
   height: 100%;
 }
 
-ul {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 192px;
-  grid-gap: 24px;
-  list-style: none;
-  margin-top: 72px;
+.elsewhere {
+  text-align: center;
+}
+
+.elsewhere ul {
+  display: inline-block;
   padding: 0;
 }
 
-li {
-  align-items: flex-end;
-  display: flex;
+.elsewhere li {
+  float: left;
+  list-style: none outside none;
 }
 
-li a {
-  background: rgba(0, 0, 0, .5);
-  border: none;
-  color: #fff;
-  flex: 1 1 auto;
-  padding: 12px;
+.elsewhere li + li {
+  margin-left: 24px;
 }
 
-li a:hover {
-  color: #FF9DBF;
+svg {
+  transition: fill 250ms;
+  vertical-align: top;
+  width: 24px;
+}
+
+a:hover svg {
+  fill: #4CAF50;
 }
 
 @media (min-width: 500px) {
   main {
     padding: 48px;
   }
-  ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (min-width: 780px) {
   main {
     padding: 72px;
-  }
-  ul {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
