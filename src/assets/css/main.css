@@ -2,8 +2,8 @@ html {
   box-sizing: border-box;
   color: #333;
   font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 125%;
+  line-height: 1.6;
 }
 
 * {
@@ -15,85 +15,76 @@ html {
 }
 
 * + * {
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
-body, li {
+body {
+  color: #4C4C4C;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
   margin-top: 0;
+}
+
+b {
+  font-weight: 500;
+}
+
+sup {
+  color: #FFE632;
+  vertical-align: baseline;
+  position: relative;
+  top: -.3em;
 }
 
 main {
   margin: 0 auto;
-  max-width: 1080px;
-  padding: 24px;
+  max-width: 540px;
+  padding: 16px;
 }
 
-main > p:first-child {
-  font-size: 20px;
+p {
   font-weight: 300;
 }
 
 p a {
-  border-bottom: 1px dotted #4CAF50;
-  padding: 0 .1em;
-  position: relative;
-  text-decoration: none;
-  transition: border-color 250ms;
-}
-p a::before{
-  content: "";
-  width: 100%;
-  height: 0%;
-  background: #C8E6C9;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  transition: height 250ms;
-  z-index: -1;
+  box-shadow: inset 0 -8px 0 #FFF585;
+  font-weight: 500;
 }
 p a:hover {
-  border-color: transparent;
-}
-p a:hover::before {
-  height: 100%;
+  background-color: #FFF585;
 }
 
 .elsewhere {
-  text-align: center;
+  border-top: 1px solid #E5E5E5;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 32px;
 }
 
-.elsewhere ul {
-  display: inline-block;
-  padding: 0;
+.elsewhere a {
+  display: block;
+  line-height: .8;
 }
 
-.elsewhere li {
-  float: left;
-  list-style: none outside none;
-}
-
-.elsewhere li + li {
-  margin-left: 24px;
+.elsewhere a + a {
+  margin: 0 0 0 16px;
 }
 
 svg {
-  transition: fill 250ms;
+  display: inline-block;
   vertical-align: top;
-  width: 24px;
+  width: 16px;
 }
 
 a:hover svg {
-  fill: #4CAF50;
-}
-
-@media (min-width: 500px) {
-  main {
-    padding: 48px;
-  }
-}
-
-@media (min-width: 780px) {
-  main {
-    padding: 72px;
-  }
+  background-color: #FFF585;
 }
