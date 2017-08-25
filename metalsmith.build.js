@@ -7,6 +7,7 @@ const collections = require('metalsmith-collections');
 const drafts = require('metalsmith-drafts');
 const paths = require('metalsmith-paths');
 const models = require('metalsmith-models');
+const debug = require('metalsmith-debug');
 
 metalsmith(__dirname)
   .metadata({
@@ -20,7 +21,8 @@ metalsmith(__dirname)
   .source('./src')
   .destination('./build')
   .ignore([
-    '_**'
+    '_**',
+    '.DS_Store'
   ])
   .use(drafts())
   .use(dateInFileName({
@@ -47,9 +49,10 @@ metalsmith(__dirname)
     default: 'index.ejs',
     pattern: '*.html'
   }))
+  .use(debug())
   .build(function (err) {
     if (err) {
-      console.log(err);
+      console.log('Build failed:', err);
     }
     else {
       console.log('Build complete.');
