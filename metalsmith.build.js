@@ -32,17 +32,7 @@ module.exports = function() {
     .use(dateFormatter({
       dates: 'date'
     }))
-    .use(collections({
-      posts: {
-        pattern: 'posts/*.md',
-        sortBy: 'date',
-        reverse: true
-      }
-    }))
     .use(markdown())
-    .use(models({
-      directory: 'src/_models'
-    }))
     .use(paths())
     .use(layouts({
       engine: 'ejs',
