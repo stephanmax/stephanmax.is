@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm install",
     "start": "DEBUG=metalsmith:* nf start",
-    "build": "gulp clean && gulp metalsmith && gulp stylesheets"
+    "build": "gulp clean && gulp metalsmith && gulp inline"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "ejs": "^2.5.6",
     "foreman": "^2.0.0",
     "gulp": "^3.9.1",
-    "gulp-cssnano": "^2.1.2",
+    "gulp-inline-source": "^3.1.0",
     "live-server": "^1.2.0",
     "metalsmith": "^2.1.0",
     "metalsmith-collections": "^0.9.0",
