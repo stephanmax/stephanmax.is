@@ -27,7 +27,10 @@
   <h2>Posts</h2>
   <ul>
     <% posts.forEach(post => { %>
-      <li><a href='<%- post.path.href %>'><%- post.title %></a></li>
+      <li>
+        <a href="<%- post.path.href %>"><%- post.title %></a>
+        [<time datetime="<%- post.date.format('YYYY-MM-DD') %>"><%- post.date.format('ll') %></time>]
+      </li>
     <% }) %>
   </ul>
 </section>

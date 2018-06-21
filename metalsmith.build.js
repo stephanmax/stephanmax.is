@@ -2,9 +2,8 @@ const metalsmith = require('metalsmith')
 const markdown = require('metalsmith-markdown')
 const layouts = require('metalsmith-layouts')
 const dateInFileName = require('metalsmith-date-in-filename')
-const dateFormatter = require('metalsmith-date-formatter')
+const moment = require('metalsmith-moment')
 const collections = require('metalsmith-collections')
-const drafts = require('metalsmith-drafts')
 const paths = require('metalsmith-paths')
 const debug = require('metalsmith-debug')
 
@@ -29,6 +28,7 @@ module.exports = function() {
     .use(dateInFileName({
       override: true
     }))
+    .use(moment(['date']))
     .use(collections({
       posts: {
         pattern: ['writing/*.md'].concat(isDev ? ['writing/drafts/*.md'] : []),
