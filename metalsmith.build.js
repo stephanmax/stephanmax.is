@@ -6,8 +6,9 @@ const dateFormatter = require('metalsmith-date-formatter')
 const collections = require('metalsmith-collections')
 const drafts = require('metalsmith-drafts')
 const paths = require('metalsmith-paths')
-const models = require('metalsmith-models')
 const debug = require('metalsmith-debug')
+
+const isDev = !!process.env.DEVELOPMENT
 
 module.exports = function() {
   metalsmith(__dirname)
@@ -25,12 +26,15 @@ module.exports = function() {
       '_**',
       '.DS_Store'
     ])
-    .use(drafts())
     .use(dateInFileName({
       override: true
     }))
-    .use(dateFormatter({
-      dates: 'date'
+    .use(collections({
+      posts: {
+        pattern: ['writing/*.md'].concat(isDev ? ['writing/drafts/*.md'] : []),
+        sortBy: 'date',
+        reverse: true
+      }
     }))
     .use(markdown())
     .use(paths())

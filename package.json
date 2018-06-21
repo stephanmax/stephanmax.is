@@ -5,7 +5,7 @@
   "main": "metalsmith.build.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "DEBUG=metalsmith:* nf start",
+    "start": "DEVELOPMENT=true DEBUG=metalsmith:* nf start",
     "build": "gulp clean && gulp metalsmith && gulp inline"
   },
   "repository": {

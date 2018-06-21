@@ -22,6 +22,17 @@
   </ul>
 </section>
 
+<% if (posts.length > 0) { %>
+<section>
+  <h2>Posts</h2>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li><a href='<%- post.path.href %>'><%- post.title %></a></li>
+    <% }) %>
+  </ul>
+</section>
+<% } %>
+
 <section>
   <h2>Contact</h2>
   <ul>
