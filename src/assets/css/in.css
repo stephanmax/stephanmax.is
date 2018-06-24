@@ -1,0 +1,28 @@
+body {
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+figure {
+  margin: 1.5em auto 0;
+  max-width: 100%;
+  width: calc(calc(100vh - 10px - 12em) * 201 / 97);
+}
+
+svg {
+  height: 1px;
+  overflow: visible;
+  padding-bottom: calc(100% * 97 / 201);
+  width: 100%;
+
+  fill: #ccc;
+  stroke: #ccc;
+}
+
+.current {
+  fill: #ff0000;
+  stroke: #ff0000;
+}

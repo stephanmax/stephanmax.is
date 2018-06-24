@@ -1,0 +1,6 @@
+<% if (location.base === location.current) { %>
+  in <%= location.current %>
+<% } else { %>
+  <del>in <%= location.base %></del>
+  <ins>currently in <%= location.current %></ins>
+<% } %>

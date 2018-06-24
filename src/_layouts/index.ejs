@@ -1,8 +1,8 @@
-<%- include('partials/top.ejs', {title: ''}) %>
+<%- include('partials/top.ejs', {title: '', is: '', custom_css: null}) %>
 
 <h1>Stephan Max</h1>
 
-<p>I’m a software engineer in Hamburg working with JavaScript and Python. I also like urban sketching, cooking, vinyl, and working with kids & teenagers.</p>
+<p>I’m a software engineer <%- include('partials/location.ejs') %> working with JavaScript and Python. I also like urban sketching, cooking, vinyl, and working with kids & teenagers.</p>
 
 <section>
   <h2>Work</h2>
@@ -21,6 +21,20 @@
     <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
   </ul>
 </section>
+
+<% if (posts.length > 0) { %>
+<section>
+  <h2>Posts</h2>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li>
+        <a href="<%= post.path.href %>"><%= post.title %></a>
+        [<time datetime="<%= post.date.format('YYYY-MM-DD') %>"><%= post.date.format('ll') %></time>]
+      </li>
+    <% }) %>
+  </ul>
+</section>
+<% } %>
 
 <section>
   <h2>Contact</h2>
