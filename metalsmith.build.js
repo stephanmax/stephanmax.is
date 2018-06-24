@@ -17,7 +17,10 @@ module.exports = function() {
         name: 'stephanmax.is',
         description: 'Portfolio, blog, and digital playground of software engineer Stephan Max'
       },
-      location: 'Hamburg'
+      location: {
+        base: 'Hamburg',
+        current: 'Hamburg'
+      }
     })
     .source('./src')
     .destination('./build')
