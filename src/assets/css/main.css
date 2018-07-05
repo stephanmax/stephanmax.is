@@ -43,3 +43,7 @@ blockquote p:nth-last-child(n+2) {
 pre {
   line-height: 1.847;
 }
+
+svg {
+  display: block;
+}
