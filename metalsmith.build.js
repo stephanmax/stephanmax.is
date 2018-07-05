@@ -20,7 +20,7 @@ module.exports = function() {
       },
       location: {
         base: 'Hamburg',
-        current: 'Leipzig'
+        current: 'Hamburg'
       }
     })
     .source('./src')
