@@ -6,6 +6,7 @@ const moment = require('metalsmith-moment')
 const collections = require('metalsmith-collections')
 const paths = require('metalsmith-paths')
 const debug = require('metalsmith-debug')
+const metallic = require('metalsmith-metallic')
 
 const isDev = !!process.env.DEVELOPMENT
 
@@ -19,7 +20,7 @@ module.exports = function() {
       },
       location: {
         base: 'Hamburg',
-        current: 'Leipzig'
+        current: 'Hamburg'
       }
     })
     .source('./src')
@@ -39,13 +40,14 @@ module.exports = function() {
         reverse: true
       }
     }))
+    .use(metallic())
     .use(markdown())
     .use(paths())
     .use(layouts({
       engine: 'ejs',
       directory: 'src/_layouts',
       default: 'index.ejs',
-      pattern: '*.html'
+      pattern: ['**/*.html', '*.html']
     }))
     .use(debug())
     .build(function (err) {

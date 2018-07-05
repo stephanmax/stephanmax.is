@@ -35,3 +35,15 @@ abbr {
 li {
   margin: 0;
 }
+
+blockquote p:nth-last-child(n+2) {
+  font-style: italic;
+}
+
+pre {
+  line-height: 1.847;
+}
+
+svg {
+  display: block;
+}
