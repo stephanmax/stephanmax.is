@@ -1,0 +1,12 @@
+<%- include('partials/top.ejs', {title, is: '', custom_css}) %>
+
+<article>
+  <header>
+    <h1><%= title %></h1>
+    <p><time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('ll') %></time></p>
+  </header>
+
+  <%- contents %>
+</article>
+
+<%- include('partials/bottom.ejs') %>
