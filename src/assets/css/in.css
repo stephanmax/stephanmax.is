@@ -9,7 +9,7 @@ h1 {
 figure {
   margin: 1.5em auto 0;
   max-width: 100%;
-  width: calc(calc(100vh - 10px - 12em) * 201 / 97);
+  width: calc(calc(100vh - 11.2em) * 201 / 97);
 }
 
 svg {
