@@ -7,6 +7,7 @@ const collections = require('metalsmith-collections')
 const paths = require('metalsmith-paths')
 const debug = require('metalsmith-debug')
 const metallic = require('metalsmith-metallic')
+const slug = require('metalsmith-slug')
 
 const isDev = !!process.env.DEVELOPMENT
 
@@ -42,6 +43,11 @@ module.exports = function() {
     }))
     .use(metallic())
     .use(markdown())
+    .use(slug({
+      pattern: ['*.md'],
+      renameFiles: true,
+      lower: true
+    }))
     .use(paths())
     .use(layouts({
       engine: 'ejs',

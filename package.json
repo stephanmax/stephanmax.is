@@ -37,6 +37,7 @@
     "metalsmith-metallic": "^2.0.2",
     "metalsmith-models": "0.0.3",
     "metalsmith-moment": "^1.1.0",
-    "metalsmith-paths": "^3.0.1"
+    "metalsmith-paths": "^3.0.1",
+    "metalsmith-slug": "^0.2.1"
   }
 }
