@@ -1,1 +1,2 @@
-/writing/([0-9]+-[0-9]+-[0-9]+-)(.*)$ /writing/$2 301
+/writing/2018-07-16-implementing-a-generative-design-system /writing/implementing-a-generative-design-system 301
+/writing/2018-07-05-ephemeral-tweets /writing/how-i-made-my-tweets-ephemeral-with-node-and-webtask 301
