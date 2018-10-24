@@ -1,5 +1,5 @@
 const metalsmith = require('metalsmith')
-const markdown = require('metalsmith-markdown')
+const markdown = require('metalsmith-markdownit')
 const layouts = require('metalsmith-layouts')
 const dateInFileName = require('metalsmith-date-in-filename')
 const moment = require('metalsmith-moment')
@@ -7,10 +7,11 @@ const collections = require('metalsmith-collections')
 const paths = require('metalsmith-paths')
 const debug = require('metalsmith-debug')
 const metallic = require('metalsmith-metallic')
+const shortcodes = require('metalsmith-shortcode-parser')
 
 const isDev = !!process.env.DEVELOPMENT
 
-module.exports = function() {
+module.exports = () => {
   metalsmith(__dirname)
     .metadata({
       site: {
@@ -41,7 +42,13 @@ module.exports = function() {
       }
     }))
     .use(metallic())
-    .use(markdown())
+    .use(shortcodes({
+      files: ['.md'],
+      shortcodes: require('./shortcodes')
+    }))
+    .use(markdown({
+      html: true
+    }))
     .use(paths())
     .use(layouts({
       engine: 'ejs',
@@ -50,7 +57,7 @@ module.exports = function() {
       pattern: ['**/*.html', '*.html']
     }))
     .use(debug())
-    .build(function (err) {
+    .build(err => {
       if (err) {
         console.log('Build failed:', err)
       }
