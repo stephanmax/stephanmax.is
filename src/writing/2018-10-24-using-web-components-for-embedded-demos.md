@@ -12,5 +12,3 @@ custom_css: highlight.css
   }
 </style>
 [/demo]
-
-
