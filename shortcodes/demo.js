@@ -9,9 +9,13 @@ module.exports = (buf, opts) => {
     </template>
     <script>
       (function() {
-        const shadowHost = document.getElementById('demo-${id}');
-        const shadowRoot = shadowHost.attachShadow({mode: 'open'});
-        const demoTemplate = document.getElementById('demo-template-${id}');
+        var shadowHost = document.getElementById('demo-${id}');
+        var shadowRoot = shadowHost.attachShadow({mode: 'open'});
+        var demoTemplate = document.getElementById('demo-template-${id}');
+        var demoScript = demoTemplate.content.querySelector('script');
+        if (demoScript) {
+          demoScript.textContent = "(function() { var demo = document.getElementById(\'demo-${id}\').shadowRoot;" + demoScript.textContent + "})()"
+        }
         shadowRoot.appendChild(document.importNode(demoTemplate.content, true));
       })();
     </script>`
