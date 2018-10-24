@@ -27,7 +27,7 @@ module.exports = function() {
     .source('./src')
     .destination('./build')
     .ignore([
-      '_**',
+      '_layouts',
       '.DS_Store'
     ])
     .use(dateInFileName({
