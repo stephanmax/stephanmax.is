@@ -37,7 +37,7 @@ shadowRoot.innerHTML = '<button>Hello from the Shadow DOM</button>'; // 3.
 
 All that leads to the button appearing below. Go ahead, click it, it’s real:
 
-[demo]
+[demo fallback="PyXYrM"]
 <button>Hello from the Shadow DOM</button>
 [/demo]
 
@@ -57,7 +57,7 @@ shadowRoot.innerHTML = `<p>A blue paragraph inside the Shadow DOM</p>
 
 Which renders:
 
-[demo]
+[demo fallback="WaLNvw"]
 <p>A blue paragraph inside the Shadow DOM</p>
 <style>
   p {
@@ -129,7 +129,7 @@ shadowRoot.appendChild(document.importNode(demoTemplate.content, true)); // A
 
 This time the button does something:
 
-[demo]
+[demo fallback="pxqoye"]
 <p>A blue paragraph inside the Shadow DOM</p>
 <p><button>Add a paragraph</button></p>
 <style>
@@ -162,6 +162,7 @@ This is what I came up with:
   * Creating an HTML `<figure>` element with the optional `<figcaption>`
   * Setting up an HTML template containing the shortcode content and appending that to a shadow DOM
   * Exposing a JavaScript variable `demo` which contains the shadow root (declared inside an <abbr title="Immediately invoked function expression">IIFE</abbr> so that `demo` and all variables in the code demo’s JavaScript do not litter the global scope)
+  * Providing a fallback Codepen link if shadow DOM is not supported
 
 Here you can find the [<code>&#91;demo&#93;</code> shortcode implementation](https://github.com/stephanmax/stephanmax.is/blob/master/shortcodes/demo.js).
 
