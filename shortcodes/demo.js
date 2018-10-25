@@ -2,8 +2,15 @@ const md5 = require('nano-md5')
 
 module.exports = (buf, opts) => {
   const id = md5(buf)
+
+  let demoCode = `<figure role="group" aria-labelledby="caption-${id}">
+    <div class="demo" id="demo-${id}"></div>`
   
-  return `<div class="demo" id="demo-${id}"></div>
+  if (opts.caption) {
+    demoCode += `<figcaption id="caption-${id}">${opts.caption}</figcaption>`
+  }
+
+  demoCode += `</figure>
     <template id="demo-template-${id}">
       ${buf}
     </template>
@@ -19,4 +26,6 @@ module.exports = (buf, opts) => {
         shadowRoot.appendChild(document.importNode(demoTemplate.content, true));
       })();
     </script>`
+  
+  return demoCode
 }
