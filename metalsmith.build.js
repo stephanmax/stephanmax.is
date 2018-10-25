@@ -47,6 +47,7 @@ module.exports = () => {
       pattern: ['*.md'],
       renameFiles: true,
       lower: true
+    }))
     .use(shortcodes({
       files: ['.md'],
       shortcodes: require('./shortcodes')
