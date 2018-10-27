@@ -1,18 +1,13 @@
 <%- include('partials/top.ejs', {title, is: '', custom_css}) %>
 
 <nav>
-  <a href="/" title="Home">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor">
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      <path d="M0 0h24v24H0z" fill="none"/>
-    </svg>
-  </a>
+  <a href="/" title="Home">&larr; Home</a>
 </nav>
 
 <article>
   <header>
     <h1><%= title %></h1>
-    <p><time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('ll') %></time></p>
+    <p><time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('LL') %></time></p>
   </header>
 
   <%- contents %>

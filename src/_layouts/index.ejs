@@ -11,7 +11,7 @@
     <% posts.forEach(post => { %>
       <li>
         <a href="<%= post.path.href %>"><%= post.title %></a>
-        [<time datetime="<%= post.date.format('YYYY-MM-DD') %>"><%= post.date.format('ll') %></time>]
+        <time datetime="<%= post.date.format('YYYY-MM-DD') %>">— <%= post.date.format('ll') %></time>
       </li>
     <% }) %>
   </ul>
@@ -21,13 +21,14 @@
 <section>
   <h2>Work</h2>
   <ul>
-    <li><a href="https://asokoinsight.com/">Asoko Insight</a> 🌍 Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
+    <li>🔜 <a href="https://it-economics.de">it-economics</a> 👨‍💻 IT and business consultancy (<i>senior developer</i>)</li>
   </ul>
 </section>
 
 <section>
   <h2>Previous</h2>
   <ul>
+    <li><a href="https://asokoinsight.com/">Asoko Insight</a> 🌍 Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
     <li><a href="https://www.ibm.com/cloud/">IBM</a> ☁️ Bluemix cloud platform, now IBM Cloud (<i>dev advocate</i>)</li>
     <li><a href="https://www.sitepoint.com/author/smax/">SitePoint</a> ✍️ Web developer platform (<i>author</i>)</li>
     <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <abbr title="sunsetted">†</abbr> 📰 Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
@@ -39,9 +40,10 @@
 <section>
   <h2>Contact</h2>
   <ul>
-    <li><a href="mailto:hello@stephanmax.com">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3">PGP 🔑</a>)</li>
+    <li><a href="mailto:hello@stephanmax.com">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3">PGP key</a>)</li>
     <li><a href="https://github.com/stephanmax">Github</a></li>
     <li><a href="https://twitter.com/stephanmaxToGo">Twitter</a></li>
+    <li><a href="https://keybase.io/stephanmax">Keybase</a></li>
     <li><a href="https://www.linkedin.com/in/stephan-max/">LinkedIn</a></li>
   </ul>
 </section>

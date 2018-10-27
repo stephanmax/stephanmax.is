@@ -4,9 +4,9 @@
 
 html {
   box-sizing: border-box;
-  color: rgb(51, 51, 51);
+  color: hsl(0, 0%, 20%);
   font-family: georgia, serif;
-  font-size: 125%;
+  font-size: 112.5%;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -22,26 +22,35 @@ body, li {
 
 body {
   max-width: 36em;
-  padding: 3.2em 1.6em 4.8em;
+  padding: 1.6em;
 }
 
 a {
-  color: #cc0066;
+  background-image: linear-gradient(120deg, #a1ffce, #faffd1);
+  background-repeat: no-repeat;
+  background-size: 100% .3em;
+  background-position: 0 88%;
+  color: hsl(0, 0%, 0%);
+  padding: 0 .1em;
   text-decoration: none;
+  transition: background-size .3s ease-in;
 }
 
-h1, h2 {
-  color: #394047;
+a:hover {
+  background-size: 100% 100%;
+}
+
+h1,
+h2,
+summary {
+  color: hsl(0, 0%, 15%);
   font-family: -apple-system, sans-serif;
-}
-
-h1 {
-  font-size: 1.25em;
-  line-height: 1.28;
-}
-
-h2 {
   font-size: 1em;
+  font-weight: bold;
+}
+
+summary {
+  cursor: pointer;
 }
 
 abbr {
@@ -57,9 +66,10 @@ blockquote p:nth-last-child(n+2) {
   font-style: italic;
 }
 
-pre code {
-  font-size: .8rem;
-  line-height: 2;
+pre code,
+figcaption {
+  font-size: .75rem;
+  line-height: 2.133;
 }
 
 svg {
@@ -72,13 +82,21 @@ img {
 
 figcaption {
   font-family: -apple-system, sans-serif;
-  font-size: .6rem;
-  line-height: 2.667;
   margin: 0;
 }
 
 abbr {
   border-bottom: 1px dotted;
+}
+
+time {
+  color: hsl(0, 0%, 60%);
+  font-family: -apple-system, sans-serif;
+  font-size: .75rem;
+}
+
+nav {
+  font-family: -apple-system, sans-serif;
 }
 
 .demo { 
