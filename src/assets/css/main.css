@@ -10,7 +10,8 @@ html {
   font-size: calc(100% + .3vw);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 * + * {
