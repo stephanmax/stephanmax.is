@@ -10,11 +10,11 @@ The other day I finally had the chance to watch Matthew Epler’s fantastic Yout
 
 Here I want to go into a bit of detail on what I learned and changed in the course of implementing this crystal generator. Please feel free to check out the accompanying [Glitch app](https://generative-crystals.glitch.me/) or the [source code on Github](https://github.com/stephanmax/generative-crystals).
 
-*Note*: While Matthew is using the [p5.js-svg library](https://github.com/zenozeng/p5.js-svg) with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.
+<b>Note</b>: While Matthew is using the [p5.js-svg library](https://github.com/zenozeng/p5.js-svg) with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.
 
 ## The New `random` Function
 
-The whole design system is based on using p5’s `random` function—a lot! We randomly choose color, shape, arity, stroke weight… you get the picture. Matthew had to implement this notion of *choice* from nothing but random float numbers which lead to helper functions like these:
+The whole design system is based on using p5’s `random` function—a lot! We randomly choose color, shape, arity, stroke weight… you get the picture. Matthew had to implement this notion of choice from nothing but random float numbers which lead to helper functions like these:
 
 ```javascript
 const PALETTE = [
@@ -134,7 +134,7 @@ for (let i = 0; i < cols * rows; i++) { // 4.
 ```
 
 1. `CRYSTAL_SIZE_MAX` and `GAP_MIN` are the crystal’s maximum size and the minimum gap (serves both as margin between crystals and padding of the canvas) in pixels
-2. We calculate the actual crystal size. It is either the maximum size or whatever size is available  (horizontally **or** vertically) after subtracting the minimum gap twice for the padding
+2. We calculate the actual crystal size. It is either the maximum size or whatever size is available  (horizontally *or* vertically) after subtracting the minimum gap twice for the padding
 3. Next we calculate the number of columns and rows and the actual gap we will use
 4. In the last step we loop over the number of crystals and calculate the x and y position for each one (with a little help of the modulo operator `%`, so we can do it in one `for` loop instead two nested loops for columns and rows)
 

@@ -31,7 +31,7 @@ module.exports = function(context, done) {
 }
 ```
 
-I use the [*twit* library](https://github.com/ttezel/twit) to connect to and query the Twitter API, mainly because it offers all the convenience methods you would expect, promises, and exposes the full response object (for watching rate limits, for example).
+I use the [<i>twit</i> library](https://github.com/ttezel/twit) to connect to and query the Twitter API, mainly because it offers all the convenience methods you would expect, promises, and exposes the full response object (for watching rate limits, for example).
 
 The ephemeral-tweets microservice retrieves 200 tweets per call from your timeline (as per Twitter’s API limit for [GET statuses/user_timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html)), filters them by `MAX_TWEET_AGE` and deletes the ones that are older.
 
