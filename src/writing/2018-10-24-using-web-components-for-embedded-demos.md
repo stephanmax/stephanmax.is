@@ -6,7 +6,7 @@ custom_css: highlight.css
 
 When I read Heydon Pickering’s Smashing Magazine article on [Building Pattern Libraries With Shadow DOM In Markdown](https://www.smashingmagazine.com/2017/07/pattern-libraries-in-markdown/) last year it felt like a dream come true. He describes a technique to bundle up markup, styles, and JavaScript into a neat self-contained and isolated package ready to be embedded straight in your Markdown code: A <i>web component</i>. This buzzword had already been floating around for a while back then and it certainly is even more important today.
 
-I have to admit that I was put off by the sheer amount of new stuff that piggybacked on Heydon’s article (shadow DOM vs “real” DOM, HTML templates, shortcodes) plus the flaky browser support. Today, with the new Firefox 63 release that adds support for exactly these features, I think it is time to revisit web components.
+I have to admit that I was put off by the sheer amount of new stuff that piggybacked on Heydon’s article (shadow DOM vs <i>real</i> DOM, HTML templates, shortcodes) plus the flaky browser support. Today, with the new Firefox 63 release that adds support for exactly these features, I think it is time to revisit web components.
 
 ## What Are Web Components?
 
@@ -148,7 +148,7 @@ This time the button does something:
 </script>
 [/demo]
 
-The magic happens in line `A` where we take the template’s content, import it as a DOM node, and append it to the shadow root. That way the `script` gets parsed and executed. Please note that, as opposed to the shadow DOM’s scoped CSS, JavaScript is not encapsulated from the get-go. If you query the `document` inside the shadow DOM you still target the surrounding `document`. That’s why we need line `B` to explicitly grab a handle on the  “document” established by the shadow tree below the shadow root. Moving forward we can treat the `demo` variable as if we were targetting `document`, for example call `appendChild` on it.
+The magic happens in line `A` where we take the template’s content, import it as a DOM node, and append it to the shadow root. That way the `script` gets parsed and executed. Please note that, as opposed to the shadow DOM’s scoped CSS, JavaScript is not encapsulated from the get-go. If you query the `document` inside the shadow DOM you still target the surrounding `document`. That’s why we need line `B` to explicitly grab a handle on the document established by the shadow tree below the shadow root. Moving forward we can treat the `demo` variable as if we were targetting `document`, for example call `appendChild` on it.
 
 ## A Short Node on Shortcodes
 

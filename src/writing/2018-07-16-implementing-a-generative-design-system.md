@@ -4,7 +4,7 @@ layout: post.ejs
 custom_css: highlight.css
 ---
 
-The other day I finally had the chance to watch Matthew Epler’s fantastic Youtube series [Designing Generative Systems with p5.js](https://www.youtube.com/playlist?list=PLyRZnpOSgMj3K8AV2I6UldnvTj6d_Zrf0). He takes you from setting up your [p5](https://p5js.org/) sketch to a full-fledged generative design system that creates “crystals” like these:
+The other day I finally had the chance to watch Matthew Epler’s fantastic Youtube series [Designing Generative Systems with p5.js](https://www.youtube.com/playlist?list=PLyRZnpOSgMj3K8AV2I6UldnvTj6d_Zrf0). He takes you from setting up your [p5](https://p5js.org/) sketch to a full-fledged generative design system that creates <i>crystals</i> like these:
 
 ![12 crystals made by a generative design system on a 3&times;4 grid](material/generative_crystals.png)
 
