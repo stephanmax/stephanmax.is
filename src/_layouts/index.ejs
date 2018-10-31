@@ -1,11 +1,12 @@
 <%- include('partials/top.ejs', {title: '', is: '', custom_css: null}) %>
 
-<h1>Stephan Max</h1>
+<article>
 
-<p>I’m a software engineer <%- include('partials/location.ejs') %> working with JavaScript and Python. I also like urban sketching, cooking, vinyl, and working with kids & teenagers.</p>
+  <h1>Stephan Max</h1>
 
-<% if (posts.length > 0) { %>
-<section>
+  <p>I’m a software engineer <%- include('partials/location.ejs') %> working with JavaScript and Python. I also like urban sketching, cooking, vinyl, and working with kids & teenagers.</p>
+
+  <% if (posts.length > 0) { %>
   <h2>Posts</h2>
   <ul>
     <% posts.forEach(post => { %>
@@ -15,17 +16,13 @@
       </li>
     <% }) %>
   </ul>
-</section>
-<% } %>
+  <% } %>
 
-<section>
   <h2>Work</h2>
   <ul>
     <li>🔜 <a href="https://it-economics.de">it-economics</a> 👨‍💻 IT and business consultancy (<i>senior developer</i>)</li>
   </ul>
-</section>
 
-<section>
   <h2>Previous</h2>
   <ul>
     <li><a href="https://asokoinsight.com/">Asoko Insight</a> 🌍 Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
@@ -35,9 +32,7 @@
     <li><a href="https://satzweiss.com/">Satzweiss</a> 📚 eBook publishing (<i>fullstack dev</i>)</li>
     <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> 🎓 Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
   </ul>
-</section>
 
-<section>
   <h2>Contact</h2>
   <ul>
     <li><a href="mailto:hello@stephanmax.com">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3">PGP key</a>)</li>
@@ -46,6 +41,7 @@
     <li><a href="https://keybase.io/stephanmax">Keybase</a></li>
     <li><a href="https://www.linkedin.com/in/stephan-max/">LinkedIn</a></li>
   </ul>
-</section>
+
+</article>
 
 <%- include('partials/bottom.ejs') %>

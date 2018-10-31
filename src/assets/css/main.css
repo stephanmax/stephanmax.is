@@ -6,7 +6,7 @@ header p {
 html {
   box-sizing: border-box;
   color: hsl(0, 0%, 25%);
-  font-family: georgia, serif;
+  font-family: serif;
   font-size: calc(100% + .3vw);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -22,8 +22,11 @@ body, li {
 }
 
 body {
-  max-width: 36em;
   padding: 4%;
+}
+
+article {
+  max-width: 32em;
 }
 
 a {
@@ -44,12 +47,8 @@ a:hover {
 h1,
 h2 {
   color: hsl(0, 0%, 15%);
-  font-family: -apple-system, sans-serif;
+  font-family: sans-serif;
   font-size: 1em;
-}
-
-* + h2 {
-  margin-top: 3.2em;
 }
 
 abbr {
@@ -80,7 +79,7 @@ img {
 }
 
 figcaption {
-  font-family: -apple-system, sans-serif;
+  font-family: sans-serif;
   margin: 0;
 }
 
@@ -90,15 +89,31 @@ abbr {
 
 time {
   color: hsl(0, 0%, 60%);
-  font-family: -apple-system, sans-serif;
+  font-family: sans-serif;
   font-size: .75rem;
 }
 
 nav {
-  font-family: -apple-system, sans-serif;
+  font-family: sans-serif;
 }
 
 .demo { 
   all: initial;
   display: block;
+}
+
+@supports(display: grid) {
+  article {
+    display: grid;
+    grid-template-columns: [main-start full-start] minmax(0, 32em) [main-end] minmax(0, 1fr) [full-end];
+    max-width: 100%;
+  }
+
+  article > * {
+    grid-column: main;
+  }
+
+  pre {
+    grid-column: full;
+  }
 }
