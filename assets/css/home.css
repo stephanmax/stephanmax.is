@@ -1,0 +1,8 @@
+.highlight-latest li:nth-child(n+2) {
+  filter: blur(1px);
+  list-style-type: circle;
+}
+
+.highlight-latest li:nth-child(n+2):hover {
+  filter: none;
+}
