@@ -51,7 +51,7 @@ module.exports = () => {
     destination: 'feed.xml',
     preprocess: file => ({
       ...file,
-      url: `${metadata.site.url}/${file.collection}/${file.slug}.html`
+      url: `${metadata.site.url}/${file.collection}/${file.slug}`
     })
   }))
   .use(Layouts({
