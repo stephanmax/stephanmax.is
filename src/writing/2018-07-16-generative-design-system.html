@@ -6,7 +6,7 @@ custom_css: highlight.css
 
 <p>The other day I finally had the chance to watch Matthew Epler’s fantastic Youtube series <a href="https://www.youtube.com/playlist?list=PLyRZnpOSgMj3K8AV2I6UldnvTj6d_Zrf0">Designing Generative Systems with p5.js</a>. He takes you from setting up your <a href="https://p5js.org/">p5</a> sketch to a full-fledged generative design system that creates <i>crystals</i> like these:</p>
 
-<img src="./material/generative_crystals.png" alt="12 crystals made by a generative design system on a 3&times;4 grid">
+<img src="/assets/images/generative-design-system/generative_crystals.png" alt="12 crystals made by a generative design system on a 3&times;4 grid">
 
 <p>Here I want to go into a bit of detail on what I learned and changed in the course of implementing this crystal generator. Please feel free to check out the accompanying <a href="https://generative-crystals.glitch.me/">Glitch app</a> or the <a href="https://github.com/stephanmax/generative-crystals">source code on Github</a>.</p>
 
@@ -111,7 +111,7 @@ export function polygon(n, x, y, r, angleOffset = 0) {
 
 <p>That way I was able to generate all needed shapes with just one function, passing in <code>angleOffset</code> if I needed to:</p>
 
-<img src="material/polygons.png" alt="Several hexagons and triangles generated with one helper function">
+<img src="/assets/images/generative-design-system/polygons.png" alt="Several hexagons and triangles generated with one helper function">
 
 <p>Better yet, this solution scales in case I decide to include pentagons or triangles with all sorts of directions in the future.</p>
 

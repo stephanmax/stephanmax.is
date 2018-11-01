@@ -10,26 +10,17 @@ const Feed = require('metalsmith-feed')
 const More = require('metalsmith-more')
 const SyntaxHighlighting = require('metalsmith-prism')
 
+const metadata = require('./metadata.json')
+
 const isDev = !!process.env.DEVELOPMENT
 
 module.exports = () => {
   Metalsmith(__dirname)
-  .metadata({
-    site: {
-      title: 'Stephan Max',
-      url: 'https://stephanmax.is',
-      author: 'Stephan Max',
-      description: 'Portfolio, blog, and digital playground of software engineer Stephan Max'
-    },
-    location: {
-      base: 'Hamburg',
-      current: 'Hamburg'
-    }
-  })
+  .metadata(metadata)
   .source('./src')
   .destination('./build')
+  .clean(false)
   .ignore([
-    '_layouts',
     '.DS_Store'
   ])
   .use(DateInFileName({
@@ -57,21 +48,25 @@ module.exports = () => {
   .use(Feed({
     collection: 'writing',
     limit: false,
-    destination: 'feed.xml'
+    destination: 'feed.xml',
+    preprocess: file => ({
+      ...file,
+      url: `${metadata.site.url}/${file.collection}/${file.slug}.html`
+    })
   }))
   .use(Layouts({
     engine: 'ejs',
-    directory: 'src/_layouts',
+    directory: 'layouts',
     default: 'index.ejs',
     pattern: ['**/*.html', '*.html']
   }))
   .use(Debug())
   .build(err => {
     if (err) {
-      console.log('Build failed:', err)
+      console.log('❌ Build failed:', err)
     }
     else {
-      console.log('Build complete.')
+      console.log('✅ Build complete.')
     }
   })
 }

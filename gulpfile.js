@@ -3,24 +3,44 @@ const gulp = require('gulp')
 const inline = require('gulp-inline-source')
 const metalsmithBuild = require('./metalsmith.build')
 
-gulp.task('clean', () => del(['./build']))
+gulp.task(
+  'clean',
+  () => del(['build'])
+)
 
-gulp.task('metalsmith', () => metalsmithBuild())
+gulp.task(
+  'metalsmith',
+  () => metalsmithBuild()
+)
 
-gulp.task('metalsmith-watch', ['metalsmith'], () => {
-  gulp.watch(['./src/**/*', '!./src/assets/'], ['metalsmith'])
-})
+gulp.task(
+  'metalsmith-watch',
+  ['metalsmith'],
+  () => gulp.watch(['src/**/*'], ['metalsmith'])
+)
 
-gulp.task('stylesheets', () => {
-  return gulp.src('./src/assets/**/*.css').pipe(gulp.dest('./build/assets'))
-})
+const stylesPath = 'assets/**/*.css'
 
-gulp.task('stylesheets-watch', ['stylesheets'], () => {
-  gulp.watch('./src/assets/**/*.css', ['stylesheets'])
-})
+gulp.task(
+  'styles',
+  () => gulp.src(stylesPath).pipe(gulp.dest('build/assets'))
+)
 
-gulp.task('inline', () => {
-  return gulp.src('./build/**/*.html').pipe(inline({
-    rootpath: './src'
-  })).pipe(gulp.dest('./build'))
-})
+gulp.task(
+  'styles-watch',
+  ['styles'],
+  () => gulp.watch(stylesPath, ['styles'])
+)
+
+const imagesPath = 'assets/**/*.{gif,jpg,png,svg}'
+
+gulp.task(
+  'images',
+  () => gulp.src(imagesPath).pipe(gulp.dest('build/assets'))
+)
+
+gulp.task(
+  'images-watch',
+  ['images'],
+  () => gulp.watch(imagesPath, ['stylesheets'])
+)
