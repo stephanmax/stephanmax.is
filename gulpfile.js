@@ -1,6 +1,9 @@
+const autoprefixer = require('autoprefixer')
 const del = require('del')
 const gulp = require('gulp')
 const inline = require('gulp-inline-source')
+const postcss = require('gulp-postcss')
+
 const metalsmithBuild = require('./metalsmith.build')
 
 gulp.task(
@@ -23,7 +26,14 @@ const stylesPath = 'assets/**/*.css'
 
 gulp.task(
   'styles',
-  () => gulp.src(stylesPath).pipe(gulp.dest('build/assets'))
+  () => gulp
+    .src(stylesPath)
+    .pipe(postcss([
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ]))
+    .pipe(gulp.dest('build/assets'))
 )
 
 gulp.task(
