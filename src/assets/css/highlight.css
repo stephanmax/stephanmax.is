@@ -1,78 +1,87 @@
-.hljs {
+code[class*="language-"] {
   display: block;
   overflow-x: auto;
   padding: 1.0667em;
-  color: #383a42;
-  background: #fafafa;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
 }
 
-.hljs-comment,
-.hljs-quote {
-  color: #a0a1a7;
-  font-style: italic;
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
 }
 
-.hljs-doctag,
-.hljs-keyword,
-.hljs-formula {
-  color: #a626a4;
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
 }
 
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: #e45649;
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
 }
 
-.hljs-literal {
-  color: #0184bb;
+.token.punctuation {
+	color: #999;
 }
 
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta-string {
-  color: #50a14f;
+.namespace {
+	opacity: .7;
 }
 
-.hljs-built_in,
-.hljs-class .hljs-title {
-  color: #c18401;
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
 }
 
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
-  color: #986801;
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
 }
 
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
-.hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-  color: #4078f2;
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
 }
 
-.hljs-emphasis {
-  font-style: italic;
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
 }
 
-.hljs-strong {
-  font-weight: bold;
+.token.function {
+	color: #DD4A68;
 }
 
-.hljs-link {
-  text-decoration: underline;
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
 }

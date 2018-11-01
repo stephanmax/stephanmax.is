@@ -1,74 +1,77 @@
-const metalsmith = require('metalsmith')
-const markdown = require('metalsmith-markdownit')
-const layouts = require('metalsmith-layouts')
-const dateInFileName = require('metalsmith-date-in-filename')
-const moment = require('metalsmith-moment')
-const collections = require('metalsmith-collections')
-const paths = require('metalsmith-paths')
-const debug = require('metalsmith-debug')
-const metallic = require('metalsmith-metallic')
-const slug = require('metalsmith-slug')
-const shortcodes = require('metalsmith-shortcode-parser')
+const Metalsmith = require('metalsmith')
+const Layouts = require('metalsmith-layouts')
+const DateInFileName = require('metalsmith-date-in-filename')
+const Moment = require('metalsmith-moment')
+const Collections = require('metalsmith-auto-collections')
+const Debug = require('metalsmith-debug')
+const Slug = require('metalsmith-slug')
+const Shortcodes = require('metalsmith-shortcode-parser')
+const Feed = require('metalsmith-feed')
+const More = require('metalsmith-more')
+const SyntaxHighlighting = require('metalsmith-prism')
 
 const isDev = !!process.env.DEVELOPMENT
 
 module.exports = () => {
-  metalsmith(__dirname)
-    .metadata({
-      site: {
-        author: 'Stephan Max',
-        name: 'stephanmax.is',
-        description: 'Portfolio, blog, and digital playground of software engineer Stephan Max'
-      },
-      location: {
-        base: 'Hamburg',
-        current: 'Hamburg'
-      }
-    })
-    .source('./src')
-    .destination('./build')
-    .ignore([
-      '_layouts',
-      '.DS_Store'
-    ])
-    .use(dateInFileName({
-      override: true
-    }))
-    .use(moment(['date']))
-    .use(collections({
-      posts: {
-        pattern: ['writing/*.md'].concat(isDev ? ['writing/drafts/*.md'] : []),
-        sortBy: 'date',
-        reverse: true
-      }
-    }))
-    .use(metallic())
-    .use(slug({
-      pattern: ['*.md'],
-      renameFiles: true,
-      lower: true
-    }))
-    .use(shortcodes({
-      files: ['.md'],
-      shortcodes: require('./shortcodes')
-    }))
-    .use(markdown({
-      html: true
-    }))
-    .use(paths())
-    .use(layouts({
-      engine: 'ejs',
-      directory: 'src/_layouts',
-      default: 'index.ejs',
-      pattern: ['**/*.html', '*.html']
-    }))
-    .use(debug())
-    .build(err => {
-      if (err) {
-        console.log('Build failed:', err)
-      }
-      else {
-        console.log('Build complete.')
-      }
-    })
-  }
+  Metalsmith(__dirname)
+  .metadata({
+    site: {
+      title: 'Stephan Max',
+      url: 'https://stephanmax.is',
+      author: 'Stephan Max',
+      description: 'Portfolio, blog, and digital playground of software engineer Stephan Max'
+    },
+    location: {
+      base: 'Hamburg',
+      current: 'Hamburg'
+    }
+  })
+  .source('./src')
+  .destination('./build')
+  .ignore([
+    '_layouts',
+    '.DS_Store'
+  ])
+  .use(DateInFileName({
+    override: true
+  }))
+  .use(Shortcodes({
+    files: ['.html'],
+    shortcodes: require('./shortcodes')
+  }))
+  .use(Collections({
+    pattern: ['writing/*.html'],
+    settings: {
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
+  .use(Moment(['date']))
+  .use(SyntaxHighlighting())
+  .use(Slug({
+    pattern: ['*.html'],
+    renameFiles: true,
+    lower: true
+  }))
+  .use(More())
+  .use(Feed({
+    collection: 'writing',
+    limit: false,
+    destination: 'feed.xml'
+  }))
+  .use(Layouts({
+    engine: 'ejs',
+    directory: 'src/_layouts',
+    default: 'index.ejs',
+    pattern: ['**/*.html', '*.html']
+  }))
+  .use(Debug())
+  .build(err => {
+    if (err) {
+      console.log('Build failed:', err)
+    }
+    else {
+      console.log('Build complete.')
+    }
+  })
+}

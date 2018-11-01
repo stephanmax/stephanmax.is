@@ -32,5 +32,6 @@ module.exports = (buf, opts) => {
       })();
     </script>`
   
+  console.log(demoCode)
   return demoCode
 }
