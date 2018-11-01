@@ -16,7 +16,7 @@ gulp.task(
 gulp.task(
   'metalsmith-watch',
   ['metalsmith'],
-  () => gulp.watch(['src/**/*'], ['metalsmith'])
+  () => gulp.watch(['src/**/*', 'layouts/**/*'], ['metalsmith'])
 )
 
 const stylesPath = 'assets/**/*.css'

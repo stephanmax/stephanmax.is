@@ -1,47 +1,41 @@
 <%- include('partials/top.ejs', {title: '', is: '', custom_css: null}) %>
 
-<article>
+<p>Hi, I’m Stephan, a software craftsman in Hamburg working with JavaScript and Python. I also like cooking, <a href="https://www.discogs.com/user/stephanmax/collection?sort=artist&sort_order=asc">vinyl</a>, and working with <a href="https://cisv.org/">kids</a> &amp; <a href="https://jugendhackt.org/">teenagers</a>.</p>
 
-  <h1>Stephan Max</h1>
+<% if (writing.length > 0) { %>
+<h2>Articles (<a href="<%= site.url %>/feeding">Feed</a>)</h2>
+<ul>
+  <% writing.forEach(article => { %>
+  <li>
+    <a href="<%= article.collection + '/' + article.slug + '.html' %>"><%= article.title %></a>
+    <time datetime="<%= article.date.format('YYYY-MM-DD') %>">— <%= article.date.format('ll') %></time>
+  </li>
+  <% }) %>
+</ul>
+<% } %>
 
-  <p>I’m a software engineer <%- include('partials/location.ejs') %> working with JavaScript and Python. I also like urban sketching, cooking, vinyl, and working with kids & teenagers.</p>
+<h2>Work</h2>
+<ul>
+  <li>🔜 <a href="https://it-economics.de">it-economics</a> 👨‍💻 IT and business consultancy (<i>senior developer</i>)</li>
+</ul>
 
-  <% if (writing.length > 0) { %>
-  <h2>Articles (<a href="<%= site.url %>/feeding">Feed</a>)</h2>
-  <ul>
-    <% writing.forEach(article => { %>
-    <li>
-      <a href="<%= article.collection + '/' + article.slug + '.html' %>"><%= article.title %></a>
-      <time datetime="<%= article.date.format('YYYY-MM-DD') %>">— <%= article.date.format('ll') %></time>
-    </li>
-    <% }) %>
-  </ul>
-  <% } %>
+<h2>Previous</h2>
+<ul>
+  <li><a href="https://asokoinsight.com/">Asoko Insight</a> 🌍 Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
+  <li><a href="https://www.ibm.com/cloud/">IBM</a> ☁️ Bluemix cloud platform, now IBM Cloud (<i>dev advocate</i>)</li>
+  <li><a href="https://www.sitepoint.com/author/smax/">SitePoint</a> ✍️ Web developer platform (<i>author</i>)</li>
+  <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <abbr title="sunsetted">†</abbr> 📰 Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
+  <li><a href="https://satzweiss.com/">Satzweiss</a> 📚 eBook publishing (<i>fullstack dev</i>)</li>
+  <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> 🎓 Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
+</ul>
 
-  <h2>Work</h2>
-  <ul>
-    <li>🔜 <a href="https://it-economics.de">it-economics</a> 👨‍💻 IT and business consultancy (<i>senior developer</i>)</li>
-  </ul>
-
-  <h2>Previous</h2>
-  <ul>
-    <li><a href="https://asokoinsight.com/">Asoko Insight</a> 🌍 Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
-    <li><a href="https://www.ibm.com/cloud/">IBM</a> ☁️ Bluemix cloud platform, now IBM Cloud (<i>dev advocate</i>)</li>
-    <li><a href="https://www.sitepoint.com/author/smax/">SitePoint</a> ✍️ Web developer platform (<i>author</i>)</li>
-    <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <abbr title="sunsetted">†</abbr> 📰 Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
-    <li><a href="https://satzweiss.com/">Satzweiss</a> 📚 eBook publishing (<i>fullstack dev</i>)</li>
-    <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> 🎓 Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
-  </ul>
-
-  <h2>Contact</h2>
-  <ul>
-    <li><a href="mailto:hello@stephanmax.com">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3">PGP key</a>)</li>
-    <li><a href="https://github.com/stephanmax">Github</a></li>
-    <li><a href="https://twitter.com/stephanmaxToGo">Twitter</a></li>
-    <li><a href="https://keybase.io/stephanmax">Keybase</a></li>
-    <li><a href="https://www.linkedin.com/in/stephan-max/">LinkedIn</a></li>
-  </ul>
-
-</article>
+<h2>Contact</h2>
+<ul>
+  <li><a href="mailto:hello@stephanmax.com">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3">PGP key</a>)</li>
+  <li><a href="https://github.com/stephanmax">Github</a></li>
+  <li><a href="https://twitter.com/stephanmaxToGo">Twitter</a></li>
+  <li><a href="https://keybase.io/stephanmax">Keybase</a></li>
+  <li><a href="https://www.linkedin.com/in/stephan-max/">LinkedIn</a></li>
+</ul>
 
 <%- include('partials/bottom.ejs') %>
