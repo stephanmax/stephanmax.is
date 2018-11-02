@@ -54,3 +54,10 @@ gulp.task(
   ['images'],
   () => gulp.watch(imagesPath, ['stylesheets'])
 )
+
+gulp.task(
+  'inline',
+  () => gulp.src('build/**/*.html').pipe(inline({
+    rootpath: 'build'
+  })).pipe(gulp.dest('build'))
+)

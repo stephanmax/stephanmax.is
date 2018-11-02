@@ -5,7 +5,7 @@
   "main": "metalsmith.build.js",
   "scripts": {
     "start": "DEVELOPMENT=true DEBUG=metalsmith:* nf start",
-    "build": "gulp clean && gulp metalsmith && gulp styles && gulp images"
+    "build": "gulp clean && gulp metalsmith && gulp styles && gulp images && gulp inline"
   },
   "repository": {
     "type": "git",
