@@ -41,6 +41,15 @@ a {
   transition: background-size .3s ease-in;
 }
 
+nav {
+  opacity: .4;
+  transition: opacity .6s;
+}
+
+nav:hover {
+  opacity: 1;
+}
+
 nav a {
   background: none;
   display: block;
