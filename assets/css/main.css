@@ -101,6 +101,12 @@ time {
   font-size: .75rem;
 }
 
+aside {
+  border-left: 4px solid currentColor;
+  color: hsl(0, 0%, 60%);
+  padding-left: 1.6em;
+}
+
 .demo { 
   all: initial;
   display: block;
