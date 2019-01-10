@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - '4011:4011'
+    volumes:
+      - .:/home/node/web
+      - deps:/home/node/web/node_modules
+
+volumes:
+  deps:
