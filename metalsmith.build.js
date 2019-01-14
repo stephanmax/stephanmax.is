@@ -7,7 +7,6 @@ const Debug = require('metalsmith-debug')
 const Slug = require('metalsmith-slug')
 const Shortcodes = require('metalsmith-shortcode-parser')
 const Feed = require('metalsmith-feed')
-const More = require('metalsmith-more')
 const SyntaxHighlighting = require('metalsmith-prism')
 
 const metadata = require('./metadata.json')
@@ -44,7 +43,6 @@ module.exports = () => {
     renameFiles: true,
     lower: true
   }))
-  .use(More())
   .use(Feed({
     collection: 'writing',
     limit: false,

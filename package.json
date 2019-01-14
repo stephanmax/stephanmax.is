@@ -35,7 +35,6 @@
     "metalsmith-feed": "^1.0.0",
     "metalsmith-layouts": "^1.6.5",
     "metalsmith-moment": "^1.1.0",
-    "metalsmith-more": "^0.2.0",
     "metalsmith-prism": "^3.1.1",
     "metalsmith-shortcode-parser": "^1.0.2",
     "metalsmith-slug": "^0.2.1",

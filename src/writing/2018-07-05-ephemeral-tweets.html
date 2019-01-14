@@ -11,13 +11,11 @@ custom_css: highlight.css
   <p>—Vicky Lai</p>
 </blockquote>
 
-<p>After looking at <a href="https://github.com/vickylai/ephemeral">Vicky’s Go code</a> I got excited to try this in Node and use <a href="https://webtask.io/">Webtask</a> to host my <a href="https://github.com/stephanmax/ephemeral-tweets">ephemeral-tweets</a> microservice.
-
-<!--more-->
+<p>After looking at <a href="https://github.com/vickylai/ephemeral">Vicky’s Go code</a> I got excited to try this in Node and use <a href="https://webtask.io/">Webtask</a> to host my <a href="https://github.com/stephanmax/ephemeral-tweets">ephemeral-tweets</a> microservice.</p>
 
 <h2>The Code</h2>
 
-<p>The code for ephemeral-tweets is written in ES6 and uses features like <code>const</code>, fat arrow functions, destructuring, and Promises. I also use Webtask’s <a href="https://webtask.io/docs/editor/secrets">secrets</a> (similar to environment variables, exposed via the microservice’s <code>context</code> parameter) for private Twitter credentials and the maximum age of the tweets you want to keep, represented in days.
+<p>The code for ephemeral-tweets is written in ES6 and uses features like <code>const</code>, fat arrow functions, destructuring, and Promises. I also use Webtask’s <a href="https://webtask.io/docs/editor/secrets">secrets</a> (similar to environment variables, exposed via the microservice’s <code>context</code> parameter) for private Twitter credentials and the maximum age of the tweets you want to keep, represented in days.</p>
 
 [code language="javascript"]
 module.exports = function(context, done) {

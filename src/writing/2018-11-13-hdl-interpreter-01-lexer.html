@@ -12,8 +12,6 @@ custom_css: highlight.css
 
 <p>I immediately thought about creating an in-browser IDE for HDL scripts with a simple UI, auto-testing, and nothing to download or install. Before I could think about the feature set, though, I needed an <i>interpreter</i> for HDL. And so my quest begins.</p>
 
-<!--more-->
-
 <h2>Initial Considerations</h2>
 
 <p>In a sense an interpreter <i>implements</i> a language, not unlike a compiler. However, compilation in the traditional sense is a two-stage process where a high-level language is first transformed into machine code for the target machine and then executed by this machine to produce results. An interpreter, on the other hand, is a program that takes code in a source language and executes/evaluates it in a <i>certain environment</i>. This environment holds the rules for evaluating expressions of our source language and also a lookup table for identifiers.</p>
