@@ -43,6 +43,7 @@ a {
 
 nav {
   opacity: .4;
+  overflow: hidden;
   transition: opacity .6s;
 }
 

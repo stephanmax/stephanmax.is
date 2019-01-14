@@ -1,9 +1,11 @@
 <%- include('partials/top.ejs', {title: '', is: '', custom_css}) %>
 
-<p>Hi— I’m Stephan, a software craftsman based in Cologne, Germany. I also like cooking, <a href="https://www.discogs.com/user/stephanmax/collection?sort=artist&sort_order=asc">vinyl</a>, and working with <a href="https://cisv.org/">kids</a>&nbsp;&amp;&nbsp;<a href="https://jugendhackt.org/">teenagers</a>.</p>
+<h1>Stephan Max is</h1>
+
+<p>—a software craftsman based in Cologne, Germany, with a passion for cooking, <a href="https://www.discogs.com/user/stephanmax/collection?sort=artist&sort_order=asc">vinyl</a>, and working with <a href="https://cisv.org/">kids</a>&nbsp;&amp;&nbsp;<a href="https://jugendhackt.org/">teenagers</a>.</p>
 
 <% if (writing.length > 0) { %>
-<h2>Writing (and <a href="feeding">Feeding</a>)</h2>
+<h2>—writing (and <a href="feeding">feeding</a>)</h2>
 <ul>
   <% writing.forEach(article => { %>
   <li>
@@ -14,17 +16,17 @@
 </ul>
 <% } %>
 
-<h2>Working</h2>
+<h2>—working</h2>
 <ul class="highlight-latest">
   <li><a href="https://it-economics.de">it-economics</a> IT and business consultancy (<i>senior dev</i>)</li>
   <li><a href="https://asokoinsight.com/">Asoko Insight</a> Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
   <li><a href="https://www.ibm.com/cloud/">IBM</a> Bluemix cloud platform, now IBM Cloud (<i>dev advocate</i>)</li>
-  <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <abbr title="sunsetted">†</abbr> Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
+  <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <sup><abbr title="sunsetted">†</abbr></sup> Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
   <li><a href="https://satzweiss.com/">Satzweiss</a> eBook publishing (<i>fullstack dev</i>)</li>
   <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
 </ul>
 
-<h2>Contactable</h2>
+<h2>—contactable</h2>
 <ul>
   <li><a href="mailto:hello@stephanmax.com" rel="me">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3" rel="pgpkey authn">PGP key</a>)</li>
   <li><a href="https://github.com/stephanmax" rel="me">Github</a></li>
