@@ -1,7 +1,6 @@
 code[class*="language-"] {
   display: block;
   overflow-x: auto;
-  padding: 1.0667em;
 }
 
 :not(pre) > code[class*="language-"],

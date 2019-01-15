@@ -82,10 +82,11 @@ blockquote p:nth-last-child(n+2) {
   font-style: italic;
 }
 
-pre code,
-figcaption {
+figcaption,
+pre {
   font-size: .75rem;
   line-height: 2.133;
+  padding: 1.0667em;
 }
 
 svg {
