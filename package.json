@@ -38,6 +38,7 @@
     "metalsmith-prism": "^3.1.1",
     "metalsmith-shortcode-parser": "^1.0.2",
     "metalsmith-slug": "^0.2.1",
-    "nano-md5": "^1.0.3"
+    "nano-md5": "^1.0.3",
+    "prismjs": "github:PrismJS/prism"
   }
 }
