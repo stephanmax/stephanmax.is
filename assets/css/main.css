@@ -84,11 +84,23 @@ article ul li::before {
 
 h1 {
   font-size: 2em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 h2 {
   font-size: 1em;
+}
+
+hr {
+  border: none;
+  margin-bottom: 1.6em;
+  text-align: center;
+}
+
+hr::after {
+  color: #6fa5e7;
+  content: '￭';
+  margin: 0 auto;
 }
 
 abbr {
@@ -161,7 +173,7 @@ nav {
 }
 
 .writing {
-  margin-top: 4.8em;
+  margin-top: 3.2em;
 }
 
 .writing a {
@@ -196,5 +208,14 @@ nav {
   address li + li::before {
     content: '·';
     padding: .8em;
+  }
+  h1 {
+    margin-top: 2em;
+  }
+  hr {
+    text-align: left;
+  }
+  .writing {
+    margin-top: 4.8em;
   }
 }
