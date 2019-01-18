@@ -1,12 +1,12 @@
-*,
-header p {
+* {
   margin: 0;
+  padding: 0;
 }
 
 html {
   box-sizing: border-box;
   color: hsl(0, 0%, 20%);
-  font-family: serif;
+  font-family: -apple-system, 'sans serif';
   font-size: calc(100% + .3vw);
   line-height: 1.6;
   -moz-osx-font-smoothing: grayscale;
@@ -18,60 +18,103 @@ html {
   margin-top: 1.6em;
 }
 
-body, li {
+body, article li {
   margin-top: 0;
 }
 
-body {
-  padding: 4%;
+body > * {
+  margin: 0 auto;
 }
 
-article {
-  max-width: 32em;
+main {
+  max-width: 48em;
 }
 
-a {
-  background-image: linear-gradient(120deg, #a1ffce, #faffd1);
-  background-repeat: no-repeat;
-  background-size: 100% .3em;
-  background-position: 0 88%;
-  color: hsl(0, 0%, 0%);
-  padding: 0 .1em;
-  text-decoration: none;
-  transition: background-size .3s ease-in;
-}
-
-nav {
-  opacity: .4;
-  overflow: hidden;
-  transition: opacity .6s;
-}
-
-nav:hover {
-  opacity: 1;
-}
-
-nav a {
-  background: none;
-  display: block;
-  float: left;
+main ul {
   padding: 0;
 }
 
-a:hover {
-  background-size: 100% 100%;
+a {
+  background-image: linear-gradient(to right, transparent 50%, #ffff33 50%);
+  background-size: 200%;
+  transition: background-position .3s;
+  color: #6fa5e7;
+  text-decoration: none;
 }
 
-h1,
+a:hover {
+  background-position: -100%;
+}
+
+article,
+main {
+  padding: 4%;
+}
+
+ol,
+ul {
+  counter-reset: ol-counter;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 1.6em;
+}
+
+article li {
+  position: relative;
+}
+
+article ol li::before {
+  color: #6fa5e7;
+  content: counter(ol-counter);
+  counter-increment: ol-counter;
+  display: block;
+  font-weight: bold;
+  position: absolute;
+  left: -1.6em;
+}
+
+article ul li::before {
+  color: #6fa5e7;
+  content: '•';
+  display: block;
+  position: absolute;
+  top: -.05em;
+  left: -1.6em;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 2em;
+}
+
 h2 {
-  color: hsl(0, 0%, 15%);
-  font-family: sans-serif;
   font-size: 1em;
 }
 
 abbr {
+  border-bottom: 1px dotted;
   cursor: help;
   text-decoration: none;
+}
+
+address {
+  font-style: normal;
+  margin: 0;
+}
+
+address a,
+time {
+  color: #999;
+  font-family: monospace;
+}
+
+address li {
+  margin: 0;
+  text-transform: lowercase;
+}
+
+address li + li::before {
+  color: #999;
 }
 
 blockquote {
@@ -102,25 +145,32 @@ figcaption {
   margin: 0;
 }
 
-abbr {
-  border-bottom: 1px dotted;
-}
-
-time {
-  color: hsl(0, 0%, 60%);
-  font-family: sans-serif;
-  font-size: .75rem;
-}
-
 aside {
   border-left: 4px solid currentColor;
   color: hsl(0, 0%, 60%);
   padding-left: 1.6em;
 }
 
+nav {
+  font-weight: bold;
+}
+
 .demo { 
   all: initial;
   display: block;
+}
+
+.writing {
+  margin-top: 4.8em;
+}
+
+.writing a {
+  color: #000;
+}
+
+.writing time {
+  display: block;
+  margin: 0;
 }
 
 @supports(display: grid) {
@@ -136,5 +186,15 @@ aside {
 
   pre {
     grid-column: full;
+  }
+}
+
+@media(min-width: 600px) {
+  address li {
+    float: left;
+  }
+  address li + li::before {
+    content: '·';
+    padding: .8em;
   }
 }

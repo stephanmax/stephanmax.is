@@ -1,38 +1,33 @@
 <%- include('partials/top.ejs', {title: '', is: '', custom_css}) %>
 
-<h1>Stephan Max is</h1>
+<main>
 
-<p>—a software craftsman based in Cologne, Germany, with a passion for cooking, <a href="https://www.discogs.com/user/stephanmax/collection?sort=artist&sort_order=asc">vinyl</a>, and working with <a href="https://cisv.org/">kids</a>&nbsp;&amp;&nbsp;<a href="https://jugendhackt.org/">teenagers</a>.</p>
+  <h1><a href="/">Stephan Max</a></h1>
 
-<% if (writing.length > 0) { %>
-<h2>—writing (and <a href="feeding">feeding</a>)</h2>
-<ul>
-  <% writing.forEach(article => { %>
-  <li>
-    <a href="<%= article.collection + '/' + article.slug + '.html' %>"><%= article.title %></a>
-    <time datetime="<%= article.date.format('YYYY-MM-DD') %>">— <%= article.date.format('ll') %></time>
-  </li>
-  <% }) %>
-</ul>
-<% } %>
+  <address>
+    <ul>
+      <li>
+        <a href="mailto:hello@stephanmax.com" rel="me">Email</a>&nbsp;
+        <a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3" rel="pgpkey authn" title="PGP key via Keybase">+&nbsp;key
+        </a>
+      </li>
+      <li><a href="https://twitter.com/stephanmaxToGo" rel="me">Twitter</a></li>
+      <li><a href="https://github.com/stephanmax" rel="me">Github</a></li>
+      <li><a href="https://www.linkedin.com/in/stephan-max/" rel="me">LinkedIn</a></li>
+    </ul>
+  </address>
 
-<h2>—working</h2>
-<ul class="highlight-latest">
-  <li><a href="https://it-economics.de">it-economics</a> IT and business consultancy (<i>senior dev</i>)</li>
-  <li><a href="https://asokoinsight.com/">Asoko Insight</a> Africa’s largest corporate data platform (<i>software engineering team lead</i>)</li>
-  <li><a href="https://www.ibm.com/cloud/">IBM</a> Bluemix cloud platform, now IBM Cloud (<i>dev advocate</i>)</li>
-  <li><a href="https://en.ejo.ch/digital-news/9622/">Deepr</a> <sup><abbr title="sunsetted">†</abbr></sup> Crowd-funded online journalism (<i>co-founder & dev</i>)</li>
-  <li><a href="https://satzweiss.com/">Satzweiss</a> eBook publishing (<i>fullstack dev</i>)</li>
-  <li><a href="https://saarland-informatics-campus.de/en/">CS at Saarland University</a>, <a href="https://software.imdea.org/">IMDEA Software Institute</a>, and <a href="https://www.mpi-inf.mpg.de/home/">MPII</a> Teaching & Research (<i>ta</i>, <i>jr researcher</i>)
-</ul>
+  <% if (writing.length > 0) { %>
+  <ul class="writing">
+    <% writing.forEach(article => { %>
+    <li>
+      <a href="<%= article.collection + '/' + article.slug + '.html' %>"><%= article.title %></a>
+      <time datetime="<%= article.date.format('YYYY-MM-DD') %>"><%= article.date.format('ll') %></time>
+    </li>
+    <% }) %>
+  </ul>
+  <% } %>
 
-<h2>—contactable</h2>
-<ul>
-  <li><a href="mailto:hello@stephanmax.com" rel="me">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3" rel="pgpkey authn">PGP key</a>)</li>
-  <li><a href="https://github.com/stephanmax" rel="me">Github</a></li>
-  <li><a href="https://twitter.com/stephanmaxToGo" rel="me">Twitter</a> / <a href="https://chaos.social/@stephanmax" rel="me">Mastodon</a></li>
-  <li><a href="https://keybase.io/stephanmax" rel="me">Keybase</a></li>
-  <li><a href="https://www.linkedin.com/in/stephan-max/" rel="me">LinkedIn</a></li>
-</ul>
+</main>
 
 <%- include('partials/bottom.ejs') %>

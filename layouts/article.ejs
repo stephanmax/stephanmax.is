@@ -1,10 +1,15 @@
 <%- include('partials/top.ejs', {title, is: '', custom_css}) %>
 
-<header>
-  <h1><%= title %></h1>
-  <p><time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('LL') %></time></p>
-</header>
+<article>
+  <header>
+    <nav>
+      <a href="/">Stephan Max</a>
+    </nav>
+    <h1><%= title %></h1>
+    <p><time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('LL') %></time></p>
+  </header>
 
-<%- contents %>
+  <%- contents %>
+</article>
 
 <%- include('partials/bottom.ejs') %>

@@ -138,7 +138,7 @@ for (let i = 0; i < cols * rows; i++) { // 4.
 [/code]
 
 <ol>
-  <li><code>CRYSTAL_SIZE_MAX</code> and <code>GAP_MIN</code> are the crystal’s maximum size and the minimum gap (serves both as margin between crystals and padding of the canvas) in pixels</li>
+  <li>The constants <code>CRYSTAL_SIZE_MAX</code> and <code>GAP_MIN</code> are the crystal’s maximum size and the minimum gap (serves both as margin between crystals and padding of the canvas) in pixels</li>
   <li>We calculate the actual crystal size. It is either the maximum size or whatever size is available  (horizontally <em>or</em> vertically) after subtracting the minimum gap twice for the padding</li>
   <li>Next we calculate the number of columns and rows and the actual gap we will use</li>
   <li>In the last step we loop over the number of crystals and calculate the x and y position for each one (with a little help of the modulo operator <code>%</code>, so we can do it in one <code>for</code> loop instead two nested loops for columns and rows)</li>
