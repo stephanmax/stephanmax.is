@@ -27,6 +27,8 @@ body > * {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
   max-width: 48em;
 }
 
@@ -48,7 +50,7 @@ a:hover {
 
 article,
 main {
-  padding: 4%;
+  padding: 0 4% 1.6em;
 }
 
 ol,
@@ -84,7 +86,7 @@ article ul li::before {
 
 h1 {
   font-size: 2em;
-  margin-top: 1em;
+  margin-top: 1.6em;
 }
 
 h2 {
@@ -111,13 +113,14 @@ abbr {
 
 address {
   font-style: normal;
-  margin: 0;
+  order: 1;
 }
 
 address a,
 time {
   color: #999;
-  font-family: monospace;
+  font-size: .8em;
+  line-height: 2;
 }
 
 address li {
@@ -165,6 +168,7 @@ aside {
 
 nav {
   font-weight: bold;
+  padding-top: 1.6em;
 }
 
 .demo { 
@@ -180,7 +184,7 @@ nav {
   color: #000;
 }
 
-.writing time {
+* + time {
   display: block;
   margin: 0;
 }
@@ -202,6 +206,10 @@ nav {
 }
 
 @media(min-width: 600px) {
+  address {
+    margin: 0;
+    order: initial;
+  }
   address li {
     float: left;
   }
@@ -209,13 +217,10 @@ nav {
     content: '·';
     padding: .8em;
   }
-  h1 {
-    margin-top: 2em;
-  }
   hr {
     text-align: left;
   }
   .writing {
-    margin-top: 4.8em;
+    margin-top: 3.2em;
   }
 }
