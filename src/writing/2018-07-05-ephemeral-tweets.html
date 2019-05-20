@@ -1,6 +1,5 @@
 ---
 title: How I Made My Tweets Ephemeral with Node and Webtask
-layout: article.ejs
 custom_css: highlight.css
 ---
 
@@ -20,7 +19,7 @@ custom_css: highlight.css
 [code language="javascript"]
 module.exports = function(context, done) {
   const maxTweetAge = context.secrets.MAX_TWEET_AGE * dayInMs
-  
+
   const twitterClient = new Twitter({
     consumer_key: context.secrets.CONSUMER_KEY,
     consumer_secret: context.secrets.CONSUMER_SECRET,
@@ -64,7 +63,7 @@ twitterClient.get('statuses/user_timeline', {
         })
       })
     })
-  
+
   return Promise.all(deleteRequests)
 })
 .then(deletedTweets => {

@@ -1,6 +1,5 @@
 ---
 title: Using Web Components for Embedded Demos
-layout: article.ejs
 custom_css: highlight.css
 ---
 
@@ -110,11 +109,11 @@ shadowRoot.innerHTML = `<p>A blue paragraph inside the Shadow DOM</p>
       font-family: sans-serif;
     }
   </style>
-	
+
   <script>
     var demo = document.getElementById('demo').shadowRoot; // B
     var button = demo.querySelector('button');
-		
+
     button.addEventListener('click', function(e) {
       var p = document.createElement('p');
       p.textContent = 'Another paragraph inside the Shadow DOM';

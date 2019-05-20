@@ -55,7 +55,7 @@ module.exports = () => {
   .use(Layouts({
     engine: 'ejs',
     directory: 'layouts',
-    default: 'index.ejs',
+    default: 'article.ejs',
     pattern: ['**/*.html', '*.html']
   }))
   .use(Debug())
