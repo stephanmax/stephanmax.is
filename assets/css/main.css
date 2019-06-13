@@ -6,7 +6,7 @@
 html {
   box-sizing: border-box;
   color: hsl(0, 0%, 20%);
-  font-family: -apple-system, 'sans serif';
+  font-family: -apple-system, sans-serif;
   font-size: calc(100% + .3vw);
   line-height: 1.6;
   -moz-osx-font-smoothing: grayscale;
@@ -155,6 +155,10 @@ svg {
 
 img {
   max-width: 100%;
+}
+
+figure img {
+  display: block;
 }
 
 figcaption {

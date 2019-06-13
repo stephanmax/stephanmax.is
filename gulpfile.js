@@ -52,7 +52,7 @@ gulp.task(
 gulp.task(
   'images-watch',
   ['images'],
-  () => gulp.watch(imagesPath, ['stylesheets'])
+  () => gulp.watch(imagesPath, ['images'])
 )
 
 gulp.task(
