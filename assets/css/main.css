@@ -29,7 +29,6 @@ body > * {
 main {
   display: flex;
   flex-direction: column;
-  max-width: 48em;
 }
 
 main ul {
@@ -182,14 +181,19 @@ nav {
   display: block;
 }
 
-
-
 .writing {
+  display: grid;
+  grid-gap: 1.6em;
+  grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
   margin-top: 3.2em;
 }
 
 .writing a {
   color: #000;
+}
+
+.writing > * {
+  margin: 0;
 }
 
 * + time {
@@ -200,7 +204,7 @@ nav {
 @supports(display: grid) {
   article {
     display: grid;
-    grid-template-columns: [main-start full-start] minmax(0, 32em) [main-end] minmax(0, 1fr) [full-end];
+    grid-template-columns: [main-start full-start] minmax(0, 45ch) [main-end] minmax(0, 1fr) [full-end];
     max-width: 100%;
   }
 
@@ -228,8 +232,5 @@ nav {
   }
   hr {
     text-align: left;
-  }
-  .writing {
-    margin-top: 3.2em;
   }
 }
