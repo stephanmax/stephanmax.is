@@ -36,15 +36,21 @@ main ul {
 }
 
 a {
-  background-image: linear-gradient(to right, transparent 50%, #ffff33 50%);
-  background-size: 200%;
-  transition: background-position .3s;
-  color: #6fa5e7;
+  background-image: linear-gradient(to top, #b0deff, #b0deff);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% .4em;
+  color: #000;
   text-decoration: none;
 }
 
-a:hover {
-  background-position: -100%;
+header a {
+  background: none;
+}
+
+header h1 a,
+header nav a {
+  color: #ffc5a1;
 }
 
 article,
@@ -65,7 +71,7 @@ article li {
 }
 
 article ol li::before {
-  color: #6fa5e7;
+  color: #ffc5a1;
   content: counter(ol-counter);
   counter-increment: ol-counter;
   display: block;
@@ -75,7 +81,7 @@ article ol li::before {
 }
 
 article ul li::before {
-  color: #6fa5e7;
+  color: #ffc5a1;
   content: '•';
   display: block;
   position: absolute;
@@ -101,7 +107,7 @@ hr {
 }
 
 hr::after {
-  color: #6fa5e7;
+  color: #ffc5a1;
   content: '￭';
   margin: 0 auto;
 }
@@ -186,10 +192,6 @@ nav {
   grid-gap: 1.6em;
   grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
   margin-top: 3.2em;
-}
-
-.writing a {
-  color: #000;
 }
 
 .writing > * {
