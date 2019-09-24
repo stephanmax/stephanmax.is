@@ -34,6 +34,7 @@
     "metalsmith-date-formatter": "^1.0.2",
     "metalsmith-date-in-filename": "0.0.14",
     "metalsmith-debug": "^1.1.0",
+    "metalsmith-excerpts": "^1.2.0",
     "metalsmith-feed": "^1.0.0",
     "metalsmith-layouts": "^1.6.5",
     "metalsmith-moment": "^1.1.0",
