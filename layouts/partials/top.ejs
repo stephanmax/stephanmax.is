@@ -6,13 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <title>
-    <% if (title) { %>
-      <%= title %> |
-    <% } %>
-    <%= site.author %>
-    <% if (is) { %>
-      is <%= is %>
-    <% } %>
+    <%= title ? `${title} | ${site.author}` : site.author %>
   </title>
 
   <meta name="author" content="<%= site.author %>">

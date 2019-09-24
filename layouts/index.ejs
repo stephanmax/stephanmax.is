@@ -1,7 +1,6 @@
 <%- include('partials/top.ejs', {
   title: '',
-  is: '',
-  custom_css
+  custom_css: locals.custom_css
 }) %>
 
 <main>
@@ -20,7 +19,6 @@
     </address>
   </header>
 
-  <% if (writing.length > 0) { %>
   <ul class="writing">
     <% writing.forEach(article => { %>
     <li>
@@ -29,7 +27,6 @@
     </li>
     <% }) %>
   </ul>
-  <% } %>
 
   <p>
     <a href="/feeding" title="RSS Feed">
