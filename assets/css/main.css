@@ -18,6 +18,7 @@
   --color1: #ff7e67;
   --color2: #ffb2a4;
   --color3: #67e8ff;
+  --color4: #ddfaff;
 }
 
 * {
@@ -146,44 +147,6 @@ h4 a:hover {
   color: var(--color1);
 }
 
-article {
-  display: grid;
-  grid-template-columns: 1fr [full-start] minmax(0, var(--g6)) [main-start] auto [main-end] minmax(0, var(--g6)) [full-end] 1fr;
-  margin: calc(var(--g2) + 4vw) auto;
-}
-
-article > * {
-  grid-column: main;
-}
-
-article header {
-  margin-bottom: var(--g1);
-  text-align: center;
-}
-
-article header,
-article .splash {
-  grid-column: full;
-}
-
-article h1,
-article h2,
-article h3,
-article h4 {
-  color: #333;
-}
-
-article h1,
-article h2,
-article h3,
-article h4,
-article p,
-article ol,
-article ul,
-article blockquote {
-  max-width: 50ch;
-}
-
 del {
   color: #ccc;
 }
@@ -197,7 +160,54 @@ ul {
   counter-reset: ol-counter;
   list-style: none;
   overflow: hidden;
-  padding-left: var(--g2);
+  padding-left: var(--g1);
+}
+
+article {
+  display: grid;
+  grid-template-columns: [full-start] minmax(4vw, 1fr) [main-start] minmax(0, 32rem) [main-end] minmax(4vw, 1fr) [full-end];
+  margin: calc(var(--g2) + 4vw) auto;
+  max-width: 48rem;
+}
+
+article > * {
+  grid-column: main;
+}
+
+aside,
+.splash {
+  grid-column: full;
+}
+
+.splash > figcaption,
+aside > * {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 32rem;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+article header {
+  margin-bottom: var(--g1);
+  text-align: center;
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: #333;
+}
+
+article h2 {
+  font-size: var(--s1);
+  margin-top: var(--g2);
+}
+
+article img {
+  display: block;
+  width: 100%;
 }
 
 article li {
@@ -205,22 +215,20 @@ article li {
 }
 
 article ol li::before {
-  color: var(--color3);
   content: counter(ol-counter);
   counter-increment: ol-counter;
   display: block;
   font-weight: bold;
   position: absolute;
-  left: -1.6em;
+  left: calc(-.5 * var(--g1));
 }
 
 article ul li::before {
-  color: var(--color3);
   content: '•';
   display: block;
   position: absolute;
   top: -.05em;
-  left: -1.6em;
+  left: calc(-.5 * var(--g1));
 }
 
 h1,
@@ -258,12 +266,6 @@ address {
   order: 1;
 }
 
-address a,
-time {
-  color: #ccc;
-  font-size: var(--s-1);
-}
-
 address li {
   margin: 0;
   text-transform: lowercase;
@@ -274,46 +276,47 @@ address li + li::before {
 }
 
 blockquote {
-  padding: 0 1.6em;
-}
-
-blockquote p:nth-last-child(n+2) {
+  border-left: 2px solid var(--color3);
   font-style: italic;
+  padding-left: var(--g1);
 }
 
 figcaption,
-pre {
-  font-size: .75rem;
-  line-height: 2.133;
-  padding: 1.0667em;
+pre,
+time {
+  font-size: var(--s-1);
 }
 
 svg {
   display: block;
 }
 
+aside {
+  background-color: var(--color4);
+  padding-top: var(--g1);
+  padding-bottom: var(--g1);
+}
+
+figcaption {
+  color: #999;
+}
+
+hr {
+  background-color: var(--color3);
+  border: 0;
+  border-radius: 50%;
+  margin: var(--g2) auto var(--g1);
+  width: .3em;
+  height: .3em;
+}
+
 img {
   max-width: 100%;
 }
 
-figure img {
-  display: block;
-}
-
-figcaption {
-  font-family: sans-serif;
-  margin: 0;
-}
-
-aside {
-  border-left: 4px solid currentColor;
-  color: color(--color3);
-  padding-left: 1.6em;
-}
-
-nav {
-  font-weight: bold;
-  padding-top: 1.6em;
+figcaption,
+time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .demo {
@@ -322,8 +325,8 @@ nav {
 }
 
 * + time {
+  color: #ccc;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: bold;
   margin: 0;
 }

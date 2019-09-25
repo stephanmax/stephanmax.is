@@ -3,18 +3,17 @@ title: "Ephemeral Tweets with Node and Webtask"
 custom_css: highlight.css
 ---
 
-<p>A couple of weeks ago I stumbled upon this article by Vicky Lai called <a href="https://vickylai.com/verbose/delete-old-tweets-ephemeral/">Why I’m automatically deleting my old tweets using AWS Lambda</a>. It hit me at a time when I just started to rekindle my love for minimalism and digital detox and I was immediately intrigued with the thought of making my tweets ephemeral, i.e. deleting them after a certain number of days. Because, let’s face it, a tweet from way back then should not have the power to let other people make assumptions on who you are today.</p>
+<p>A couple of weeks ago I stumbled upon this article by Vicky Lai called <a href="https://victoria.dev/verbose/why-im-automatically-deleting-my-old-tweets-using-aws-lambda/">Why I’m automatically deleting my old tweets using AWS Lambda</a>. It hit me at a time when I just started to rekindle my love for minimalism and digital detox and I was immediately intrigued with the thought of making my tweets ephemeral, i.e. deleting them after a certain number of days. Because, let’s face it, a tweet from way back then should not have the power to let other people make assumptions on who you are today.</p>
 
 <blockquote>
   <p>We change our opinions, our desires, our habits. We are not stagnant beings, and we should not let ourselves be represented as such, however unintentionally.</p>
-  <p>—Vicky Lai</p>
 </blockquote>
 
 <p>After looking at <a href="https://github.com/vickylai/ephemeral">Vicky’s Go code</a> I got excited to try this in Node and use <a href="https://webtask.io/">Webtask</a> to host my <a href="https://github.com/stephanmax/ephemeral-tweets">ephemeral-tweets</a> microservice.</p>
 
 <h2>The Code</h2>
 
-<p>The code for ephemeral-tweets is written in ES6 and uses features like <code>const</code>, fat arrow functions, destructuring, and Promises. I also use Webtask’s <a href="https://webtask.io/docs/editor/secrets">secrets</a> (similar to environment variables, exposed via the microservice’s <code>context</code> parameter) for private Twitter credentials and the maximum age of the tweets you want to keep, represented in days.</p>
+<p>The code for ephemeral-tweets is written in ES6 and uses features like <code>const</code>, fat arrow functions, destructuring, and promises. I also use Webtask’s <a href="https://webtask.io/docs/editor/secrets">secrets</a> (similar to environment variables, exposed via the microservice’s <code>context</code> parameter) for private Twitter credentials and the maximum age of the tweets you want to keep, represented in days.</p>
 
 [code language="javascript"]
 module.exports = function(context, done) {
@@ -31,7 +30,7 @@ module.exports = function(context, done) {
 }
 [/code]
 
-<p>I use the <a href="https://github.com/ttezel/twit">twit library</a> to connect to and query the Twitter API, mainly because it offers all the convenience methods you would expect, promises, and exposes the full response object (for watching rate limits, for example).</p>
+<p>I use the <a href="https://github.com/ttezel/twit">twit library</a> to connect to and query the Twitter API, mainly because it offers all the convenience methods you would expect, supports promises, and exposes the full response object (for watching rate limits, for example).</p>
 
 <p>The ephemeral-tweets microservice retrieves 200 tweets per call from your timeline (as per Twitter’s API limit for <a href="https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html">GET statuses/user_timeline</a>, filters them by <code>MAX_TWEET_AGE</code> and deletes the ones that are older.</p>
 
