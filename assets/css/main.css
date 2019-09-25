@@ -13,6 +13,11 @@
   --g2: calc(2rem * var(--ratio));
   --g3: calc(3rem * var(--ratio));
   --g4: calc(4rem * var(--ratio));
+  --g6: calc(6rem * var(--ratio));
+
+  --color1: #ff7e67;
+  --color2: #ffb2a4;
+  --color3: #67e8ff;
 }
 
 * {
@@ -60,7 +65,7 @@ main h1 {
 }
 
 main h1 a {
-  color: #ffb2a4;
+  color: var(--color2);
 }
 
 main section  {
@@ -92,7 +97,7 @@ main section li:first-child h3 {
 }
 
 main section li:first-child h3::before {
-  background-color: #ff7e67;
+  background-color: var(--color1);
   content: '';
   display: block;
   position: absolute;
@@ -115,7 +120,7 @@ main ul {
 }
 
 a {
-  color: #ff7e67;
+  color: var(--color1);
   border-bottom: 1px solid currentColor;
   font-weight: bold;
   text-decoration: none;
@@ -138,12 +143,45 @@ h4 a {
 
 h3 a:hover,
 h4 a:hover {
-  color: #ff7e67;
+  color: var(--color1);
 }
 
 article {
-  margin: 0 auto;
-  max-width: 45ch;
+  display: grid;
+  grid-template-columns: 1fr [full-start] minmax(0, var(--g6)) [main-start] auto [main-end] minmax(0, var(--g6)) [full-end] 1fr;
+  margin: calc(var(--g2) + 4vw) auto;
+}
+
+article > * {
+  grid-column: main;
+}
+
+article header {
+  margin-bottom: var(--g1);
+  text-align: center;
+}
+
+article header,
+article .splash {
+  grid-column: full;
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: #333;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article p,
+article ol,
+article ul,
+article blockquote {
+  max-width: 50ch;
 }
 
 del {
@@ -159,7 +197,7 @@ ul {
   counter-reset: ol-counter;
   list-style: none;
   overflow: hidden;
-  padding-left: 1.6em;
+  padding-left: var(--g2);
 }
 
 article li {
@@ -167,7 +205,7 @@ article li {
 }
 
 article ol li::before {
-  color: #ffc5a1;
+  color: var(--color3);
   content: counter(ol-counter);
   counter-increment: ol-counter;
   display: block;
@@ -177,14 +215,13 @@ article ol li::before {
 }
 
 article ul li::before {
-  color: #ffc5a1;
+  color: var(--color3);
   content: '•';
   display: block;
   position: absolute;
   top: -.05em;
   left: -1.6em;
 }
-
 
 h1,
 h2,
@@ -208,18 +245,6 @@ h3 {
 
 h4 {
   font-size: var(--s1);
-}
-
-hr {
-  border: none;
-  margin-bottom: 1.6em;
-  text-align: center;
-}
-
-hr::after {
-  color: #ffc5a1;
-  content: '￭';
-  margin: 0 auto;
 }
 
 abbr {
@@ -282,7 +307,7 @@ figcaption {
 
 aside {
   border-left: 4px solid currentColor;
-  color: hsl(0, 0%, 60%);
+  color: color(--color3);
   padding-left: 1.6em;
 }
 
@@ -301,38 +326,4 @@ nav {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: bold;
   margin: 0;
-}
-
-@supports(display: grid) {
-  article {
-    display: grid;
-    grid-template-columns: [main-start full-start] minmax(0, 45ch) [main-end] minmax(0, 1fr) [full-end];
-    max-width: 100%;
-  }
-
-  article > * {
-    grid-column: main;
-  }
-
-  pre,
-  .full {
-    grid-column: full;
-  }
-}
-
-@media(min-width: 600px) {
-  address {
-    margin: 0;
-    order: initial;
-  }
-  address li {
-    float: left;
-  }
-  address li + li::before {
-    content: '·';
-    padding: .8em;
-  }
-  hr {
-    text-align: left;
-  }
 }
