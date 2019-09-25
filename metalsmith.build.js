@@ -1,17 +1,18 @@
-const Metalsmith = require('metalsmith')
-const Layouts = require('metalsmith-layouts')
-const DateInFileName = require('metalsmith-date-in-filename')
-const Moment = require('metalsmith-moment')
-const Collections = require('metalsmith-auto-collections')
-const Debug = require('metalsmith-debug')
-const Slug = require('metalsmith-slug')
-const Shortcodes = require('metalsmith-shortcode-parser')
-const Feed = require('metalsmith-feed')
-const SyntaxHighlighting = require('metalsmith-prism')
+const Metalsmith = require('metalsmith');
+const Collections = require('metalsmith-auto-collections');
+const DateInFileName = require('metalsmith-date-in-filename');
+const Debug = require('metalsmith-debug');
+const Excerpts = require('metalsmith-excerpts');
+const Feed = require('metalsmith-feed');
+const Layouts = require('metalsmith-layouts');
+const Moment = require('metalsmith-moment');
+const Shortcodes = require('metalsmith-shortcode-parser');
+const Slug = require('metalsmith-slug');
+const SyntaxHighlighting = require('metalsmith-prism');
 
-const metadata = require('./metadata.json')
+const metadata = require('./metadata.json');
 
-const isDev = !!process.env.DEVELOPMENT
+const isDev = !!process.env.DEVELOPMENT;
 
 module.exports = () => {
   Metalsmith(__dirname)
@@ -22,6 +23,7 @@ module.exports = () => {
   .ignore([
     '.DS_Store'
   ])
+  .use(Excerpts())
   .use(DateInFileName({
     override: true
   }))
@@ -67,4 +69,4 @@ module.exports = () => {
       console.log('✅ Build complete.')
     }
   })
-}
+};

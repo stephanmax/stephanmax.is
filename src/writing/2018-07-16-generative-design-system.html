@@ -1,16 +1,16 @@
 ---
-title: Implementing a Generative Design System
+title: "Generative Art with p5.js"
 custom_css: highlight.css
 ---
 
 <p>The other day I finally had the chance to watch Matthew Epler’s fantastic Youtube series <a href="https://www.youtube.com/playlist?list=PLyRZnpOSgMj3K8AV2I6UldnvTj6d_Zrf0">Designing Generative Systems with p5.js</a>. He takes you from setting up your <a href="https://p5js.org/">p5</a> sketch to a full-fledged generative design system that creates <i>crystals</i> like these:</p>
 
-<img src="/assets/images/generative-design-system/generative_crystals.png" alt="12 crystals made by a generative design system on a 3&times;4 grid">
+<p><img src="/assets/images/generative-design-system/generative_crystals.png" alt="12 crystals made by a generative design system on a 3&times;4 grid"></p>
 
 <p>Here I want to go into a bit of detail on what I learned and changed in the course of implementing this crystal generator. Please feel free to check out the accompanying <a href="https://generative-crystals.glitch.me/">Glitch app</a> or the <a href="https://github.com/stephanmax/generative-crystals">source code on Github</a>.</p>
 
 <aside>
-While Matthew is using the <a href="https://github.com/zenozeng/p5.js-svg">p5.js-svg library</a> with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.
+  <p>While Matthew is using the <a href="https://github.com/zenozeng/p5.js-svg">p5.js-svg library</a> with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.</p>
 </aside>
 
 <h2>The New <code>random</code> Function</h2>
