@@ -19,6 +19,7 @@
   --color2: #ffb2a4;
   --color3: #67e8ff;
   --color4: #ddfaff;
+  --color5: #fff;
 }
 
 * {
@@ -126,14 +127,14 @@ main ul {
 }
 
 a {
-  background-image: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff), linear-gradient(var(--color1), var(--color1));
+  background-image: linear-gradient(var(--color5),var(--color5)), linear-gradient(var(--color5),var(--color5)), linear-gradient(var(--color1), var(--color1));
   background-size: .05em 1px, .05em 1px, 1px 2px;
   background-position: 0 90%, 100% 90%, 0 95%;
   background-repeat: no-repeat, no-repeat, repeat-x;
   color: var(--color1);
   font-weight: bold;
   text-decoration: none;
-  text-shadow: .03em 0 #fff, -.03em 0 #fff, 0 .03em #fff, 0 -.03em #fff, .06em 0 #fff, -.06em 0 #fff, .09em 0 #fff, -.09em 0 #fff, .12em 0 #fff, -.12em 0 #fff, .15em 0 #fff, -.15em 0 #fff;
+  text-shadow: .03em 0 var(--color5), -.03em 0 var(--color5), 0 .03em var(--color5), 0 -.03em var(--color5), .06em 0 var(--color5), -.06em 0 var(--color5), .09em 0 var(--color5), -.09em 0 var(--color5), .12em 0 var(--color5), -.12em 0 var(--color5), .15em 0 var(--color5), -.15em 0 var(--color5);
   transition: color .5s;
 }
 
@@ -299,20 +300,21 @@ blockquote {
   padding-left: var(--g1);
 }
 
-figcaption,
-pre,
-time {
-  font-size: var(--s-1);
-}
-
-svg {
-  display: block;
-}
-
 aside {
+  --color5: var(--color4);
   background-color: var(--color4);
   padding-top: var(--g1);
   padding-bottom: var(--g1);
+}
+
+code:not([class]) {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: .2em;
+  font-size: var(--s-1);
+  padding: .1em .25em .15em;
+  vertical-align: middle;
+  word-wrap: break-word;
 }
 
 figure[role="group"] {
@@ -323,6 +325,12 @@ figure[role="group"] {
 
 figcaption {
   color: #999;
+}
+
+figcaption,
+pre,
+time {
+  font-size: var(--s-1);
 }
 
 hr {
@@ -347,6 +355,10 @@ pre {
   padding: calc(.5 * var(--g1) + 1vw);
 }
 
+svg {
+  display: block;
+}
+
 .demo {
   all: initial;
   display: block;
@@ -365,4 +377,8 @@ pre {
 
 .mjpage .MJXc-display {
   overflow: auto;
+}
+
+.mjx-char {
+  padding: 0 !important;
 }
