@@ -1,6 +1,7 @@
 ---
 title: "An HDL Interpreter with Reason, Part 1: The Lexer"
 custom_css: highlight.css
+math: true
 ---
 
 <p>A couple of weeks ago, I started the fantastic Coursera course <a href="https://www.coursera.org/learn/build-a-computer">From Nand to Tetris</a> where one implements a full virtual computer starting from the smallest building block, the <abbr title="Not and"><i>Nand</i></abbr> gate. The course is very project-centered and uses a small declarative language called <abbr title="Hardware Description Language">HDL</abbr> to implement the various hardware pieces in software.</p>
@@ -69,14 +70,17 @@ CHIP Eq {
   <p>The lexical syntax describes how tokens are created out of characters and symbols and is the first part of the concrete syntax. The other half is called <i>phrasal syntaxt</i> that describes how phrases are made out of tokens. We will talk more about phrasal syntax in part two of this series.</p>
 </aside>
 
-[code language="html"]
-   token = "CHIP" | "IN" | "OUT" | "PARTS" | "true" | "false" | "(" | ")" | "{" | "}" | "[" | "]" | "=" | ":" | ";" | "," | ".." | num | id
-     num = digit [ num ]
-      id = letter [ alphanum ]
-alphanum = ( digit | letter ) [ alphanum ]
-  letter = "a" | … | "z" | "A" | … | "Z"
-   digit = "0" | … | "9"
-[/code]
+\begin{align}
+token &::= \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PARTS}\\
+  &\phantom{{}::={}} |\ \texttt{true}\ |\ \texttt{false}\\
+  &\phantom{{}::={}} |\ \texttt{(}\ |\ \texttt{)}\ | \texttt{\{}\ |\ \texttt{\}}\ |\ \texttt{[}\ |\ \texttt{]}\ |\ \texttt{=}\ |\ \texttt{:}\ |\ \texttt{;}\ |\ \texttt{,}\ |\ \texttt{..}\\
+  &\phantom{{}::={}} |\ num |\ id\\
+num &::= digit\ [ num ]\\
+id &::= letter\ [ alphanum ]\\
+alphanum &::= ( digit\ |\ letter )\ [ alphanum ]\\
+letter &::= \texttt{a}\ |\ …\ |\ \texttt{z}\ |\ \texttt{A}\ |\ …\ |\ \texttt{Z}\\
+digit &::= 0\ |\ …\ |\ 9
+\end{align}
 
 <p>That means a token is either one of the reserved words, a certain symbol, a number, or an identifier. An identifier is any sequence of letters and digits not starting with a digit. HDL is case sensitive so I included lowercase and uppercase letters.</p>
 

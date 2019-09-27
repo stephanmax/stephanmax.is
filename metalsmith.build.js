@@ -10,9 +10,9 @@ const Shortcodes = require('metalsmith-shortcode-parser');
 const Slug = require('metalsmith-slug');
 const SyntaxHighlighting = require('metalsmith-prism');
 
+const mathjax = require('./metalsmith-mathjax.js');
 const metadata = require('./metadata.json');
 
-const isDev = !!process.env.DEVELOPMENT;
 
 module.exports = () => {
   Metalsmith(__dirname)
@@ -31,6 +31,7 @@ module.exports = () => {
     files: ['.html'],
     shortcodes: require('./shortcodes')
   }))
+  .use(mathjax())
   .use(Collections({
     pattern: ['writing/*.html'],
     settings: {

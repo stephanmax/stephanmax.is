@@ -126,15 +126,18 @@ main ul {
 }
 
 a {
+  background-image: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff), linear-gradient(var(--color1), var(--color1));
+  background-size: .05em 1px, .05em 1px, 1px 2px;
+  background-position: 0 90%, 100% 90%, 0 95%;
+  background-repeat: no-repeat, no-repeat, repeat-x;
   color: var(--color1);
-  border-bottom: 1px solid currentColor;
   font-weight: bold;
   text-decoration: none;
+  text-shadow: .03em 0 #fff, -.03em 0 #fff, 0 .03em #fff, 0 -.03em #fff, .06em 0 #fff, -.06em 0 #fff, .09em 0 #fff, -.09em 0 #fff, .12em 0 #fff, -.12em 0 #fff, .15em 0 #fff, -.15em 0 #fff;
   transition: color .5s;
 }
 
 a:hover {
-  border: none;
   color: #000;
 }
 
@@ -142,7 +145,7 @@ h1 a,
 h2 a,
 h3 a,
 h4 a {
-  border: none;
+  background: none;
   color: inherit;
   font-weight: inherit;
 }
@@ -185,8 +188,8 @@ pre,
   grid-column: full;
 }
 
-.splash > figcaption,
-aside > * {
+aside > *,
+.splash > figcaption {
   margin-left: auto;
   margin-right: auto;
   max-width: 32rem;
@@ -204,6 +207,10 @@ article h2,
 article h3,
 article h4 {
   color: #333;
+}
+
+article h1 {
+  line-height: 1.25;
 }
 
 article h2 {
@@ -230,11 +237,16 @@ article ol li::before {
 }
 
 article ul li::before {
-  content: '•';
+  content: '\2727';
   display: block;
+  font-size: var(--s-1);
   position: absolute;
-  top: -.05em;
-  left: calc(-.5 * var(--g1));
+  top: .15em;
+  left: -1.25em;
+}
+
+article ul ul li::before {
+  content: '\2726';
 }
 
 h1,
@@ -303,6 +315,12 @@ aside {
   padding-bottom: var(--g1);
 }
 
+figure[role="group"] {
+  background: #fafafa;
+  border: 1px dashed currentColor;
+  padding: calc(.5 * var(--g1));
+}
+
 figcaption {
   color: #999;
 }
@@ -339,4 +357,12 @@ pre {
   display: block;
   font-weight: bold;
   margin: 0;
+}
+
+.mjpage * + * {
+  margin-top: 0;
+}
+
+.mjpage .MJXc-display {
+  overflow: auto;
 }
