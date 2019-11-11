@@ -1,10 +1,10 @@
 ---
-title: "An HDL Interpreter with Reason, Part 1: The Lexer"
+title: "Building an Interpreter, Part 1: The Scanner"
 custom_css: highlight.css
 math: true
 ---
 
-<p>A couple of weeks ago, I started the fantastic Coursera course <a href="https://www.coursera.org/learn/build-a-computer">From Nand to Tetris</a> where one implements a full virtual computer starting from the smallest building block, the <abbr title="Not and"><i>Nand</i></abbr> gate. The course is very project-centered and uses a small declarative language called (quite generically) <abbr title="Hardware Description Language">HDL</abbr> to implement the various hardware pieces in software.</p>
+<p>A couple of weeks ago, I started the fantastic Coursera course <a href="https://www.coursera.org/learn/build-a-computer">From Nand to Tetris</a> where one implements a full virtual computer starting from the smallest building block, the <abbr title="Not and"><i>Nand</i></abbr> gate. The course is very project-centered and uses a small declarative language called—quite generically—<abbr title="Hardware Description Language">HDL</abbr> to implement the various hardware pieces in software.</p>
 
 <p>The course instructors even provide a hardware simulator where you can run, test, and visually simulate your HDL scripts. That works all fine and dandy, however, I have some issues with that approach. For example, there is no way to edit your HDL scripts right inside the hardware simulator, tests are not re-run on changes in your HDL code which makes testing quite cumbersome, and the Java UI is not really pleasant on the eyes.</p>
 
@@ -32,16 +32,17 @@ math: true
 
 <h2>The Phases of an Interpreter</h2>
 
-<p>Interpreter design and the underlying theory of programming languages is well understood in computer science and comprises the following steps:</p>
+<p>Interpreter design and the underlying theory of programming languages is well understood in computer science and includes the following steps:</p>
 
 <ol>
-  <li>The <b>lexical analysis</b> (also called <b>tokenization</b>) takes a piece of code in our source language and turns its characters and symbols into a stream of words that are valid according to the source language’s grammar. This grammar is therefore a recipe for the language’s <i>concrete syntax</i>. Those words are called <b>tokens</b>.</li>
+  <li>The <b>lexical analysis</b> (also called <b>tokenization</b> or <b>scanning</b>) takes a piece of code in our source language and turns its characters and symbols into a stream of words that are valid according to the source language’s <i>concrete syntax</i>. Those words are called <b>tokens</b>.</li>
   <li>The <b>syntax analysis</b> (also known as <b>parsing</b>) is in charge of turning this list of tokens into a tree form which complies with the languags’s grammar for its <i>abstract</i> syntax. The resulting tree is called <b>abstract syntax tree</b>, or <i>AST</i>.</li>
   <li>The <b>semantic analysis</b> verifies that the AST is semantically meaningful and adheres to the source language’s <i>static semantics</i>. That also includes <i>type checking</i> and <i>flow control checking</i>.</li>
   <li>The final step is called <b>evaluation</b> which takes the verified AST and evaluates its expressions according to the language’s <i>dynamic semantics</i> inside a certain environment. This environment holds the rules for evaluating expressions of our source language and also a <b>symbol table</b> to lookup variables.</li>
 </ol>
 
-<p>In this post we will tackle the lexical analysis of HDL by starting with describing the <i>lexical syntax</i>. The lexical syntax describes how tokens are created out of characters and symbols and is the first half of the concrete syntax. The second half is called <i>phrasal syntax</i> and describes how phrases (read: trees) are made out of tokens. We will talk more about the phrasal syntax in part two of this series.</p>
+<p>In this post we will tackle the lexical analysis of HDL by starting with describing the <i>lexical syntax</i>. The lexical syntax describes how tokens are created out of characters and symbols by means of <i>regular expressions</i>. It is the first half of the concrete syntax.</p>
+<p>The second half is called <i>phrasal syntax</i> and describes how more complex hierarchical structures are made out of tokens. We will talk more about the phrasal syntax in part two of this series.</p>
 
 <h2>The Lexical Syntax of HDL</h2>
 
@@ -53,29 +54,29 @@ math: true
  */
 
 CHIP Eq {
-  IN a, b;
-  OUT out; // True iff a=b
+  IN a[2];
+  OUT out; // True iff a[0]=a[1]
   PARTS:
-    Xor(a=a, b=b, out=uneq);
+    Xor(a=a[0], b=b[1], out=uneq);
     Not(in=uneq, out=out);
 }
 [/code]
 
-<p>I can see things like identifiers (<code>a</code>, <code>b</code>, …), single and multi line comments, reserved keywords (<code>CHIP</code>, <code>IN</code>, …), and symbols (<code>{</code>, <code>}</code>, <code>;</code>, …). Based on the HDL primer inside the book <a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a> (the book accompanying the online course I mentioned in the intro of this article) I came up with the following grammar describing the lexical syntax of HDL.</p>
+<p>There are reserved keywords (<code>CHIP</code>, <code>IN</code>, …), identifiers (<code>Eq</code>, <code>a</code>, …), numbers (<code>2</code>), and symbols (<code>{</code>, <code>[</code>, <code>;</code>, …). Converting this piece of code into a stream of tokens would yield something like: <code>CHIP</code>, <code>ID("Eq")</code>, <code>LBRACE</code>, <code>IN</code>, <code>ID("a")</code>, <code>LBRACK</code>, <code>NUM(2)</code>, <code>RBRACK</code>, and so on.</p>
+<p>Based on the HDL primer inside the book <a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a> (the book accompanying the online course I mentioned in the intro of this article) I came up with the following regular expressions describing the lexical syntax of HDL.</p>
 
 \begin{align}
-token &::= \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PARTS}\\
-  &\phantom{{}::={}} |\ \texttt{true}\ |\ \texttt{false}\\
-  &\phantom{{}::={}} |\ \texttt{(}\ |\ \texttt{)}\ | \texttt{\{}\ |\ \texttt{\}}\ |\ \texttt{[}\ |\ \texttt{]}\ |\ \texttt{=}\ |\ \texttt{:}\ |\ \texttt{;}\ |\ \texttt{,}\ |\ \texttt{..}\\
-  &\phantom{{}::={}} |\ num |\ id\\
-num &::= digit\ [ num ]\\
-id &::= letter\ [ alphanum ]\\
-alphanum &::= ( digit\ |\ letter )\ [ alphanum ]\\
-letter &::= \texttt{a}\ |\ …\ |\ \texttt{z}\ |\ \texttt{A}\ |\ …\ |\ \texttt{Z}\\
-digit &::= 0\ |\ …\ |\ 9
+token &\rightarrow \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PARTS}\\
+  &\phantom{{}\rightarrow{}} |\ \texttt{true}\ |\ \texttt{false}\\
+  &\phantom{{}\rightarrow{}} |\ \texttt{(}\ |\ \texttt{)}\ |\ \texttt{\{}\ |\ \texttt{\}}\ |\ \texttt{[}\ |\ \texttt{]}\ |\ \texttt{=}\ |\ \texttt{:}\ |\ \texttt{;}\ |\ \texttt{,}\ |\ \texttt{..}\\
+  &\phantom{{}\rightarrow{}} |\ num\ |\ id\\
+num &\rightarrow digit\ digit*\\
+id &\rightarrow letter\ (letter\ |\ digit)*\\
+letter &\rightarrow \texttt{a}\ |\ …\ |\ \texttt{z}\ |\ \texttt{A}\ |\ …\ |\ \texttt{Z}\\
+digit &\rightarrow 0\ |\ …\ |\ 9
 \end{align}
 
-<p>That means a token is either one of the keywords, a certain symbol, a number, or an identifier. An identifier is any sequence of letters and digits not starting with a digit. HDL is case sensitive so I included lowercase and uppercase letters.</p>
+<p>That means a token is either one of the keywords, a certain symbol, a number, or an identifier. A number is a sequence of digits with at least one digit. An identifier is a letter followed by any sequence of letters and digits. HDL is case sensitive so I included lowercase and uppercase letters.</p>
 
 <aside>
   <p>You might ask yourself why I didn’t include the comment symbols <code>//</code>, <code>/**</code>, and <code>*/</code> in the list of tokens. Comments will be ignored by our interpreter and do not have to be part of our stream of tokens, just like whitespace (spaces, tabs, and line breaks),</p>
@@ -94,9 +95,9 @@ type token =
 
 <p>Isn’t this gorgeous? <code>token</code> is a variant with a number of so-called <i>constructors</i>. A variant is a very elegant way to say that a token can either be this or that or that other thing. Constructors can even hold extra data, like <code>NUM</code> (holding an <code>int</code> value) and <code>ID</code> (holding the identifier <code>string</code>).</p>
 
-<p>Now that we defined the lexical syntax and introduced a <code>token</code> variant, we can move on to implementing the actual <code>lex</code> function that takes our code and transforms it into a list of tokens.</p>
+<p>Now that we defined the lexical syntax and introduced a <code>token</code> variant, we can move on to implementing the actual <code>scan</code> function that takes our code and transforms it into a list of tokens.</p>
 
-<h2>Implementing the Lexer</h2>
+<h2>Implementing the Scanner</h2>
 
 <p>Let’s recap our plan: We want to write a function that takes our code as a <code>string</code>, traverses it character by character and spits out a list of tokens. Unfortunately, a <code>string</code> in Reason is not a list of <code>char</code>s (unlike in Standard ML). So we have to write a little helper function that does that for us.</p>
 
@@ -126,101 +127,101 @@ let isLetter = (c) => {
 let isAlphaNum = (c) => isLetter(c) || isDigit(c)
 [/code]
 
-<p>All that’s left to do now is implementing the actual <code>lex</code> function. This is the moment where Reason really shines and offers us two amazing features—<i>pattern matching</i> and <i>mutually recursive functions</i>—to produce concise and readable code.</p>
+<p>All that’s left to do now is implementing the actual <code>scan</code> function. This is the moment where Reason really shines and offers us two amazing features—<i>pattern matching</i> and <i>mutually recursive functions</i>—to produce concise and readable code.</p>
 
 [code language="reason"]
-let rec lex = (cs) =>
+let rec scan = (cs) =>
   switch (cs) {
     | [] => []
-    | [' ' | '\n' | '\r' | '\t', ...cr] => lex(cr)
-    | ['C', 'H', 'I', 'P', ...cr] => [CHIP, ...lex(cr)]
-    | ['I', 'N', ...cr] => [IN, ...lex(cr)]
-    | ['O', 'U', 'T', ...cr] => [OUT, ...lex(cr)]
-    | ['P', 'A', 'R', 'T', 'S', ...cr] => [PARTS, ...lex(cr)]
-    | ['t', 'r', 'u', 'e', ...cr] => [TRUE, ...lex(cr)]
-    | ['f', 'a', 'l', 's', 'e', ...cr] => [FALSE, ...lex(cr)]
-    | ['(', ...cr] => [LPAR, ...lex(cr)]
-    | [')', ...cr] => [RPAR, ...lex(cr)]
-    | ['{', ...cr] => [LBRACE, ...lex(cr)]
-    | ['}', ...cr] => [RBRACE, ...lex(cr)]
-    | ['[', ...cr] => [LBRACK, ...lex(cr)]
-    | [']', ...cr] => [RBRACK, ...lex(cr)]
-    | ['=', ...cr] => [EQUAL, ...lex(cr)]
-    | [':', ...cr] => [COLON, ...lex(cr)]
-    | [';', ...cr] => [SEMIC, ...lex(cr)]
-    | [',', ...cr] => [COMMA, ...lex(cr)]
-    | ['.', '.', ...cr] => [DDOT, ...lex(cr)]
-    | ['/', '/', ...cr] => lexCommLine(cr)
-    | ['/', '*', ...cr] => lexCommBlock(cr)
+    | [' ' | '\n' | '\r' | '\t', ...cr] => scan(cr)
+    | ['C', 'H', 'I', 'P', ...cr] => [CHIP, ...scan(cr)]
+    | ['I', 'N', ...cr] => [IN, ...scan(cr)]
+    | ['O', 'U', 'T', ...cr] => [OUT, ...scan(cr)]
+    | ['P', 'A', 'R', 'T', 'S', ...cr] => [PARTS, ...scan(cr)]
+    | ['t', 'r', 'u', 'e', ...cr] => [TRUE, ...scan(cr)]
+    | ['f', 'a', 'l', 's', 'e', ...cr] => [FALSE, ...scan(cr)]
+    | ['(', ...cr] => [LPAR, ...scan(cr)]
+    | [')', ...cr] => [RPAR, ...scan(cr)]
+    | ['{', ...cr] => [LBRACE, ...scan(cr)]
+    | ['}', ...cr] => [RBRACE, ...scan(cr)]
+    | ['[', ...cr] => [LBRACK, ...scan(cr)]
+    | [']', ...cr] => [RBRACK, ...scan(cr)]
+    | ['=', ...cr] => [EQUAL, ...scan(cr)]
+    | [':', ...cr] => [COLON, ...scan(cr)]
+    | [';', ...cr] => [SEMIC, ...scan(cr)]
+    | [',', ...cr] => [COMMA, ...scan(cr)]
+    | ['.', '.', ...cr] => [DDOT, ...scan(cr)]
+    | ['/', '/', ...cr] => scanCommLine(cr)
+    | ['/', '*', ...cr] => scanCommBlock(cr)
     | [c, ...cr] => if (isDigit(c)) {
-        lexNum(0, [c, ...cr])
+        scanNum(0, [c, ...cr])
       }
       else if (isLetter(c)) {
-        lexId("", [c, ...cr])
+        scanId("", [c, ...cr])
       }
       else {
         raise(InvalidCharacter(c))
       }
   }
-and lexNum = (v, cs) => if (List.length(cs) == 0 || !isDigit(List.hd(cs))) {
-    [NUM(v), ...lex(cs)]
+and scanNum = (v, cs) => if (List.length(cs) == 0 || !isDigit(List.hd(cs))) {
+    [NUM(v), ...scan(cs)]
   }
   else {
-    lexNum(10 * v + Char.code(List.hd(cs)) - Char.code('0'), List.tl(cs)) /* A */
+    scanNum(10 * v + Char.code(List.hd(cs)) - Char.code('0'), List.tl(cs)) /* A */
   }
-and lexId = (v, cs) => if (List.length(cs) == 0 || !isLetterNum(List.hd(cs))) {
-    [ID(v), ...lex(cs)]
-  }
-  else {
-    lexId(v ++ String.make(1, List.hd(cs)), List.tl(cs))
-  }
-and lexCommLine = (cs) => if (List.hd(cs) == '\n') {
-    lex(List.tl(cs))
+and scanId = (v, cs) => if (List.length(cs) == 0 || !isLetterNum(List.hd(cs))) {
+    [ID(v), ...scan(cs)]
   }
   else {
-    lexCommLine(List.tl(cs))
+    scanId(v ++ String.make(1, List.hd(cs)), List.tl(cs))
   }
-and lexCommBlock = (cs) => if (List.hd(cs) == '*' && List.hd(List.tl(cs)) == '/') { /* B */
-    lex(List.tl(List.tl(cs)))
+and scanCommLine = (cs) => if (List.hd(cs) == '\n') {
+    scan(List.tl(cs))
   }
   else {
-    lexCommBlock(List.tl(cs))
+    scanCommLine(List.tl(cs))
+  }
+and scanCommBlock = (cs) => if (List.hd(cs) == '*' && List.hd(List.tl(cs)) == '/') { /* B */
+    scan(List.tl(List.tl(cs)))
+  }
+  else {
+    scanCommBlock(List.tl(cs))
   }
 [/code]
 
 <p>If <code>cs</code> (the source code as a list of characters) is empty we return the empty list and are done. If the first element (or <i>head</i>) of the character list is whitespace we ignore it and move on. If the characters match any of the reserved words or special symbols of HDL we consume those characters, append the respective token to our list, and move on.</p>
 
-<p>Comments, numbers, and identifiers are a bit trickier and need some extra care. I call helper lexers in case we detect a number, letter, or comment symbol. The functions <code>lexCommLine</code> and <code>lexCommBlock</code> use the next token(s) to detect whether the comment has ended. <code>lexNum</code> and <code>lexId</code> use the helper functions introduced earlier to return the variant constructors <code>NUM</code> and <code>ID</code>, respectively. <code>NUM</code> carries the <code>int</code> value of the number and <code>ID</code> the <code>string</code> value of the identifier. Once the helper lexers are done with their work, we can call <code>lex</code> to carry on with the main task, thanks to mutually recursive functions (aka the <code>and</code> syntax).</p>
+<p>Comments, numbers, and identifiers are a bit trickier and need some extra care. I call helper functions in case we detect a number, letter, or comment symbol. The functions <code>scanCommLine</code> and <code>scanCommBlock</code> use the next token(s) to detect whether the comment has ended. <code>scanNum</code> and <code>scanId</code> use the helper functions introduced earlier to return the variant constructors <code>NUM</code> and <code>ID</code>, respectively. <code>NUM</code> carries the <code>int</code> value of the number and <code>ID</code> the <code>string</code> value of the identifier. Once the helper functions are done with their work, we can call <code>scan</code> to carry on with the main task, thanks to mutually recursive functions (aka the <code>and</code> syntax).</p>
 
 <p>Let me just highlight a couple of details:</p>
 
 <ul>
-  <li>The expression <code>[CHIP, ...lex(cr)]</code> evaluates to a new list containing the <code>CHIP</code> token as the first element and all elements of the list that the call <code>lex(cr)</code> returns appended to the end. Reason’s syntax is based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">JavaScript’s spread operator</a>, in other languages it might be <code>CHIP::lex(cr)</code> or <code>cons(CHIP, lex(cr))</code>.</li>
+  <li>The expression <code>[CHIP, ...scan(cr)]</code> evaluates to a new list containing the <code>CHIP</code> token as the first element and all elements of the list that the call <code>scan(cr)</code> returns appended to the end. Reason’s syntax is based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">JavaScript’s spread operator</a>, in other languages it might be <code>CHIP::scan(cr)</code> or <code>cons(CHIP, scan(cr))</code>.</li>
   <li>In line <code>A</code> I use the expression <code>10 * v + Char.code(List.hd(cs)) - Char.code('0')</code> to calculate the integer value of a sequence of characters. <code>Char.code</code> gives us the ASCII code of a character and can therefore be used to convert a character into a digit by subtracting the ASCII code of 0, the first digit in the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII table</a>.</li>
   <li>Line <code>B</code> heavily uses list methods like <code>hd</code> (head, the first element of a list) and <code>tl</code> (tail, the list without the first element). This is necessary because lists in Reason, unlike arrays, are single-linked and do not allow random access.</li>
 </ul>
 
 <aside>
-  <p>The <code>lex</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>lex</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>.</p>
+  <p>The <code>scan</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>scan</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>.</p>
 </aside>
 
-<p>Lastly, we wrap this auxiliary <code>lex</code> function with a wrapper function called <code>lexer</code>. The sole purpose of this function is converting a string of HDL code into an array of characters and calling <code>lex</code>.</p>
+<p>Lastly, we wrap this auxiliary <code>scan</code> function with a wrapper function called <code>scanner</code>. The sole purpose of this function is converting a string of HDL code into an array of characters and calling <code>scan</code>.</p>
 
 [code language="reason"]
-let lexer = (code) => {
-  let rec lex = (cs) =>
-    /* lex code is omitted for brevity */
+let scanner = (code) => {
+  let rec scan = (cs) =>
+    /* scan code is omitted for brevity */
   ;
-  lex(explode(code))
+  scan(explode(code))
 };
 
 let code = "CHIP Eq {}";
 
-lexer(code)
+scanner(code)
 /* [CHIP, ID("Eq"), LBRACE, RBRACE] */ 
 
-lexer("!")
+scanner("!")
 /* Exception: InvalidCharacter('!'). */
 [/code]
 
-<p>And there you have it, our lexer is done! You can play around with a <a href="https://sketch.sh/s/dCdG9McVlz4qJzEFixGiNv/">working version on Sketch.sh</a>. In the next part of this series, we will deal with the phrasal and abstract syntax and use that knowledge to build a parser that generates an abstract syntax tree (AST).</p>
+<p>And there you have it, our scanner is done! You can play around with a <a href="https://sketch.sh/s/dCdG9McVlz4qJzEFixGiNv/">working version on Sketch.sh</a>. In the next part of this series, we will deal with the phrasal and abstract syntax and use that knowledge to build a parser that generates an abstract syntax tree (AST).</p>
