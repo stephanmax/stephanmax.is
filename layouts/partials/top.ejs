@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <%
+    const {title, css, math} = locals;
+  %>
+
   <title>
     <%= title ? `${title} | Stephan Max is Writing` : 'Stephan Max is a Software Engineer' %>
   </title>
@@ -14,11 +18,11 @@
 
   <link rel="stylesheet" href="/assets/css/main.css">
   
-  <% if (locals.custom_css) { %>
-  <link rel="stylesheet" href="/assets/css/<%= custom_css %>">
+  <% if (css) { %>
+  <link rel="stylesheet" href="/assets/css/<%= css %>">
   <% } %>
 
-  <% if (locals.math) { %>
+  <% if (math) { %>
   <link rel="stylesheet" href="/assets/css/mathjax.css">
   <% } %>
 
