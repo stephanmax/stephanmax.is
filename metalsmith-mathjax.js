@@ -12,7 +12,7 @@ module.exports = (opts) => {
 
       const content = file.contents.toString('utf8');
 
-      Mathjax.mjpage(content, {format: ['TeX']}, {html: true}, (result) => {
+      Mathjax.mjpage(content, {format: ['TeX'], fragment: true}, {html: true}, (result) => {
         file.contents = new Buffer(result);
         return done()
       });
