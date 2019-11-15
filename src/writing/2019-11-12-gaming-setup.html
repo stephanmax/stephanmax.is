@@ -1,0 +1,154 @@
+---
+title: "My Gaming Setup"
+---
+
+<p>I have recently rekindled my passion for retro/last gen console gaming and spent quite some time on working on a setup I enjoy. This article is a rundown of the consoles I own and how I get the most out of them.</p>
+
+<p>But first, let me tell you what this article is <em>not</em>: Most of my consoles are softmodded and I dumped all my physical games on to them. This blog post is not about piracy, though. I have no interest in either distributing my game dumps or downloading roms from the internet. On the contrary, I am all for buying games and supporting the game developers and studios out there. I simply enjoy tinkering with hardware and enabling my consoles to play as many games as conveniently as possible. And that’s the gist of the following text: <b>Turning game consoles into multi-platform beasts!</b></p>
+
+<p>This is also not a step-by-step guide to softmod your consoles. If you are interested, please have a look at the list of my <a href="#sources">sources</a> down below.</p>
+
+<p>This post is a work in progress and will be subject to updates.</p>
+
+<aside>
+  <p>A short note to all the Mac users out there: Most if not all the homebrew tools are Windows-only, but don’t get discouraged. So far I managed to get everything working with <a href="https://www.virtualbox.org/">VirtualBox</a> and an <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">official Microsoft Windows 10 image</a>.</p>
+</aside>
+
+<h2>PSP Go</h2>
+
+<p>The PSP Go is my absolute favorite handheld console. I love its design, its portability (unlike the 3DS, Vita, or Switch it <em>actually</em> fits into your pocket), the sharp and sufficiently large screen, and its support for a plethora of games.</p>
+
+<p>While I exclusively play on the PSP Go because of the superior form factor, the remainder of this chapter also applies to the PSP 1000/2000/3000/E1000.</p>
+
+<figure>
+    <img src="/assets/images/gaming-setup/pspgo.jpg" alt="A PSP Go running Zelda - The Minish Cap">
+  <figcaption>A Thing of Beauty</figcaption>
+</figure>
+
+<h3>Modifications</h3>
+
+<p>It is super-simple to softmod your PSP and thus it is a great first step into the world of console hacking and modding. My PSP Go is running on the <a href="https://wololo.net/talk/viewtopic.php?t=41249">6.61 PRO-C2</a> <abbr title="custom firmware">CFW</abbr> alongside <a href="http://infinity.lolhax.org/">Infinity 2</a> to make the CFW permanent. The latter just received its version 2 update by hacker <a href="https://twitter.com/DaveeFTW">Davee</a> and probably marks the end of the PSP softmod era. Read all about it <a href="http://wololo.net/2019/11/10/release-infinity-2-0-enables-permanent-6-6x-custom-firmware-for-all-psps/">on Wololo</a> and watch <a href="https://www.youtube.com/user/Squirtle555">Tech James’</a> videos for installing guidance.</p>
+
+<aside>
+  <p>Tech James seems to have forgotten a step in his <a href="https://www.youtube.com/watch?v=YSYO6oWMfBk">PSP Infinity 2.0 Install Guide</a>: After you finished watching the video and following all the steps, go into the Infinity app, press left and choose the CFW you are using. Then exit the app and restart your CFW (in my case by launching the PRO Update again). This will restart your console into permanent CFW.</p>
+</aside>
+
+<h3>Games</h3>
+
+<p>I dumped all my <b>Game Boy</b> games (including <abbr title="Game Boy Color">GBC</abbr> and <abbr title="Game Boy Advance">GBA</abbr>) with the <a href="/writing/the-gb01-cart-reader.html">GB01 Cart Reader</a> and play them inside the <a href="https://wololo.net/downloads/index.php/download/1372">MasterBoy</a> and <a href="https://github.com/phoe-nix/TempGBA4PSP-mod">TempGBA</a> emulators. (Usually I try to avoid emulation as much as possible. That’s why I am really looking forward to the <a href="https://www.analogue.co/pocket/">Analogue Pocket</a>!)</p>
+
+<p>Playing <b>PSP</b> games without the disc is even simpler if you are on PRO CFW: Hit <code>SELECT</code> in the main PSP menu, change <i>USB Device</i> to <i>UMD Disc</i>, put in a disc, connect your PSP to your computer via USB, and copy the ISO file. Back on your PSP switch your <i>USB Device</i> back to <i>Memory Stick</i>, create a directory called <code>ISO</code> inside the memory stick’s root folder and copy the ISO file there.</p>
+
+<aside>
+  <p>Since the PSP Go does not have a UMD disc drive, I always keep a <i>PSP 1000</i> handy to dump games.</p>
+</aside>
+
+<p>Last but not least, the PSP also makes for an excellent portable <b>PS1</b>. I haven’t dabbled in ripping my PS1 discs and converting them to PSP games yet. But downloading <i>PS One Classics</i> from the PlayStation Network onto your PS3 and then transferring them onto your PSP via USB cable is much simpler anyways.</p>
+
+<h2>Wii U</h2>
+
+<p>The Wii U is an underrated gem and the console I am spending the most time with. I wouldn’t go as far as calling it my favorite console—the PS3 will always have that special place in my heart—but the Wii U is a champion: It can play Wii U/Wii/GameCube games, has a fantastic <i>Virtual Console</i>, great input devices (and I am talking about the Pro Controller <em>and</em> the Gamepad), and it is the console that can play <a href="https://www.youtube.com/watch?v=KThuqZosM_g">almost every Zelda game</a>! (All except the 3DS and GB/C games.)</p>
+
+<figure class="splash" id="wiiu_display">
+  <img src="/assets/images/gaming-setup/wiiu.jpg" alt="A Wii U console with all its controllers and peripherals">
+  <figcaption>Well that was fun…</figcaption>
+</figure>
+
+<h3>Modifications</h3>
+
+<p>My Wii U is on the latest firmware 5.5.4E and I softmodded it by using the standard <i>Haxchi</i> exploit with <i>Dr. Kawashima’s Brain Training</i> as the sacrificial DS Virtual Console game. I decided not to go with <i>Coldboot Haxchi</i> (CBHC), an exploit that is slightly more dangerous but rewards you with your Wii U automatically booting into CFW.</p>
+
+<p>To play GameCube games, I additionally hacked Wii U’s <i>Virtual Wii</i> (vWii) by temporarily replacing the vWii’s MiiMaker Channel (try saying that three times fast) with <a href="https://github.com/FIX94/wuphax/releases/tag/v1.1u3">wuphax</a>.</p>
+
+<h3>Games</h3>
+
+<p>Needless to say, the Wii U plays, well… <b>Wii U</b> games. I dumped all my physical copies using <a href="https://github.com/koolkdev/disc2app/releases/tag/v1.0">disc2app</a> and installed them onto an 1TB external hard drive with <a href="https://sourceforge.net/projects/wup-installer-gx2/">WUP Installer GX2</a>.</p>
+
+<aside>
+  <p>Please note that the Wii U is using a <i>proprietary file system format</i>. That means you cannot use your Wii U external hard drive with your computer. Also, if your hard drive does not have its own power supply, you <strong>will need a Y-cable</strong> like mine in the <a href="#wiiu_display">photo above</a>.</p>
+</aside>
+
+<p>Thanks to Nintendo’s backwards compatibility policy, the Wii U supports <b>Wii</b> games out of the box. I dumped all my physical Wii (and GameCube) games with <a href="</b>">USBLoaderGX</a> on my good old Wii. In order to have them show up as single game tiles on the Wii U main screen, I used <a href="https://gbatemp.net/threads/release-wiivc-injector-script-gc-wii-homebrew-support.483577/">TeconMoon’s WiiVC Injector</a>.</p>
+
+<p>I could have done the same for my physical <b>GameCube</b> games. But I decided to not turn them into Virtual Console injects because that would only allow me to play them with Wii controllers or the Wii U Gamepad. Instead, I keep them on the SD card (remember that you cannot put them on the external hard drive because of Wii U’s proprietray file architecture) and play them via the hacked vWii’s <i>Nintendont</i> app with a <a href="https://www.youtube.com/watch?v=nx5Ly5j2n8U">Wii U forwarder</a>. That way I can use the GameCube controller adapter for Wii U and my original GameCube controllers (including the <i>Wavebird</i>) for a proper retro feeling.</p>
+
+<p>And then there are some <b>Virtual Console</b> games that I enjoy on the Wii U, like <i>Super Metroid</i>, <i>Paper Mario</i>, and <i>Majora’s Mask</i>—basically all the games that I don’t own physical copies of.</p>
+
+<h3>What about that Good Ol’ Wii?</h3>
+
+<p>I actually softmodded my Wii long before my Wii U, but the latter has so much more to offer. I rarely even get the Wii out of its box and if I do, I usually play some WiiWare exclusives or dump Wii/GameCube games.</p>
+
+<h3>A Note on the eShop</h3>
+
+<p>The Nintendo eShop for Wii U is still alive and kicking. And a wonderful place, I might add. However, I decided to play it safe and use custom DNS settings to prevent the system from fetching any official firmware updates. Unfortunately, those DNS settings also prevent the eShop from working. You will need the homebrew app <a href="https://github.com/dibas/nnupatcher-hbl">nnupatcher</a> to remedy that, but I still had issues downloading my purchases.</p>
+
+<p>If you are running into the same kind of trouble, check out this <a href="https://www.reddit.com/r/WiiUHacks/comments/6nzvn3/tutorial_having_trouble_downloading_from_eshop/">Reddit post</a> which worked for me!</p>
+
+<h2>New 3DS</h2>
+
+<p>Although I also own a Switch, I heavily use my 3DS. There are some real gems in the DS/3DS games library and I really dig the clamshell/dual screen design. I still have quite the DS/3DS pile of shame, so for me this console is nowhere near dead.</p>
+
+<figure>
+  <img src="/assets/images/gaming-setup/3ds.jpg" alt="A 3DS showing the main menu">
+  <figcaption>What’s not to love?</figcaption>
+</figure>
+
+<h3>Modifications</h3>
+
+<p>My 3DS was on firmware 11.11.0-43E and I modded it by using the <a href="https://www.youtube.com/watch?v=kmctVrOOsSA">Bannerbomb3</a> technique which exploits the DSiWare Data Management. It is now using the latest <a href="https://github.com/AuroraWright/Luma3DS/releases">Luma3DS CFW</a>. (Check out <a href="https://www.youtube.com/watch?v=2iCkfikOZd4">MVG’s video</a> if you are interested in the timeline of 2DS/3DS hacking.)</p>
+
+<p>I also inserted a 128GB SD card that should be capable of holding all the DS and 3DS games I am interested in.</p>
+
+<h3>Games</h3>
+
+<p>As soon as you install <a href="https://github.com/d0k3/GodMode9">GodMode9</a> on your 3DS you have full access to the file system. Press <code>START</code> while powering on the console, and you will end up in the GodMode9 menu. There you can go to the game cart drive and dump your <b>DS</b> and <b>3DS</b> games onto your console’s SD card.</p>
+
+<p>I also used GodMode9 to convert all my <b>3DS</b> dumps into so-called <code>CIA</code> files that I then installed via the homebrew app <i>FBI</i>. (The homebrew scene is full of funny people!) They then show up as game tiles on the 3DS main menu.</p>
+
+<p>For <b>DS</b> games, the story goes a little different: Until I figure out how to properly use the <a href="https://gbatemp.net/threads/nds-forwarder-cias-for-your-home-menu.426174/">Forwarder3DS</a> tool, I am playing them with <a href="https://gbatemp.net/threads/ds-i-3ds-twilight-menu-gui-for-ds-i-games-and-ds-i-menu-replacement.472200/">TWiLight Menu++</a>.</p>
+
+<h2>PS3</h2>
+
+<p>The PlayStation 3 is hands down my favorite console. This might very well be due to obscuring nostalgia because the PlayStation 3 Slim has been the first system I bought since the Game Boy. But it has an amazing game library with great exclusives, is PS1 backwards compatible, and a real multimedia allrounder. (And to date my only and trusted DVD/Blu Ray player!)</p>
+
+<p>I haven’t modded my system—at this point I am not even sure <a href="https://www.youtube.com/watch?v=VBlYPmnJPLs&feature=youtu.be&t=106">if that would be possible</a>. I have upgraded the internal hard drive to 1TB, though. Also, I followed a <a href="https://www.youtube.com/watch?v=LiEZgzktsLo&t=1s">video tutorial on cleaning the PS3</a> (especially its fan) and since then it is as good as new. All it took was two screwdrivers, compressed air, Q-tips, and some rubbing alcohol.</p>
+
+<p>Eight years and counting, buddy.</p>
+
+<h2>Other Systems</h2>
+
+<p>These are other consoles I also own and that I might cover in a future update of this post:</p>
+
+<ul>
+  <li>Original Xbox</li>
+  <li>PS Vita</li>
+  <li>Switch</li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+
+<h3>Softmod Guides</h3>
+
+<ul>
+  <li><a href="https://wii.guide/">Wii Guide</a></li>
+  <li><a href="https://wiiu.hacks.guide/">Wii U Hacks Guide</a></li>
+  <li><a href="https://gbatemp.net/threads/the-definitive-vwii-hacking-guide.425852/">vWii Hacking Guide</a></li>
+  <li><a href="https://3ds.hacks.guide/">3DS Hacks Guide</a></li>
+</ul>
+
+<h3>Youtube Channels</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/user/jimako123">Modern Vintage Gamer</a></li>
+  <li><a href="https://www.youtube.com/user/MrMario2011">MrMario</a></li>
+  <li><a href="https://www.youtube.com/channel/UCDUBppdZBxVlLIL6-8zbOOA">Jack Sorrell</a> (<a href="https://jacksorrell.tv/">website</a>)</li>
+  <li><a href="https://www.youtube.com/user/Squirtle555">Tech James</a></li>
+  <li><a href="https://www.youtube.com/channel/UCgMxckjnxa5NhMHM4wIO51Q">GameInCanada</a></li>
+  <li><a href="https://www.youtube.com/channel/UCpR1Wfz7_tuAPr81G-5Eceg">sthetix</a></li>
+</ul>
+
+<h3>Forums</h3>
+
+<ul>
+  <li><a href="https://gbatemp.net/forums/">GBATemp</a></li>
+</ul>
