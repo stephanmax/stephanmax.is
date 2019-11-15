@@ -247,7 +247,7 @@ article ul li::before {
   display: block;
   font-size: var(--s-1);
   position: absolute;
-  top: .15em;
+  top: .2em;
   left: -1.25em;
 }
 
