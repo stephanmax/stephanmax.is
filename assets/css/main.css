@@ -64,11 +64,35 @@ main header {
   flex-grow: 1;
 }
 
-main h1 {
+main header > * {
   color: #999;
   font-size: var(--s-1);
   margin: var(--g4) var(--g2) var(--g1) calc(var(--g2) + 5vw);
   max-width: 30ch;
+}
+
+main header > * + * {
+  margin-top: var(--g1);
+}
+
+main address svg {
+  fill: none;
+  stroke: #bbb;
+  stroke-width: 2;
+  width: var(--s0);
+  height: var(--s0);
+}
+
+main address a:hover svg {
+  stroke: #666;
+}
+
+main address ul {
+  display: flex;
+}
+
+main address li + li {
+  margin-left: var(--s0);
 }
 
 main h1 a {
@@ -122,8 +146,11 @@ main section li:nth-child(n+2) {
 }
 
 main ul {
-  margin: 0;
   padding: 0;
+}
+
+section ul {
+  margin: 0;
 }
 
 a {
@@ -215,14 +242,19 @@ article h1 {
   line-height: 1.25;
 }
 
+article h2,
+article h3 {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: var(--g2);
+}
+
 article h2 {
   font-size: var(--s1);
-  margin-top: var(--g2);
 }
 
 article h3 {
   font-size: var(--s0);
-  margin-top: var(--g2);
 }
 
 article img {
