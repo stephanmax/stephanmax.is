@@ -114,6 +114,7 @@ main section  {
 
 main section h2 {
   display: inline-block;
+  font-family: monospace;
   font-size: var(--s-1);
   letter-spacing: .2em;
   margin: 0;
