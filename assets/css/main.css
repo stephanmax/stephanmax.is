@@ -43,6 +43,10 @@ html {
 li + li,
 li ol,
 li ul {
+  margin-top: 0;
+}
+
+main section li + li {
   margin-top: calc(.5 * var(--g1));
 }
 
