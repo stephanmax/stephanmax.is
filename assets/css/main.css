@@ -2,6 +2,7 @@
   --ratio: 1.75;
   --scale: 1.25;
 
+  --s-2: calc(var(--s-1) / var(--scale));
   --s-1: calc(var(--s0) / var(--scale));
   --s0: 1rem;
   --s1: calc(var(--s0) * var(--scale));
@@ -47,7 +48,7 @@ li ul {
 }
 
 main section li + li {
-  margin-top: calc(.5 * var(--g1));
+  margin-top: var(--g1);
 }
 
 body {
@@ -137,7 +138,7 @@ main section li:first-child h3::before {
   content: '';
   display: block;
   position: absolute;
-  transform: translate(calc(-25% - var(--g1) - 4vw), calc(var(--ratio) * 0.5em));
+  transform: translate(calc(-25% - var(--g1) - 4vw), calc(var(--ratio) * .5em));
   width: var(--s0);
   height: .05em;
 }
@@ -222,8 +223,7 @@ pre,
   grid-column: full;
 }
 
-aside > *,
-.splash > figcaption {
+aside > * {
   margin-left: auto;
   margin-right: auto;
   max-width: 32rem;
@@ -367,12 +367,14 @@ figure[role="group"] {
 }
 
 figcaption {
+  background-color: #fafafa;
   color: #999;
+  margin-top: 0;
+  padding: calc(.5 * var(--s1));
 }
 
-figcaption,
-pre {
-  font-size: var(--s-1);
+figcaption {
+  font-size: var(--s-2);
 }
 
 hr {
@@ -393,6 +395,7 @@ figcaption {
 }
 
 pre {
+  font-size: var(--s-1);
   padding: calc(.5 * var(--g1) + 1vw);
 }
 
