@@ -11,7 +11,7 @@ css: highlight.css
 
 <p>After looking at <a href="https://github.com/vickylai/ephemeral">Vicky’s Go code</a> I got excited to try this in Node and use <a href="https://webtask.io/">Webtask</a> to host my <a href="https://github.com/stephanmax/ephemeral-tweets">ephemeral-tweets</a> microservice.</p>
 
-<h2>The Code</h2>
+[h level=2]The Code[/h]
 
 <p>The code for ephemeral-tweets is written in ES6 and uses features like <code>const</code>, fat arrow functions, destructuring, and promises. I also use Webtask’s <a href="https://webtask.io/docs/editor/secrets">secrets</a> (similar to environment variables, exposed via the microservice’s <code>context</code> parameter) for private Twitter credentials and the maximum age of the tweets you want to keep, represented in days.</p>
 
@@ -74,7 +74,7 @@ twitterClient.get('statuses/user_timeline', {
 
 <p>This is it! You can find <a href="https://github.com/stephanmax/ephemeral-tweets">the code on GitHub</a> and refer to the <a href="https://github.com/stephanmax/ephemeral-tweets#readme">README</a> for instructions on how to build, customize, schedule, and deploy this microservice for your own Twitter account.</p>
 
-<h2>A Note on (Rate) Limits</h2>
+[h level=2]A Note on (Rate) Limits[/h]
 
 <p>There are some limits I want to point out, especially to people with a lot of tweets on their timeline wanting to run this task often in the beginning:</p>
 

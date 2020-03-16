@@ -1,13 +1,13 @@
-const md5 = require('nano-md5')
+const md5 = require('nano-md5');
 
 module.exports = (buf, opts) => {
-  const id = md5(buf)
+  const id = md5(buf);
 
   let demoCode = `<figure role="group" aria-labelledby="caption-${id}">
-    <div class="demo" id="demo-${id}"></div>`
+    <div class="demo" id="demo-${id}"></div>`;
   
   if (opts.caption) {
-    demoCode += `<figcaption id="caption-${id}">${opts.caption}</figcaption>`
+    demoCode += `<figcaption id="caption-${id}">${opts.caption}</figcaption>`;
   }
 
   demoCode += `</figure>
@@ -30,7 +30,7 @@ module.exports = (buf, opts) => {
           shadowHost.innerHTML = 'Shadow DOM is needed to display embedded code demos. But you can find the demo <a href="https://codepen.io/stephanmax/pen/${opts.fallback}">on Codepen</a> as well.';
         }
       })();
-    </script>`
+    </script>`;
   
-  return demoCode
+  return demoCode;
 }

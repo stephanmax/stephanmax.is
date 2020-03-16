@@ -7,13 +7,9 @@ css: highlight.css
 
 <p><img src="/assets/images/generative-design-system/generative_crystals.png" alt="12 crystals made by a generative design system on a 3&times;4 grid"></p>
 
-<p>Here I want to go into a bit of detail on what I learned and changed in the course of implementing this crystal generator. Please feel free to check out the accompanying <a href="https://generative-crystals.glitch.me/">Glitch app</a> or the <a href="https://github.com/stephanmax/generative-crystals">source code on Github</a>.</p>
+<p>Here I want to go into a bit of detail on what I learned and [sidenote label="changed"]While Matthew is using the <a href="https://github.com/zenozeng/p5.js-svg">p5.js-svg library</a> with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.[/sidenote] in the course of implementing this crystal generator. Please feel free to check out the accompanying <a href="https://generative-crystals.glitch.me/">Glitch app</a> or the <a href="https://github.com/stephanmax/generative-crystals">source code on Github</a>.</p>
 
-<aside>
-  <p>While Matthew is using the <a href="https://github.com/zenozeng/p5.js-svg">p5.js-svg library</a> with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.</p>
-</aside>
-
-<h2>The New <code>random</code> Function</h2>
+[h level=2]The New <code>random</code> Function[/h]
 
 <p>The whole design system is based on using p5’s <code>random</code> function—a lot! We randomly choose color, shape, arity, stroke weight… you get the picture. Matthew had to implement this notion of choice from nothing but random float numbers which lead to helper functions like these:</p>
 
@@ -47,7 +43,7 @@ const color = random([
 ])
 [/code]
 
-<h2>No Global Scope Pollution</h2>
+[h level=2]No Global Scope Pollution[/h]
 
 <p>I really appreciated that Matthew takes his time to shed some light on code organization, refactoring, and implementation best practices. Still, he heavily relies on global variables that he reuses in all his files and classes. I wanted to take things a bit further and settled with an implementation where</p>
 
@@ -89,7 +85,7 @@ export default class Circles extends Layer {
 }
 [/code]
 
-<h2>Powerful Helpers Before One-Off Implementations</h2>
+[h level=2]Powerful Helpers Before One-Off Implementations[/h]
 
 <p>A lot of the perceived variety in the crystals above stems from using hexagons and triangles of different size and direction. Instead of writing two helper functions <code>hexagon</code> and <code>triangle</code> and implementing one-off <code>if</code> guards to decide which direction they should have, I decided to go for one helper function <code>polygon</code> with an optional angle offset (where <code>n</code> is the number of sides, <code>x</code> and <code>y</code> are the position, and <code>r</code> is the radius):</p>
 
@@ -112,7 +108,7 @@ export function polygon(n, x, y, r, angleOffset = 0) {
 
 <p>Better yet, this solution scales in case I decide to include pentagons or triangles with all sorts of directions in the future.</p>
 
-<h2>Dynamic Grid Placement</h2>
+[h level=2]Dynamic Grid Placement[/h]
 
 <p>Instead of going for a fixed 3&times;4 grid of crystals I wanted to come up with a simple grid placement algorithm that uses the full viewport available. It works like this:</p>
 

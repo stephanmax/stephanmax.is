@@ -12,7 +12,7 @@ math: true
 
 <p>I immediately thought about creating an in-browser IDE for HDL scripts with a simple UI, auto-testing, and nothing to download or install. Before I could think about the feature set, though, I needed an <i>interpreter</i> for HDL. And so my quest begins.</p>
 
-<h2>Initial Considerations</h2>
+[h level=2]Initial Considerations[/h]
 
 <p>In a sense an interpreter <i>implements</i> a language, not unlike a compiler. However, compilation in the traditional sense is a two-stage process where a high-level language is first transformed into machine code for the target machine and then executed by this machine to produce results. An interpreter, on the other hand, is a program that takes code in a source language and executes/evaluates it right away.</p>
 
@@ -30,7 +30,7 @@ math: true
 
 <p>I wanted the same for my HDL interpreter on top of being runnable inside the browser. While there is the <a href="https://github.com/melsman/mlkit/blob/master/README_SMLTOJS.md">SMLtoJs</a> project, I opted for a combo with a much larger community: <a href="https://reasonml.github.io/">Reason/OCaml</a> with <a href="https://bucklescript.github.io/">Bucklescript</a>.</p>
 
-<h2>The Phases of an Interpreter</h2>
+[h level=2]The Phases of an Interpreter[/h]
 
 <p>Interpreter design and the underlying theory of programming languages is well understood in computer science and includes the following steps:</p>
 
@@ -44,7 +44,7 @@ math: true
 <p>In this post we will tackle the lexical analysis of HDL by starting with describing the <i>lexical syntax</i>. The lexical syntax describes how tokens are created out of characters and symbols by means of <i>regular expressions</i>. It is the first half of the concrete syntax.</p>
 <p>The second half is called <i>phrasal syntax</i> and describes how more complex hierarchical structures are made out of tokens. We will talk more about the phrasal syntax in part two of this series.</p>
 
-<h2>The Lexical Syntax of HDL</h2>
+[h level=2]The Lexical Syntax of HDL[/h]
 
 <p>Let’s have a first glimpse at an HDL script:</p>
 
@@ -78,9 +78,7 @@ digit &\rightarrow 0\ |\ …\ |\ 9
 
 <p>That means a token is either one of the keywords, a certain symbol, a number, or an identifier. A number is a sequence of digits with at least one digit. An identifier is a letter followed by any sequence of letters and digits. HDL is case sensitive so I included lowercase and uppercase letters.</p>
 
-<aside>
-  <p>You might ask yourself why I didn’t include the comment symbols <code>//</code>, <code>/**</code>, and <code>*/</code> in the list of tokens. Comments will be ignored by our interpreter and do not have to be part of our stream of tokens, just like whitespace (spaces, tabs, and line breaks),</p>
-</aside>
+<p>You might ask yourself why I didn’t include the comment symbols <code>//</code>, <code>/**</code>, and <code>*/</code> in the list of tokens. Comments will be ignored by our interpreter and do not have to be part of our stream of tokens, just like whitespace (spaces, tabs, and line breaks),</p>
 
 <p>This simple <code>token</code> type of the grammar above can now be transformed one-to-one into Reason code using a <i>variant</i>:</p>
 
@@ -97,7 +95,7 @@ type token =
 
 <p>Now that we defined the lexical syntax and introduced a <code>token</code> variant, we can move on to implementing the actual <code>scan</code> function that takes our code and transforms it into a list of tokens.</p>
 
-<h2>Implementing the Scanner</h2>
+[h level=2]Implementing the Scanner[/h]
 
 <p>Let’s recap our plan: We want to write a function that takes our code as a <code>string</code>, traverses it character by character and spits out a list of tokens. Unfortunately, a <code>string</code> in Reason is not a list of <code>char</code>s (unlike in Standard ML). So we have to write a little helper function that does that for us.</p>
 
@@ -108,9 +106,7 @@ let explode = (s) => {
 }
 [/code]
 
-<aside>
-  <p>Please note that the <code>exp</code> function is tail recursive. It uses the accumulator parameter <code>cs</code> to keep track of the list of characters and a wrapper function <code>explode</code> to hide this implementation detail. This is a pattern you will see frequently in functional programming. Feel free to visit my <a href="https://sketch.sh/s/AEnu2UbVgRrTTC0FRpExw9/">Reason sketch</a> to learn more about tail recursion and why it is important.</p>
-</aside>
+<p>Please note that the <code>exp</code> function is tail recursive. It uses the accumulator parameter <code>cs</code> to keep track of the list of characters and a wrapper function <code>explode</code> to hide this implementation detail. This is a pattern you will see frequently in functional programming. Feel free to visit my <a href="https://sketch.sh/s/AEnu2UbVgRrTTC0FRpExw9/">Reason sketch</a> to learn more about tail recursion and why it is important.</p>
 
 <p>I also introduce some helper functions to check whether a character is a digit, a letter, or alphanumerical (digit or letter). Finally, I declare an exception which is raised if we come across an unknown character.</p>
 
@@ -199,11 +195,8 @@ and scanCommBlock = (cs) => if (List.hd(cs) == '*' && List.hd(List.tl(cs)) == '/
   <li>The expression <code>[CHIP, ...scan(cr)]</code> evaluates to a new list containing the <code>CHIP</code> token as the first element and all elements of the list that the call <code>scan(cr)</code> returns appended to the end. Reason’s syntax is based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">JavaScript’s spread operator</a>, in other languages it might be <code>CHIP::scan(cr)</code> or <code>cons(CHIP, scan(cr))</code>.</li>
   <li>In line <code>A</code> I use the expression <code>10 * v + Char.code(List.hd(cs)) - Char.code('0')</code> to calculate the integer value of a sequence of characters. <code>Char.code</code> gives us the ASCII code of a character and can therefore be used to convert a character into a digit by subtracting the ASCII code of 0, the first digit in the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII table</a>.</li>
   <li>Line <code>B</code> heavily uses list methods like <code>hd</code> (head, the first element of a list) and <code>tl</code> (tail, the list without the first element). This is necessary because lists in Reason, unlike arrays, are single-linked and do not allow random access.</li>
+  <li>The <code>scan</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>scan</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>.</li>
 </ul>
-
-<aside>
-  <p>The <code>scan</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>scan</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>.</p>
-</aside>
 
 <p>Lastly, we wrap this auxiliary <code>scan</code> function with a wrapper function called <code>scanner</code>. The sole purpose of this function is converting a string of HDL code into an array of characters and calling <code>scan</code>.</p>
 
