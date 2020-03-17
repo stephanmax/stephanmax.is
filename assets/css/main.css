@@ -429,6 +429,10 @@ pre,
   margin-top: 0;
 }
 
+.MJXc-TeX-math-I {
+  padding: 0 !important;
+}
+
 .sidenote {
   counter-increment: sidenote;
 }
