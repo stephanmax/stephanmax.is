@@ -39,7 +39,7 @@ module.exports = () => {
       reverse: true
     }
   }))
-  .use(Moment(['date']))
+  .use(Moment(['date', 'updated']))
   .use(SyntaxHighlighting())
   .use(Slug({
     pattern: ['*.html'],

@@ -1,5 +1,6 @@
 ---
 title: "Neural Networks and Deep Learning: Exercises"
+updated: 2020-03-18
 math: true
 ---
 
@@ -11,6 +12,8 @@ math: true
 
 [h level=2]Perceptrons and Sigmoid Neurons[/h]
 
+<p><a href="http://neuralnetworksanddeeplearning.com/chap1.html#exercises_191892">Exercise link</a></p>
+
 [h level=3]Sigmoid Neurons Simulating Perceptrons, Part I[/h]
 
 <details>
@@ -20,7 +23,7 @@ math: true
 
 <p>Before I solve this exercise, I want to recap what we have learned so far. A <i>perceptron</i> is a type of an artificial neuron that looks like this:</p>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-68.7 -72 119.1 28.7"><g id="page1"><path d="M-.6-57.6c0-7.9-6.4-14.2-14.2-14.2-7.8 0-14.2 6.3-14.2 14.2 0 7.8 6.4 14.1 14.2 14.1C-7-43.5-.6-49.8-.6-57.6z" stroke="#000" fill="none" stroke-width=".4"/><text class="f0" x="-14.8" y="-57.6" transform="translate(-2.1 2.4)">b</text><text class="f0" x="-14.8" y="-57.6" transform="translate(-53.9 2.4)">x</text><text class="f0" x="-14.8" y="-57.6" transform="translate(36.8 2.4)">output</text><path d="M-59.7-57.6h30.1" stroke="#000" fill="none" stroke-width=".4" stroke-miterlimit="10"/><path d="M-30.8-59.2c.1.6 1.2 1.5 1.5 1.6-.3.1-1.4 1-1.5 1.6" stroke="#000" fill="none" stroke-width=".3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><text class="f0" x="-14.8" y="-57.6" transform="translate(-33.3 -3.5)">w</text><path d="M-.4-57.6h18.6" stroke="#000" fill="none" stroke-width=".4" stroke-miterlimit="10"/><path d="M17-59.2c.1.6 1.2 1.5 1.5 1.6-.3.1-1.4 1-1.5 1.6" stroke="#000" fill="none" stroke-width=".3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+[svg]neural-networks-exercises/perceptron[/svg]
 
 <p>A perceptron takes an input vector \(x\), a weight vector \(w\), and a bias \(b\) and produces a single binary \(output\) where</p>
 
@@ -93,6 +96,81 @@ output(c) &= \frac{1}{1 + e^{-(cw \cdot x + cb)}}\\
 \end{align}
 
 <p>A perceptron would output \(0\) here.</p>
+
+[h level=2]A Simple Network to Classify Handwritten Digits[/h]
+
+<p><a href="http://neuralnetworksanddeeplearning.com/chap1.html#exercise_513527">Exercise link</a></p>
+
+<details>
+  <summary>Exercise</summary>
+  <i>There is a way of determining the bitwise representation of a digit by adding an extra layer to the three-layer network above. The extra layer converts the output from the previous layer into a binary representation, as illustrated in the figure below. Find a set of weights and biases for the new output layer. Assume that the first 3 layers of neurons are such that the correct output in the third layer (i.e., the old output layer) has activation at least \(0.99\), and incorrect outputs have activation less than \(0.01\).</i>
+  <img src="http://neuralnetworksanddeeplearning.com/images/tikz13.png">
+</details>
+
+<p>I quickly came up with the weight vectors for each of the four output neurons where \(w_1\) is for the neuron representing the <i>most significant bit</i> (MSB) and \(w_4\) is for the neuron representing the <i>least significant bit</i> (LSB).</p>
+
+\begin{align}
+w_1 &= \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1\end{pmatrix} &
+w_2 &= \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 1 \\ 1 \\ 0 \\ 0\end{pmatrix} &
+w_3 &= \begin{pmatrix}0 \\ 0 \\ 1 \\ 1 \\ 0 \\ 0 \\ 1 \\ 1 \\ 0 \\ 0\end{pmatrix} &
+w_4 &= \begin{pmatrix}0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1\end{pmatrix}
+\end{align}
+
+<p>Consider for example the numbers 8 and 9 which are <mark>1</mark>000 and <mark>1</mark>001 in binary notation. The yellow bits are the MSBs and hence vector \(w_1\) needs a \(1\) in position \(8\) and \(9\) to activate this bit. The weighted input \(w_1 \cdot x\) is then [sidenote label="approximately"]To be precise we have \(0.99 \leq w_1 \cdot x < 1.01\) for \(8\) or \(9\) and \(0 \leq w_1 \cdot x < 0.02\) for other digits.[/sidenote] \(1\) for \(8\) and \(9\) and approximately \(0\) for other digits. The other digit inputs and weights work accordingly. That is a great start.</p>
+
+<p>Now we have to figure out which bias to choose for each neuron. Let’s have a look at the sigmoid function for that:</p>
+
+[svg]neural-networks-exercises/sigmoid_function[/svg]
+
+<p>The sigmoid function centers around \(0\) and with \(b = -0.5\) we shift the activation for an output that “sets a bit” (where \(w \cdot x \approx 1\)) to \(\sigma(w \cdot x + b) \approx \sigma(0.5) \approx 0.62\). Similarly, the activation of a neuron that signals an “unset bit” (where \(w \cdot x \approx 0\)) would output \(\sigma(w \cdot x + b) \approx \sigma(-0.5) \approx 0.38\).</p>
+
+<p>We could now classify a neuron output greater than \(0.5\) as “this bit is set” and an output less than \(0.5\) as “this bit is not set” and be done with it. But let’s try to find the factor that gives us the same precision that the neurons in the hidden layers have.</p>
+
+<p>We are looking for a factor \(c\) such that an output of \(\sigma(c(w \cdot x + b)) \geq 0.99\) “sets a bit” and at the same time an output of \(\sigma(c(w \cdot x + b)) < 0.01\) signals an “unset bit”.</p>
+
+<p>Let’s consider the case of a set bit first. We can set \(w \cdot x = 0.99\) since this is the minimum value possible based on the precision of the old output layer and a bigger value would just increase the value of \(\sigma(\cdot)\).</p>
+
+\begin{align}
+0.99 &\leq \sigma(c(w \cdot x + b))\\
+0.99 &\leq \sigma(c(0.99 - 0.5))\\
+0.99 &\leq \frac{1}{1 + e^{-c(0.99 - 0.5)}}\\
+0.99 &\leq \frac{1}{1 + e^{-0.49c}}\\
+1 + e^{-0.49c} &\leq \frac{1}{0.99}\\
+e^{-0.49c} &\leq \frac{0.01}{0.99}\\
+e^{0.49c} &\geq 99\\
+0.49c &\geq \ln{99}\\
+c &\geq \frac{\ln{99}}{0.49} \approx 9.38\\
+\end{align}
+
+<p>Now I will look at the output for an unset bit where I we want to achieve an activation of less than \(0.01\). We can set \(w \cdot x = 0.05\) since across our four weight vectors we have a maximum of five contributing \(1\)s in \(w_4\) (and each \(x_i\) has an activation of less than \(0.01\) according to the precision of the old output layer in the exercise text) and:</p>
+
+\begin{align}
+w_4 \cdot x &= \begin{pmatrix}0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1\end{pmatrix} \cdot \begin{pmatrix}x_0 \\ x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 \\ x_7 \\ x_8 \\ x_9\end{pmatrix}\\
+&= x_1 + x_3 + x_5 + x_7 + x_9\\
+&\leq 5 \cdot 0.01 = 0.05
+\end{align}
+
+<p>That gives us a \(c\) which:</p>
+
+\begin{align}
+0.01 &> \sigma(c(w \cdot x + b))\\
+0.01 &> \sigma(c(0.05 - 0.5))\\
+0.01 &> \frac{1}{1 + e^{-c(0.05 - 0.5)}}\\
+0.01 &> \frac{1}{1 + e^{0.45c}}\\
+1 + e^{0.45c} &> 100\\
+e^{0.45c} &> 99\\
+0.45c &> \ln{99}\\
+c &> \frac{\ln{99}}{0.45} \approx 10.21\\
+\end{align}
+
+<p>With no loss of generality, I choose \(c = 11\) (because it looks better than some crooked number). That gives us a bias of \(b = -0.5 \cdot 11 = -5.5\) and those weight vectors:</p>
+
+\begin{align}
+w_1 &= \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 11 \\ 11\end{pmatrix} &
+w_2 &= \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 11 \\ 11 \\ 11 \\ 11 \\ 0 \\ 0\end{pmatrix} &
+w_3 &= \begin{pmatrix}0 \\ 0 \\ 11 \\ 11 \\ 0 \\ 0 \\ 11 \\ 11 \\ 0 \\ 0\end{pmatrix} &
+w_4 &= \begin{pmatrix}0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11\end{pmatrix}
+\end{align}
 
 <hr>
 
