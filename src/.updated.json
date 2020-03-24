@@ -1,0 +1,80 @@
+{
+  "_redirects": {
+    "filename": "_redirects",
+    "hash": "e7de1a9b241cf844dcb213e677235259d66b4431",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "in.html": {
+    "filename": "in.html",
+    "hash": "3f21d7eff4038eb5285d83d4f97410f86fc6ab92",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "index.html": {
+    "filename": "index.html",
+    "hash": "ff46affaf69aebb2a1b3512182dc856dbe082e45",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "keybase.txt": {
+    "filename": "keybase.txt",
+    "hash": "7ea1651a011ffec960754ea9cd59f3001750c8d3",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2018-07-05-ephemeral-tweets.html": {
+    "filename": "writing/2018-07-05-ephemeral-tweets.html",
+    "hash": "025278d61f21a3bdae037e32ea9980385b049593",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2018-10-24-embedded-demos.html": {
+    "filename": "writing/2018-10-24-embedded-demos.html",
+    "hash": "2bda4a5af604e5a11f50d85429e93dd2a2acdebb",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2018-11-13-building-interpreter-01-scanner.html": {
+    "filename": "writing/2018-11-13-building-interpreter-01-scanner.html",
+    "hash": "ba90cd052937c4e9661ede76f93a82713da94edd",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2018-07-16-generative-design-system.html": {
+    "filename": "writing/2018-07-16-generative-design-system.html",
+    "hash": "6f1ebf3022baa95cb153a8152b373c4d17d56865",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2019-06-13-gb01-cart-reader.html": {
+    "filename": "writing/2019-06-13-gb01-cart-reader.html",
+    "hash": "8b5775abb1f0ec8fad82351718b70a914eec4511",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2019-05-18-javascript-coding-challenge-for-java-developers.html": {
+    "filename": "writing/2019-05-18-javascript-coding-challenge-for-java-developers.html",
+    "hash": "e862a0bdaa2bdac7254409fb15010c02d66ef848",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2019-07-18-frictionless-data-tool-fund.html": {
+    "filename": "writing/2019-07-18-frictionless-data-tool-fund.html",
+    "hash": "39af5483257af0b29e92bcdecb3ec49cd7358fe2",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:20:48.429Z"
+  },
+  "writing/2019-11-12-gaming-setup.html": {
+    "filename": "writing/2019-11-12-gaming-setup.html",
+    "hash": "663060b761c8995ad59a818f57b11295cade32fc",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-23T20:27:26.492Z"
+  },
+  "writing/2020-03-15-neural-networks-exercises.html": {
+    "filename": "writing/2020-03-15-neural-networks-exercises.html",
+    "hash": "4a72a50ee0dcc522eab235e511e2eb8a3ac48150",
+    "created": "2020-03-23T20:20:48.429Z",
+    "updated": "2020-03-24T11:53:44.803Z"
+  }
+}

@@ -1,6 +1,5 @@
 ---
 title: "Neural Networks and Deep Learning: Exercises"
-updated: 2020-03-18
 math: true
 ---
 
@@ -104,7 +103,6 @@ output(c) &= \frac{1}{1 + e^{-(cw \cdot x + cb)}}\\
 <details>
   <summary>Exercise</summary>
   <i>There is a way of determining the bitwise representation of a digit by adding an extra layer to the three-layer network above. The extra layer converts the output from the previous layer into a binary representation, as illustrated in the figure below. Find a set of weights and biases for the new output layer. Assume that the first 3 layers of neurons are such that the correct output in the third layer (i.e., the old output layer) has activation at least \(0.99\), and incorrect outputs have activation less than \(0.01\).</i>
-  <img src="http://neuralnetworksanddeeplearning.com/images/tikz13.png">
 </details>
 
 <p>I quickly came up with the weight vectors for each of the four output neurons where \(w_1\) is for the neuron representing the <i>most significant bit</i> (MSB) and \(w_4\) is for the neuron representing the <i>least significant bit</i> (LSB).</p>
@@ -171,6 +169,61 @@ w_2 &= \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 11 \\ 11 \\ 11 \\ 11 \\ 0 \\ 0\end{pma
 w_3 &= \begin{pmatrix}0 \\ 0 \\ 11 \\ 11 \\ 0 \\ 0 \\ 11 \\ 11 \\ 0 \\ 0\end{pmatrix} &
 w_4 &= \begin{pmatrix}0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11 \\ 0 \\ 11\end{pmatrix}
 \end{align}
+
+[h level=2]Learning with Gradient Descent[/h]
+
+<p><a href="http://neuralnetworksanddeeplearning.com/chap1.html#exercises_647181">Exercise link</a></p>
+
+<p>If you need a bit more intuition and visuals around gradient decent I can recommend <cite><a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Gradient descent, how neural networks learn</a></cite> by 3Blue1Brown and the lectures 2.5, 2.6, and 2.7 of Andrew Ng’s <cite><a href="https://www.youtube.com/watch?v=F6GSRDoB-Cg&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=8">Machine Learning</a> course.</cite></p>
+
+[h level=3]Optimality of Gradient Decent[/h]
+
+<details>
+  <summary>Exercise</summary>
+  <i>Prove the assertion of the last paragraph. Hint: If you're not already familiar with the <a href="http://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">Cauchy-Schwarz inequality</a>, you may find it helpful to familiarize yourself with it.</i>
+</details>
+
+<p>Let’s recap what this chapter is all about. Please note that I will tackle this topic in a general manner, i.e. for the moment we can forget about neural networks, weights, and biases. All we need to know is that we have a smooth cost function \(C(v)\) where \(v\) is the input vector. We want to minimize \(C(v)\) and use <i>gradient decent</i> to change \(v\) step by step such that it approaches a local minimum of \(C\).</p>
+
+<p>Fortunately, smart people have shown that a function’s <i>gradient</i> \(\nabla C\) gives you the direction of <i>steepest ascent</i> and the change in a function can be approximated by the inner product of the change in the input vector and that [sidenote label="gradient"]I won’t go into the nature of this gradient or how it can be computed. All that matters for me right now is that there <em>exists</em> a way to compute \(\nabla C\).[/sidenote]:</p>
+
+\begin{align}
+\Delta C &\approx \nabla C\cdot \Delta v
+\end{align}
+
+<p>If we choose \(\Delta v = -\eta \nabla C\) with \(\eta > 0\) we get:</p>
+
+\begin{align}
+\Delta C &\approx \nabla C\cdot \Delta v\\
+&= -\eta \nabla C \nabla C\\
+&= -\eta \|\nabla C\|^2
+\end{align}
+
+<p>This is great! Since \(\|\nabla C\|^2 \geq 0\) and \(\eta > 0\) this guarantees that \(\Delta C \leq 0\), i.e. \(C\) will always decrease.</p>
+
+<p>To put that more visually, we take the direction \(\nabla C\) that <i>increases</i> \(C\) most quickly and make sure we go exactly the opposite way to <i>decrease</i> \(C\) most quickly. The exercise now is to show that the direction of the negative gradient actually gives us the “biggest” decrease possible.</p>
+
+<p>Let’s revisit the equation for the approximate change in \(C\) with \(\eta = \epsilon / \|\nabla C\|\):</p>
+
+\begin{align}
+\Delta C &\approx \nabla C\cdot \Delta v\\
+&= -\eta \nabla C \nabla C\\
+&= -\epsilon \frac{\nabla C \nabla C}{\|\nabla C\|}\\
+&= -\epsilon \|\nabla C\|\\
+\end{align}
+
+<p>Now we consider another vector \(d\) such that \(d \neq \nabla C\) and \(\|d\| = \|\nabla C\| = \epsilon\). In particular, that means that \(\|d\| / \epsilon = 1\). We can use that in the equation above:</p>
+
+\begin{align}
+\nabla C\cdot \Delta v &= -\epsilon \|\nabla C\|\\
+&= -\epsilon \|\nabla C\| \frac{\|d\|}{\epsilon}\\
+&= -\|\nabla C\| \|d\|\\
+&\leq \nabla C \cdot d\\
+\end{align}
+
+<p>The last line is explained by the Cauchy-Schwarz inequation that states that \(|a\cdot b| \leq \|a\|\|b\|\) which implies that \(-a\cdot b \leq \|a\|\|b\|\), or \(a\cdot b \geq -\|a\|\|b\|\).</p>
+
+<p>And there we have it: We have shown that \(\nabla C\cdot \Delta v \leq \nabla C \cdot d\). That means the change \(\Delta v = -\eta \nabla C\) gives us a “bigger” decrease in \(C\) than any other vector \(d\).</p>
 
 <hr>
 

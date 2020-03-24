@@ -9,6 +9,7 @@ const Moment = require('metalsmith-moment');
 const Shortcodes = require('metalsmith-shortcode-parser');
 const Slug = require('metalsmith-slug');
 const SyntaxHighlighting = require('metalsmith-prism');
+const Updated = require('metalsmith-updated');
 
 const mathjax = require('./metalsmith-mathjax.js');
 const metadata = require('./metadata.json');
@@ -26,6 +27,9 @@ module.exports = () => {
   .use(Excerpts())
   .use(DateInFileName({
     override: true
+  }))
+  .use(Updated({
+    verbose: true
   }))
   .use(Shortcodes({
     files: ['.html'],
