@@ -26,23 +26,23 @@ gulp.task(
   )
 );
 
-const stylesPath = 'assets/**/*.css';
+const cssPath = 'assets/**/*.css';
 
 gulp.task(
-  'styles',
+  'css',
   () => gulp
-    .src(stylesPath)
+    .src(cssPath)
     .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest('build/assets'))
 );
 
 gulp.task(
-  'styles-watch',
+  'css-watch',
   gulp.series(
-    'styles',
+    'css',
     () => gulp.watch(
-      stylesPath,
-      gulp.series('styles')
+      cssPath,
+      gulp.series('css')
     )
   )
 );
@@ -61,6 +61,24 @@ gulp.task(
     () => gulp.watch(
       imagesPath,
       gulp.series('images')
+    )
+  )
+);
+
+const jsPath = 'assets/**/*.js';
+
+gulp.task(
+  'js',
+  () => gulp.src(jsPath).pipe(gulp.dest('build/assets'))
+);
+
+gulp.task(
+  'js-watch',
+  gulp.series(
+    'js',
+    () => gulp.watch(
+      jsPath,
+      gulp.series('js')
     )
   )
 );
