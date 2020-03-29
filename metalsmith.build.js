@@ -12,8 +12,8 @@ const SyntaxHighlighting = require('metalsmith-prism');
 const Updated = require('metalsmith-updated');
 
 const mathjax = require('./metalsmith-mathjax.js');
+const absoluteImagePaths = require('./metalsmith-absolute-imagepaths.js');
 const metadata = require('./metadata.json');
-
 
 module.exports = () => {
   Metalsmith(__dirname)
@@ -36,6 +36,11 @@ module.exports = () => {
     shortcodes: require('./shortcodes')
   }))
   .use(mathjax())
+  // Make image paths absolute in production so Netlify does not use Cloudfront CDN
+  // https://community.netlify.com/t/cdn-change-netlify-cdn-or-cloudfront/3582/10
+  .use(absoluteImagePaths({
+    hostname: process.env.NODE_ENV === 'production' ? metadata.site.url : ''
+  }))
   .use(Collections({
     pattern: ['writing/*.html'],
     settings: {
