@@ -26,10 +26,6 @@ const trimCaches = async (cacheName, maxItems) => {
 };
 
 addEventListener('install', event => {
-  if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
-    return;
-  }
-
   self.skipWaiting();
   event.waitUntil(async function() {
     const staticCache = await caches.open(staticCacheName);
@@ -56,6 +52,8 @@ addEventListener('activate', event => {
 });
 
 addEventListener('fetch', event => {
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=823392
+  // https://github.com/paulirish/caltrainschedule.io/pull/51/commits/82d03d9c4468681421321db571d978d6adea45a7
   if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
     return;
   }
