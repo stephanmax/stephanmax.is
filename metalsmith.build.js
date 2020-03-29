@@ -29,7 +29,7 @@ module.exports = () => {
     override: true
   }))
   .use(Updated({
-    verbose: true
+    filePatterns: ['writing/*.html']
   }))
   .use(Shortcodes({
     files: ['.html'],

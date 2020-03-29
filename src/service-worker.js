@@ -26,6 +26,10 @@ const trimCaches = async (cacheName, maxItems) => {
 };
 
 addEventListener('install', event => {
+  if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+    return;
+  }
+
   self.skipWaiting();
   event.waitUntil(async function() {
     const staticCache = await caches.open(staticCacheName);
@@ -52,6 +56,10 @@ addEventListener('activate', event => {
 });
 
 addEventListener('fetch', event => {
+  if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+    return;
+  }
+
   const requestURL = new URL(event.request.url);
 
   event.respondWith(async function() {

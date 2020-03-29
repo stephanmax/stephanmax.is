@@ -1,28 +1,4 @@
 {
-  "_redirects": {
-    "filename": "_redirects",
-    "hash": "e7de1a9b241cf844dcb213e677235259d66b4431",
-    "created": "2020-03-23T20:20:48.429Z",
-    "updated": "2020-03-23T20:20:48.429Z"
-  },
-  "in.html": {
-    "filename": "in.html",
-    "hash": "3f21d7eff4038eb5285d83d4f97410f86fc6ab92",
-    "created": "2020-03-23T20:20:48.429Z",
-    "updated": "2020-03-23T20:20:48.429Z"
-  },
-  "index.html": {
-    "filename": "index.html",
-    "hash": "ff46affaf69aebb2a1b3512182dc856dbe082e45",
-    "created": "2020-03-23T20:20:48.429Z",
-    "updated": "2020-03-23T20:20:48.429Z"
-  },
-  "keybase.txt": {
-    "filename": "keybase.txt",
-    "hash": "7ea1651a011ffec960754ea9cd59f3001750c8d3",
-    "created": "2020-03-23T20:20:48.429Z",
-    "updated": "2020-03-23T20:20:48.429Z"
-  },
   "writing/2018-07-05-ephemeral-tweets.html": {
     "filename": "writing/2018-07-05-ephemeral-tweets.html",
     "hash": "025278d61f21a3bdae037e32ea9980385b049593",
@@ -76,23 +52,5 @@
     "hash": "4a72a50ee0dcc522eab235e511e2eb8a3ac48150",
     "created": "2020-03-23T20:20:48.429Z",
     "updated": "2020-03-24T11:53:44.803Z"
-  },
-  "service-worker.js": {
-    "filename": "service-worker.js",
-    "hash": "f8ef90537693185f8b976600b5707662e74b2a58",
-    "created": "2020-03-27T05:41:42.475Z",
-    "updated": "2020-03-29T11:36:01.773Z"
-  },
-  "netlify.toml": {
-    "filename": "netlify.toml",
-    "hash": "4a78a0dd2cb3594337a4788dcabbb1cc2ed2d67f",
-    "created": "2020-03-27T10:36:34.482Z",
-    "updated": "2020-03-27T10:41:06.613Z"
-  },
-  "offline.html": {
-    "filename": "offline.html",
-    "hash": "ff46affaf69aebb2a1b3512182dc856dbe082e45",
-    "created": "2020-03-27T14:49:49.908Z",
-    "updated": "2020-03-27T16:06:19.915Z"
   }
 }

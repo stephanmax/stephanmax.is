@@ -102,7 +102,7 @@ blockquote {
   border-left: 3px solid var(--color2);
   font-style: italic;
   grid-column: 2 / main-end;
-  padding-left: 7px;
+  padding-left: calc(var(--margin) - 3px);
 }
 
 cite {
