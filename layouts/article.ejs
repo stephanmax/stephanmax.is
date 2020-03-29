@@ -3,14 +3,12 @@
 <article>
   <header>
     <h1><%= title %></h1>
-    <span>
-      <time datetime="<%= date.format('YYYY-MM-DD') %>"><%= date.format('LL') %></time>
-      <%
-        if (modified) {
-      %>
-      (updated <time datetime="<%= updated.format('YYYY-MM-DD') %>"><%= updated.format('LL') %></time>)
+    <time datetime="<%= modified ? updated.format('YYYY-MM-DD') : date.format('YYYY-MM-DD') %>">
+      <%= date.format('LL') %>
+      <% if (modified) { %>
+      (updated <%= updated.format('LL') %>)
       <% } %>
-    </span>
+    </time>
   </header>
 
   <%- contents %>

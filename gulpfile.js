@@ -64,21 +64,3 @@ gulp.task(
     )
   )
 );
-
-const jsPath = 'assets/**/*.js';
-
-gulp.task(
-  'js',
-  () => gulp.src(jsPath).pipe(gulp.dest('build/assets'))
-);
-
-gulp.task(
-  'js-watch',
-  gulp.series(
-    'js',
-    () => gulp.watch(
-      jsPath,
-      gulp.series('js')
-    )
-  )
-);

@@ -1,0 +1,635 @@
+.mjx-chtml {
+  display: inline-block;
+  line-height: 0;
+  text-indent: 0;
+  text-align: left;
+  text-transform: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  float: none;
+  direction: ltr;
+  max-width: none;
+  max-height: none;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  margin: 0;
+  padding: 1px 0;
+}
+.MJXc-display {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+  padding: 0;
+}
+.mjx-chtml[tabindex]:focus,
+body :focus .mjx-chtml[tabindex] {
+  display: inline-table;
+}
+.mjx-full-width {
+  text-align: center;
+  display: table-cell !important;
+  width: 10000em;
+}
+.mjx-math {
+  display: inline-block;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.mjx-math * {
+  display: inline-block;
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+  text-align: left;
+}
+.mjx-numerator {
+  display: block;
+  text-align: center;
+}
+.mjx-denominator {
+  display: block;
+  text-align: center;
+}
+.MJXc-stacked {
+  height: 0;
+  position: relative;
+}
+.MJXc-stacked > * {
+  position: absolute;
+}
+.MJXc-bevelled > * {
+  display: inline-block;
+}
+.mjx-stack {
+  display: inline-block;
+}
+.mjx-op {
+  display: block;
+}
+.mjx-under {
+  display: table-cell;
+}
+.mjx-over {
+  display: block;
+}
+.mjx-over > * {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.mjx-under > * {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.mjx-stack > .mjx-sup {
+  display: block;
+}
+.mjx-stack > .mjx-sub {
+  display: block;
+}
+.mjx-prestack > .mjx-presup {
+  display: block;
+}
+.mjx-prestack > .mjx-presub {
+  display: block;
+}
+.mjx-delim-h > .mjx-char {
+  display: inline-block;
+}
+.mjx-surd {
+  vertical-align: top;
+}
+.mjx-mphantom * {
+  visibility: hidden;
+}
+.mjx-merror {
+  background-color: #ffff88;
+  color: #cc0000;
+  border: 1px solid #cc0000;
+  padding: 2px 3px;
+  font-style: normal;
+  font-size: 90%;
+}
+.mjx-annotation-xml {
+  line-height: normal;
+}
+.mjx-menclose > svg {
+  fill: none;
+  stroke: currentColor;
+}
+.mjx-mtr {
+  display: table-row;
+}
+.mjx-mlabeledtr {
+  display: table-row;
+}
+.mjx-mtd {
+  display: table-cell;
+  text-align: center;
+}
+.mjx-label {
+  display: table-row;
+}
+.mjx-box {
+  display: inline-block;
+}
+.mjx-block {
+  display: block;
+}
+.mjx-span {
+  display: inline;
+}
+.mjx-char {
+  display: block;
+  white-space: pre;
+}
+.mjx-itable {
+  display: inline-table;
+  width: auto;
+}
+.mjx-row {
+  display: table-row;
+}
+.mjx-cell {
+  display: table-cell;
+}
+.mjx-table {
+  display: table;
+  width: 100%;
+}
+.mjx-line {
+  display: block;
+  height: 0;
+}
+.mjx-strut {
+  width: 0;
+  padding-top: 1em;
+}
+.mjx-vsize {
+  width: 0;
+}
+.MJXc-space1 {
+  margin-left: 0.167em;
+}
+.MJXc-space2 {
+  margin-left: 0.222em;
+}
+.MJXc-space3 {
+  margin-left: 0.278em;
+}
+.mjx-test.mjx-test-display {
+  display: table !important;
+}
+.mjx-test.mjx-test-inline {
+  display: inline !important;
+  margin-right: -1px;
+}
+.mjx-test.mjx-test-default {
+  display: block !important;
+  clear: both;
+}
+.mjx-ex-box {
+  display: inline-block !important;
+  position: absolute;
+  overflow: hidden;
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  width: 1px;
+  height: 60ex;
+}
+.mjx-test-inline .mjx-left-box {
+  display: inline-block;
+  width: 0;
+  float: left;
+}
+.mjx-test-inline .mjx-right-box {
+  display: inline-block;
+  width: 0;
+  float: right;
+}
+.mjx-test-display .mjx-right-box {
+  display: table-cell !important;
+  width: 10000em !important;
+  min-width: 0;
+  max-width: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.MJXc-TeX-unknown-R {
+  font-family: monospace;
+  font-style: normal;
+  font-weight: normal;
+}
+.MJXc-TeX-unknown-I {
+  font-family: monospace;
+  font-style: italic;
+  font-weight: normal;
+}
+.MJXc-TeX-unknown-B {
+  font-family: monospace;
+  font-style: normal;
+  font-weight: bold;
+}
+.MJXc-TeX-unknown-BI {
+  font-family: monospace;
+  font-style: italic;
+  font-weight: bold;
+}
+.MJXc-TeX-ams-R {
+  font-family: MJXc-TeX-ams-R, MJXc-TeX-ams-Rw;
+}
+.MJXc-TeX-cal-B {
+  font-family: MJXc-TeX-cal-B, MJXc-TeX-cal-Bx, MJXc-TeX-cal-Bw;
+}
+.MJXc-TeX-frak-R {
+  font-family: MJXc-TeX-frak-R, MJXc-TeX-frak-Rw;
+}
+.MJXc-TeX-frak-B {
+  font-family: MJXc-TeX-frak-B, MJXc-TeX-frak-Bx, MJXc-TeX-frak-Bw;
+}
+.MJXc-TeX-math-BI {
+  font-family: MJXc-TeX-math-BI, MJXc-TeX-math-BIx, MJXc-TeX-math-BIw;
+}
+.MJXc-TeX-sans-R {
+  font-family: MJXc-TeX-sans-R, MJXc-TeX-sans-Rw;
+}
+.MJXc-TeX-sans-B {
+  font-family: MJXc-TeX-sans-B, MJXc-TeX-sans-Bx, MJXc-TeX-sans-Bw;
+}
+.MJXc-TeX-sans-I {
+  font-family: MJXc-TeX-sans-I, MJXc-TeX-sans-Ix, MJXc-TeX-sans-Iw;
+}
+.MJXc-TeX-script-R {
+  font-family: MJXc-TeX-script-R, MJXc-TeX-script-Rw;
+}
+.MJXc-TeX-type-R {
+  font-family: MJXc-TeX-type-R, MJXc-TeX-type-Rw;
+}
+.MJXc-TeX-cal-R {
+  font-family: MJXc-TeX-cal-R, MJXc-TeX-cal-Rw;
+}
+.MJXc-TeX-main-B {
+  font-family: MJXc-TeX-main-B, MJXc-TeX-main-Bx, MJXc-TeX-main-Bw;
+}
+.MJXc-TeX-main-I {
+  font-family: MJXc-TeX-main-I, MJXc-TeX-main-Ix, MJXc-TeX-main-Iw;
+}
+.MJXc-TeX-main-R {
+  font-family: MJXc-TeX-main-R, MJXc-TeX-main-Rw;
+}
+.MJXc-TeX-math-I {
+  font-family: MJXc-TeX-math-I, MJXc-TeX-math-Ix, MJXc-TeX-math-Iw;
+}
+.MJXc-TeX-size1-R {
+  font-family: MJXc-TeX-size1-R, MJXc-TeX-size1-Rw;
+}
+.MJXc-TeX-size2-R {
+  font-family: MJXc-TeX-size2-R, MJXc-TeX-size2-Rw;
+}
+.MJXc-TeX-size3-R {
+  font-family: MJXc-TeX-size3-R, MJXc-TeX-size3-Rw;
+}
+.MJXc-TeX-size4-R {
+  font-family: MJXc-TeX-size4-R, MJXc-TeX-size4-Rw;
+}
+.MJXc-TeX-vec-R {
+  font-family: MJXc-TeX-vec-R, MJXc-TeX-vec-Rw;
+}
+.MJXc-TeX-vec-B {
+  font-family: MJXc-TeX-vec-B, MJXc-TeX-vec-Bx, MJXc-TeX-vec-Bw;
+}
+@font-face {
+  font-family: MJXc-TeX-ams-R;
+  src: local('MathJax_AMS'), local('MathJax_AMS-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-ams-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-cal-B;
+  src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold');
+}
+@font-face {
+  font-family: MJXc-TeX-cal-Bx;
+  src: local('MathJax_Caligraphic');
+  font-weight: bold;
+}
+@font-face {
+  font-family: MJXc-TeX-cal-Bw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-frak-R;
+  src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-frak-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-frak-B;
+  src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold');
+}
+@font-face {
+  font-family: MJXc-TeX-frak-Bx;
+  src: local('MathJax_Fraktur');
+  font-weight: bold;
+}
+@font-face {
+  font-family: MJXc-TeX-frak-Bw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-math-BI;
+  src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic');
+}
+@font-face {
+  font-family: MJXc-TeX-math-BIx;
+  src: local('MathJax_Math');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: MJXc-TeX-math-BIw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-R;
+  src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-B;
+  src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-Bx;
+  src: local('MathJax_SansSerif');
+  font-weight: bold;
+}
+@font-face {
+  font-family: MJXc-TeX-sans-Bw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-I;
+  src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic');
+}
+@font-face {
+  font-family: MJXc-TeX-sans-Ix;
+  src: local('MathJax_SansSerif');
+  font-style: italic;
+}
+@font-face {
+  font-family: MJXc-TeX-sans-Iw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-script-R;
+  src: local('MathJax_Script'), local('MathJax_Script-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-script-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-type-R;
+  src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-type-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-cal-R;
+  src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-cal-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-main-B;
+  src: local('MathJax_Main Bold'), local('MathJax_Main-Bold');
+}
+@font-face {
+  font-family: MJXc-TeX-main-Bx;
+  src: local('MathJax_Main');
+  font-weight: bold;
+}
+@font-face {
+  font-family: MJXc-TeX-main-Bw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-main-I;
+  src: local('MathJax_Main Italic'), local('MathJax_Main-Italic');
+}
+@font-face {
+  font-family: MJXc-TeX-main-Ix;
+  src: local('MathJax_Main');
+  font-style: italic;
+}
+@font-face {
+  font-family: MJXc-TeX-main-Iw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-main-R;
+  src: local('MathJax_Main'), local('MathJax_Main-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-main-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-math-I;
+  src: local('MathJax_Math Italic'), local('MathJax_Math-Italic');
+}
+@font-face {
+  font-family: MJXc-TeX-math-Ix;
+  src: local('MathJax_Math');
+  font-style: italic;
+}
+@font-face {
+  font-family: MJXc-TeX-math-Iw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-size1-R;
+  src: local('MathJax_Size1'), local('MathJax_Size1-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-size1-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-size2-R;
+  src: local('MathJax_Size2'), local('MathJax_Size2-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-size2-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-size3-R;
+  src: local('MathJax_Size3'), local('MathJax_Size3-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-size3-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-size4-R;
+  src: local('MathJax_Size4'), local('MathJax_Size4-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-size4-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-vec-R;
+  src: local('MathJax_Vector'), local('MathJax_Vector-Regular');
+}
+@font-face {
+  font-family: MJXc-TeX-vec-Rw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Regular.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Regular.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Regular.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: MJXc-TeX-vec-B;
+  src: local('MathJax_Vector Bold'), local('MathJax_Vector-Bold');
+}
+@font-face {
+  font-family: MJXc-TeX-vec-Bx;
+  src: local('MathJax_Vector');
+  font-weight: bold;
+}
+@font-face {
+  font-family: MJXc-TeX-vec-Bw;
+  src/*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Bold.eot');
+  src/*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Bold.woff')
+      format('woff'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Bold.otf')
+      format('opentype');
+}
+@font-face {
+  font-family: cmmi10;
+  src: url(data:application/x-font-woff;base64,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)
+    format('woff');
+}
+@font-face {
+  font-family: cmr10;
+  src: url(data:application/x-font-woff;base64,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)
+    format('woff');
+}
+@font-face {
+  font-family: cmsy10;
+  src: url(data:application/x-font-woff;base64,d09GRgABAAAAAAPQAA0AAAAABRQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABoAAAAciOSL409TLzIAAAFMAAAAQwAAAFZ2Q39nY21hcAAAAZAAAAA+AAABQgAPJb1jdnQgAAAB0AAAAAQAAAAEACEBnWdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAACJAAAAkMWFZmpoZWFkAAACaAAAADIAAAA2FyLv7GhoZWEAAAKcAAAAHgAAACQEzwMOaG10eAAAArwAAAAQAAAAEAkbAHRsb2NhAAACzAAAAAoAAAAKAHIAVG1heHAAAALYAAAAHwAAACAASABBbmFtZQAAAvgAAAC+AAABIKKn/GVwb3N0AAADuAAAABYAAAAqAPYAA3jaY2BgYGQAgsvb7s0A0bemXVsKowFeNQjXAAB42mNgZOZknMDAysDA1Mm0m4GBoRtCM95nMGRkAooysHIyIAMHGCMgzTWFgUFJSEmIcd/f6wxRjPvAwowgAgC87gqXAHjaY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChEC+ktD//xDy7keoSgZGNgYYk4GRCUgwMaACRoZhDwB2iAbuAAAAIQGdAAAAAf//AAJ42mNgYlBkYGDUZNzHwMzAzqC3kZFB32YTOwvDW6ONbKx3bDYxMwGZDBuZQcKsIOFN7GyMf2w2MYLEjQUVBdWNBZUVGTmeHzvGuO+fkyJjDdA4hmCGZ0zbGPkY+BkYVI3sGE30GJUVlfgYReQYjZkmc/MAAfffxxD6GSOXEBcjmGBgYAAA66sdBgAAAHjaY2BkYGAA4vIvZjPi+W2+MnAzPweKMNyadm0pnFZkYGDaxrgPyOVgYAKJAgBpZgxIAAB42mNgZGBg3MfAwBDFzAkkGZi2MTAyoAIWAC/VAeQAAAMJACEAAAAAAwkAAAMJAFMAAAAqACoAKgBIAAB42mNgZGBgYGEQYGBiAAEQycgAEnNg0AMJAAAFSQCKAHjaTY07CgIxFEWPf0URK7EM9jNMYiFYyyzAwlIQiYMwH8hoYekyXIArcIO+jEFMuLyTl8u9wJAzLfxpM2AWuMOSQ+AeY56B+3Lf8tvqjsQ/bZyeO2xZBO4x5xG4z4QXOywZN3KOONjZ7JYfBVIqSq7NdOKwKAwxicyN6ERBzR3922jWRKxERnZepFV5TSuXWWXiRG3Uqajv2oNeR6vIJEY8e4l2EnVpCn2ML2FvXX2pSqVjefyX8Q3hA30WJ40AAHjaY2BiQAaMDOiABSzKxPAeAAG1APoAAA==)
+    format('woff');
+}
+text.f0 {
+  font-family: cmsy10;
+  font-size: 10px;
+}
+text.f1 {
+  font-family: cmmi10;
+  font-size: 10px;
+}
+text.f2 {
+  font-family: cmr10;
+  font-size: 10px;
+}

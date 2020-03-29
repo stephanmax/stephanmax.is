@@ -4,12 +4,11 @@ const Mathjax = require('mathjax-node-page');
 module.exports = (opts) => {
   return function(files, metalsmith, done) {
     const convert = (fileKey, done) => {
-      const file = files[fileKey];
-
-      if (!file.math) {
+      if (!fileKey.endsWith('.html')) {
         return done();
       }
 
+      const file = files[fileKey];
       const content = file.contents.toString('utf8');
 
       Mathjax.mjpage(content, {format: ['TeX'], fragment: true}, {html: true}, (result) => {

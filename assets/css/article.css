@@ -1,0 +1,275 @@
+article ol,
+article ul {
+  counter-reset: ol-counter;
+  list-style: none;
+  overflow: hidden;
+  padding-left: var(--g1);
+}
+
+article li + li,
+article li ol,
+article li ul {
+  margin-top: 0;
+}
+
+article {
+  counter-reset: sidenote;
+  display: grid;
+  grid-template-columns: [full-start] 1fr [wide-start] var(--margin) [main-start] minmax(0, 32rem) [main-end] var(--margin) 1fr [wide-end] 1fr [full-end];
+  margin: calc(var(--g2) + 4vw) auto;
+}
+
+article > * {
+  grid-column: main;
+  position: relative;
+}
+
+pre,
+.splash {
+  grid-column: wide;
+}
+
+article header {
+  margin-bottom: var(--g1);
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: #333;
+}
+
+article h1 {
+  font-size: var(--s4);
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+article h2,
+article h3 {
+  font-family: sans-serif;
+}
+
+article h2 {
+  font-size: var(--s2);
+  margin-top: var(--g2);
+}
+
+article h3 {
+  font-size: var(--s1);
+  margin-top: var(--g1);
+}
+
+article img {
+  display: block;
+  width: 100%;
+}
+
+article li {
+  position: relative;
+}
+
+article ol li::before {
+  content: counter(ol-counter);
+  counter-increment: ol-counter;
+  display: block;
+  position: absolute;
+  top: -.05em;
+  left: calc(-.75 * var(--g1));
+}
+
+article ul li::before {
+  content: '\2727';
+  display: block;
+  font-size: var(--s-1);
+  position: absolute;
+  top: .3em;
+  left: -1.25em;
+}
+
+article ul ul li::before {
+  content: '\2726';
+}
+
+abbr {
+  border-bottom: 1px dotted;
+  cursor: help;
+  text-decoration: none;
+}
+
+blockquote {
+  border-left: 3px solid var(--color2);
+  font-style: italic;
+  grid-column: 2 / main-end;
+  padding-left: 7px;
+}
+
+cite {
+  font-style: normal;
+}
+
+code:not([class]) {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: .2em;
+  font-size: var(--s-1);
+  padding: .1em .25em .15em;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+figure[role="group"] {
+  background: #fafafa;
+  border: 1px dashed currentColor;
+  padding: calc(.5 * var(--g1));
+}
+
+figcaption {
+  color: #666;
+  font-size: var(--s-1);
+  margin-top: var(--g1);
+  padding: 0 var(--g1);
+  text-align: center;
+}
+
+hr {
+  background-color: var(--color2);
+  border: 0;
+  border-radius: 50%;
+  margin: var(--g2) auto var(--g1);
+  width: .3em;
+  height: .3em;
+}
+
+img {
+  max-width: 100%;
+}
+
+pre {
+  font-size: var(--s-1);
+  padding: calc(.5 * var(--g1) + 1vw);
+}
+
+summary {
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+}
+
+article > svg {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 15rem;
+}
+
+.anchor {
+  --font-scale: calc(1 / var(--scale));
+  color: #ccc;
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  margin: 0;
+  position: absolute;
+  top: calc((1 - var(--font-scale)) * 1em * var(--scale));
+  right: calc(100% + 3px);
+}
+
+.demo {
+  all: initial;
+  display: block;
+}
+
+pre,
+.mjpage {
+  
+  overflow: auto;
+}
+
+.mjpage * + * {
+  margin-top: 0;
+}
+
+.MJXc-TeX-math-I {
+  padding: 0 !important;
+}
+
+.sidenote {
+  counter-increment: sidenote;
+}
+
+.sidenote input {
+  display: none;
+}
+
+.sidenote input:checked ~ small {
+  display: block;
+}
+
+.sidenote label {
+  cursor: pointer;
+}
+
+.sidenote label:after {
+  content: counter(sidenote);
+  font-size: var(--s-1);
+  position: relative;
+  top: -.5em;
+  left: .1em;
+}
+
+.sidenote:hover label:after {
+  color: var(--color2);
+}
+
+.sidenote small {
+  color: #999;
+  font-size: var(--s-1);
+  display: none;
+  margin: var(--g1);
+}
+
+.sidenote small a {
+  background: none;
+  font-weight: normal;
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --fr: calc((100vw - 2 * var(--margin) - 32rem) / 3);
+  }
+
+  figure:not(.splash) figcaption {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: calc(-1 * var(--margin) - var(--fr));
+    text-align: left;
+    width: calc(var(--fr) - var(--g2));
+  }
+
+  .sidenote:hover small:before {
+    color: var(--color2);
+  }
+
+  .sidenote label {
+    cursor: default;
+  }
+
+  .sidenote small:before {
+    content: counter(sidenote);
+    padding-right: .25em;
+    position: relative;
+    top: -.3em;
+  }
+
+  .sidenote small {
+    display: block;
+    margin: calc(var(--g1) / -2 - var(--s-2) * var(--ratio) / 2) 0 0 0;
+    position: absolute;
+    right: calc(-1 * var(--margin) - var(--fr));
+    width: calc(var(--fr) - var(--g2));
+  }
+}

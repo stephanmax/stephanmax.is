@@ -1,0 +1,23 @@
+<style>
+  #history {
+    list-style: none;
+    padding-left: var(--g1);
+  }
+
+  #history li {
+    position: relative;
+  }
+
+  #history li::before {
+    content: '\2727';
+    display: block;
+    font-size: var(--s-1);
+    position: absolute;
+    top: .3em;
+    left: -1.25em;
+  }
+
+  #history li + li {
+    margin-top: 0;
+  }
+</style>
