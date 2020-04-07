@@ -1,0 +1,204 @@
+---
+title: "Building an Interpreter, Part 2: The Parser"
+css: [highlight, math]
+---
+
+<p>In <a href="/writing/building-an-interpreter-part-1-the-scanner">part 1</a> I explained how the first phase of an interpreter, the <i>lexical analysis</i>, transforms a given piece of code (in our case in the source language <i>Nand2Tetris HDL</i>) into a list of tokens. In this part I will turn that list of tokens into a tree form that is easier to reason about. The tool in charge of this transformation is called a <i>parser</i>.</p>
+
+[h level=2]The Phrasal Syntax of HDL[/h]
+
+<p>Before I can go into the details of the second phase of an interpreter—the <i>syntactical analysis</i> or simply <i>parsing</i>—I have to define the <b>phrasal syntax</b> of HDL. Just like the <i>lexical syntax</i> dictates how tokens are made of single characters, the phrasal syntax is a recipe of how to build <i>phrases</i> in HDL.</p>
+
+<p>In the following I will show you the lexical syntax as a little reminder followed by the regular expressions that represent the phrasal syntax of HDL.</p>
+
+<figure>
+  \begin{align}
+  token &\rightarrow \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PARTS}\\
+    &\phantom{{}\rightarrow{}} |\ \texttt{true}\ |\ \texttt{false}\\
+    &\phantom{{}\rightarrow{}} |\ \texttt{(}\ |\ \texttt{)}\ |\ \texttt{\{}\ |\ \texttt{\}}\ |\ \texttt{[}\ |\ \texttt{]}\ |\ \texttt{=}\ |\ \texttt{:}\ |\ \texttt{;}\ |\ \texttt{,}\ |\ \texttt{..}\\
+    &\phantom{{}\rightarrow{}} |\ num\ |\ id\\
+  num &\rightarrow digit\ digit*\\
+  id &\rightarrow letter\ (letter\ |\ digit)*\\
+  letter &\rightarrow \texttt{a}\ |\ …\ |\ \texttt{z}\ |\ \texttt{A}\ |\ …\ |\ \texttt{Z}\\
+  digit &\rightarrow \texttt{0}\ |\ …\ |\ \texttt{9}
+  \end{align}
+  <figcaption>The lexical syntax of HDL</figcaption>
+</figure>
+
+<figure class="grammar">
+  \begin{align}
+  chip &\rightarrow \texttt{CHIP}\ id\ \texttt{\{}\ \texttt{IN}\ pins\ \texttt{;}\ \texttt{OUT}\ pins\ \texttt{;}\ \texttt{PARTS}\ \texttt{:}\ parts\ \texttt{\}}\\
+  pins &\rightarrow pinStmt\ (\ \texttt{,}\ pinStmt\ )*\\
+  pinStmt &\rightarrow id\ (\ \texttt{[}\ num \texttt{]}\ )?\\
+  parts &\rightarrow part+\\
+  part &\rightarrow id\ \texttt{(}\ connections\ \texttt{)}\ \texttt{;}\\
+  connections &\rightarrow connection\ (\ \texttt{,}\ connection\ )*\\
+  connection &\rightarrow pinExp\ \texttt{=}\ pinExp\\
+  pinExp &\rightarrow id\ (\ \texttt{[}\ num\ (\ \texttt{..}\ num\ )?\ \texttt{]}\ )?
+  \end{align}
+  <figcaption>The phrasal syntax of HDL</figcaption>
+</figure>
+
+<p>I highlighted tokens identified by the scanner during the lexical analysis and also reused the <b>syntactical categories</b> <i>id</i> and <i>num</i> (which also produce tokens of the same name). Please note that in general regular expressions do not suffice to model the phrasal syntax of a programming language. You will most likely need some kind of grammar. If you want to know more, you may read up on the <a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">Chomsky hierarchy</a>. I was lucky that HDL is rather simple and a declarative language. That’s why I got away with regular expressions only.</p>
+
+<p>Now let’s take some small HDL script and have a look at the syntax tree produced by the rules above.</p>
+
+[code language="nand2tetris-hdl"]
+CHIP Not {
+  IN in;
+  OUT out; // True iff a[0]=a[1]
+  PARTS:
+    Nand(a=in, b=in, out=out);
+}
+[/code]
+
+<figure class="splash grammar">
+  [svg]building-interpreter-02-parser/syntax_tree[/svg]
+</figure>
+
+<p>This syntax tree represents a piece of code and allows me to annotate certain parts of that code with information. For example, so far I have not distinguished between pin identifiers that appear in the <code>IN</code> or <code>OUT</code> sections and the <code>PARTS</code> section. I can now do so and actually have done so by calling them <i>pinStmt</i> (pin statements inside <code>IN</code>/<code>OUT</code>) and <i>pinExp</i> (pin expressions inside <code>PARTS</code>), respectively.</p>
+
+<p>I think of a syntax tree as a <em>smarter</em> code representation than just the list of tokens I had before. As a matter of fact, the syntax tree above might be a wee bit <em>too smart</em>. A lot of the encoded information is actually not needed. I can dumb this down a bit.</p>
+
+[h level=2]From Concrete to Abstract Syntax[/h]
+
+<p>While the concrete syntax dictates how a language’s phrases are built out of tokens (by means of the phrasal syntax) and characters (by means of the lexical syntax), the <i>abstract syntax</i> answers the question, “What are the significant parts of a phrase?” It then describes those significant parts in tree form. The resulting tree is called an <b>abstract syntax tree</b> or simply <b>AST</b>.</p>
+
+<p>Let’s take a simple example to nail down the differences between concrete and abstract syntax. Imagine a very simple language that allows us to add numbers. The sum expression could have several different concrete syntaxes: For example, the common infix syntax <code>2 + 3</code> or the prefix/Polish syntax <code>+ 2 3</code>.</p>
+
+<figure class="gallery">
+  [svg]building-interpreter-02-parser/parse_tree-infix[/svg]
+  [svg]building-interpreter-02-parser/parse_tree-prefix[/svg]
+  <figcaption>The parse trees for the concrete syntax of infix and prefix notation</figcaption>
+</figure>
+
+<p>No matter which concrete syntax you look at, the abstract syntax is the same, though. The significant parts of a sum expression are the operator and its two operands.</p>
+
+<figure>
+  [svg width="3rem"]building-interpreter-02-parser/ast-sum[/svg]
+  <figcaption>The AST is the same for both concrete productions</figcaption>
+</figure>
+
+<p>When I look at the phrasal syntax of HDL, it is clear what the significant parts of each syntactical category are. For example, a <i>pinExp</i> is really either a string (the pin’s identifier), or a string and a number (in case it’s a bus), or a string and two numbers (if it’s a sub-bus). If I take this up to the top, I understand that a <i>chip</i> is nothing more than an indentifier, two lists of pin statements (input and output), and a list of parts.</p>
+
+<p>The grammar for the abstract syntax of HDL can be written down as Reason type declarations with variant constructors.</p>
+
+[code language="reason"]
+type pinStmt =
+  | PinDecl(string)
+  | BusDecl(string, int);
+
+type pins = list(pinStmt);
+
+type pinExp =
+  | Pin(string)
+  | Bus(string, int)
+  | SubBus(string, int, int);
+
+type connection =
+  | Conn(pinExp, pinExp);
+
+type connections = list(connection);
+
+type part =
+  | Part(string, connections);
+
+type parts = list(part);
+
+type chip =
+  | Chip(string, pins, pins, parts);
+[/code]
+
+<p>If I take the HDL code bit from above and apply this grammar I get the following AST.</p>
+
+[svg]building-interpreter-02-parser/ast-hdl[/svg]
+
+<p>This looks a lot cleaner and more managable, yet I still got all the information I need to evaluate this bad boy—excellent! The next and final step is turning all the type declarations from above into methods that create ASTs in code.</p>
+
+[h level=2]Implementing the Parser[/h]
+
+<p>I already mentioned that I am quite “lucky” with HDL being a simple language. That is also the reason why the parser looks a lot like the scanner I implemented in <a href="/writing/building-an-interpreter-part-1-the-scanner">part 1</a>. The parser will take a list of tokens and turn that into an AST. It does its job by matching the list of tokens against the tokens the grammar for the concrete syntax expects, e.g. a chip has to start with the keyword <code>CHIP</code>, followed by an identifier, followed by an <code>LBRACE</code>, and so on.</p>
+
+<p>Each type declared above will get a matching function that can produce all possible type variants while checking that the concrete syntax is valid.</p>
+
+<p>Note that this parser is called <b>top-down</b> because I will start parsing with the <code>chip</code> function and make my way downwards by until all functions are done and return the values of the leaves, i.e. strings and numeric values.</p>
+
+[code language="reason"]
+let chip = (ts) => {
+  switch (ts) {
+  | [CHIP, ID(chipName), LBRACE, IN, ...tr] => {
+    switch (pins(tr)) {
+    | (astIn, [SEMIC, OUT, ...tr]) => {
+      switch (pins(tr)) {
+      | (astOut, [SEMIC, PARTS, COLON, ...tr]) => {
+        switch (parts(tr)) {
+        | (astParts, tr) => (Chip(chipName, astIn, astOut, astParts), tr)
+        }
+      }
+      | _ => raise(SyntaxError("Expected SEMIC PARTS COLON", tr))
+      }
+    }
+    | _ => raise(SyntaxError("Expected SEMIC OUT", tr))
+    }
+  }
+  | _ => raise(SyntaxError("Expected CHIP ID() LBRACE IN", ts))
+  }
+};
+[/code]
+
+<p>The <code>chip</code> function assumes the presence of certain tokens dictated by the concrete syntax and extracts the sub-ASTs for its input pins, output pins, and parts. It ultimately returns a <code>Chip</code> variant. The functions for <code>parts</code>, <code>parts</code>, <code>connections</code>, and so on are omitted for brevity here, but you can play around with the parser and the full code <a href="https://sketch.sh/s/8FWWgnj22e4RKEME2fRFsG/">on sketch.sh</a>.</p>
+
+<p>The only thing left to do for the <code>parser</code> function is calling <code>chip</code> and checking that there are no remaining tokens.</p>
+
+[code language="reason"]
+let parser = (ts) => {
+  switch (chip(ts)) {
+  | (ast, []) => ast
+  | _ => raise(SyntaxError("Unnecessary code after chip", ts))
+  }
+};
+
+let code = "
+CHIP Eq {
+  IN a, b;
+  OUT out; // True iff a=b
+  PARTS:
+    Xor(a=a, b=b, out=uneq);
+    Not(in=uneq, out=out);
+}";
+
+code |> scanner |> parser;
+/*
+Chip(
+  "Eq",
+  [
+    PinDecl("b"),
+    PinDecl("a")
+  ],
+  [
+    PinDecl("out")
+  ],
+  [
+    Part(
+      "Not",
+      [
+        Conn(Pin("out"), Pin("out")),
+        Conn(Pin("in"), Pin("uneq"))
+      ]
+    ),
+    Part(
+      "Xor",
+      [
+        Conn(Pin("out"), Pin("uneq")),
+        Conn(Pin("b"), Pin("b")),
+        Conn(Pin("a"), Pin("a"))
+      ]
+    )
+  ]
+)
+ */
+[/code]
+
+<p>Note that although the code contains the line <code>Xor(a=a, b=b, out=uneq);</code> the resulting AST has the order of the connections reversed. On a closer look even the parts themselves and the pin declarations are in reverse. This does not matter, though. I am once again relying on the declarative nature of the HDL language—there is not explicit order for things. If I would write a parser for an imperative or functional programming language it would be a totally different discussion.</p>
+
+<p>You can have a look at a demo of this parser over <a href="https://sketch.sh/s/8FWWgnj22e4RKEME2fRFsG/">on sketch.sh</a> and come back for part 3 where I will take the AST and evaluate it.</p>

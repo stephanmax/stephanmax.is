@@ -47,7 +47,7 @@ gulp.task(
   )
 );
 
-const imagesPath = 'assets/**/*.{gif,jpg,png,svg}';
+const imagesPath = 'assets/**/*.{gif,jpg,png,svg,woff}';
 
 gulp.task(
   'images',

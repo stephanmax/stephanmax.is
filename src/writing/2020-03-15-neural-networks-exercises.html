@@ -22,7 +22,7 @@ css: [math]
 
 <p>Before I solve this exercise, I want to recap what we have learned so far. A <i>perceptron</i> is a type of an artificial neuron that looks like this:</p>
 
-[svg]neural-networks-exercises/perceptron[/svg]
+[svg width="15rem"]neural-networks-exercises/perceptron[/svg]
 
 <p>A perceptron takes an input vector \(x\), a weight vector \(w\), and a bias \(b\) and produces a single binary \(output\) where</p>
 
@@ -118,7 +118,7 @@ w_4 &= \begin{pmatrix}0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1\end{pmatrix
 
 <p>Now we have to figure out which bias to choose for each neuron. Let’s have a look at the sigmoid function for that:</p>
 
-[svg]neural-networks-exercises/sigmoid_function[/svg]
+[svg width="20rem"]neural-networks-exercises/sigmoid_function[/svg]
 
 <p>The sigmoid function centers around \(0\) and with \(b = -0.5\) we shift the activation for an output that “sets a bit” (where \(w \cdot x \approx 1\)) to \(\sigma(w \cdot x + b) \approx \sigma(0.5) \approx 0.62\). Similarly, the activation of a neuron that signals an “unset bit” (where \(w \cdot x \approx 0\)) would output \(\sigma(w \cdot x + b) \approx \sigma(-0.5) \approx 0.38\).</p>
 

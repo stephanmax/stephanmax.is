@@ -3,17 +3,17 @@ title: "Building an Interpreter, Part 1: The Scanner"
 css: [highlight, math]
 ---
 
-<p>A couple of weeks ago, I started the fantastic Coursera course <a href="https://www.coursera.org/learn/build-a-computer">From Nand to Tetris</a> where one implements a full virtual computer starting from the smallest building block, the <abbr title="Not and"><i>Nand</i></abbr> gate. The course is very project-centered and uses a small declarative language called—quite generically—<abbr title="Hardware Description Language">HDL</abbr> to implement the various hardware pieces in software.</p>
+<p>A couple of weeks ago, I started the fantastic Coursera course <a href="https://www.coursera.org/learn/build-a-computer">From Nand to Tetris</a> where one implements a full virtual computer starting from the smallest building block—the <abbr title="Not and"><i>Nand</i></abbr> gate. The course is very project-centered and uses a small declarative language called [sidenote label="HDL"]<abbr title="Hardware Description Language">HDL</abbr> stands for <i>Hardware Description Language</i> and is quite the generic name—there are <a href="https://en.wikipedia.org/wiki/Category:Hardware_description_languages">many HDLs</a> out there. I will still use it in the remainder of this series for brevity but want you to actually think of it as the <i>Nand2Tetris HDL</i>.[/sidenote] to implement the various hardware pieces in software.</p>
 
-<p>The course instructors even provide a hardware simulator where you can run, test, and visually simulate your HDL scripts. That works all fine and dandy, however, I have some issues with that approach. For example, there is no way to edit your HDL scripts right inside the hardware simulator, tests are not re-run on changes in your HDL code which makes testing quite cumbersome, and the Java UI is not really pleasant on the eyes.</p>
+<p>The course instructors even provide a hardware simulator where you can run, test, and visually simulate your HDL scripts. That is great help and I think it is amazing that they created those tools for the course, but some things tripped my up here and there. For example, there is no way to edit your HDL scripts right inside the hardware simulator, tests are not re-run on changes in your HDL code, and the Java UI is not really pleasant on the eyes.</p>
 
-<img src="/assets/img/hdl-interpreter/hardware_simulator.png" alt="The GUI of the Hardware Simulator">
+<img src="/assets/img/building-interpreter-01-scanner/hardware_simulator.png" alt="The GUI of the Hardware Simulator">
 
-<p>I immediately thought about creating an in-browser IDE for HDL scripts with a simple UI, auto-testing, and nothing to download or install. Before I could think about the feature set, though, I needed an <i>interpreter</i> for HDL. And so my quest begins.</p>
+<p>I immediately thought about creating an in-browser IDE for HDL scripts with a simple UI, auto-testing, and nothing to download or install. Before I could think about the feature set, though, I needed an <i>interpreter</i> for HDL. And so [sidenote label="my quest"]This quest is all about learning Reason and writing code that demonstrates the inner workings of an interpreter. It is not about coming up with the fastest, most efficient implementation.[/sidenote] began.</p>
 
 [h level=2]Initial Considerations[/h]
 
-<p>In a sense an interpreter <i>implements</i> a language, not unlike a compiler. However, compilation in the traditional sense is a two-stage process where a high-level language is first transformed into machine code for the target machine and then executed by this machine to produce results. An interpreter, on the other hand, is a program that takes code in a source language and executes/evaluates it right away.</p>
+<p>In a sense, an interpreter <i>implements</i> a language, not unlike a compiler. However, compilation in the traditional sense is a two-stage process where a high-level language is first transformed into machine code for the target machine and then executed by this machine to produce results. An interpreter, on the other hand, is a program that takes code in a source language and executes/evaluates it [sidenote label="right away"]Bob Nystrom is doing a great job in explaining the relationship of the terms <i>compiler</i> and <i>interpreter</i> in his free online book <cite><a href="http://craftinginterpreters.com/a-map-of-the-territory.html#compilers-and-interpreters">Crafting Interpreters</a></cite>.[/sidenote].</p>
 
 <p>Now that I knew what I wanted to make, I had to think about the right tools. I wanted the HDL interpreter to run inside the browser so JavaScript is a sensible implementation language. There are a couple of great examples of interpreters/compilers made with JavaScript out there:</p>
 
@@ -34,14 +34,14 @@ css: [highlight, math]
 <p>Interpreter design and the underlying theory of programming languages is well understood in computer science and includes the following steps:</p>
 
 <ol>
-  <li>The <b>lexical analysis</b> (also called <b>tokenization</b> or <b>scanning</b>) takes a piece of code in our source language and turns its characters and symbols into a stream of words that are valid according to the source language’s <i>concrete syntax</i>. Those words are called <b>tokens</b>.</li>
-  <li>The <b>syntax analysis</b> (also known as <b>parsing</b>) is in charge of turning this list of tokens into a tree form which complies with the languags’s grammar for its <i>abstract</i> syntax. The resulting tree is called <b>abstract syntax tree</b>, or <i>AST</i>.</li>
-  <li>The <b>semantic analysis</b> verifies that the AST is semantically meaningful and adheres to the source language’s <i>static semantics</i>. That also includes <i>type checking</i> and <i>flow control checking</i>.</li>
-  <li>The final step is called <b>evaluation</b> which takes the verified AST and evaluates its expressions according to the language’s <i>dynamic semantics</i> inside a certain environment. This environment holds the rules for evaluating expressions of our source language and also a <b>symbol table</b> to lookup variables.</li>
+  <li>The <b>lexical analysis</b> (also called <b>tokenization</b> or <b>scanning</b>) takes a piece of code in the source language and turns its characters and symbols into a stream of words that are valid according to the source language’s <i>lexical syntax</i>. Those words are called <b>tokens</b>.</li>
+  <li>The <b>syntax analysis</b> (also known as <b>parsing</b>) is in charge of turning this list of tokens into a tree form which complies with the languages’s grammar for its <i>phrasal syntax</i>. The resulting tree is called <b>syntax tree</b>.</li>
+  <li>The <b>semantic analysis</b> (or <b>elaboration</b>) verifies that the syntax tree is semantically meaningful and adheres to the source language’s <i>static semantics</i>. That also includes <i>type checking</i> and <i>flow control checking</i>.</li>
+  <li>The final step is called <b>evaluation</b> and it takes the verified syntax tree and evaluates its expressions according to the language’s <i>dynamic semantics</i> inside a certain environment. This environment holds the rules for evaluating expressions of the source language and also a <b>symbol table</b> to lookup variables.</li>
 </ol>
 
-<p>In this post we will tackle the lexical analysis of HDL by starting with describing the <i>lexical syntax</i>. The lexical syntax describes how tokens are created out of characters and symbols by means of <i>regular expressions</i>. It is the first half of the concrete syntax.</p>
-<p>The second half is called <i>phrasal syntax</i> and describes how more complex hierarchical structures are made out of tokens. We will talk more about the phrasal syntax in part two of this series.</p>
+<p>In this post I will tackle the lexical analysis of HDL by starting with describing the <i>lexical syntax</i>. The lexical syntax describes how tokens are created out of characters and symbols by means of <i>regular expressions</i>. It is the first half of the concrete syntax.</p>
+<p>The second half is called <i>phrasal syntax</i> and describes how more complex hierarchical structures are made out of tokens. I will write more about the phrasal syntax in <a href="/writing/building-an-interpreter-part-2-the-parser">part two of this series</a>.</p>
 
 [h level=2]The Lexical Syntax of HDL[/h]
 
@@ -62,7 +62,7 @@ CHIP Eq {
 [/code]
 
 <p>There are reserved keywords (<code>CHIP</code>, <code>IN</code>, …), identifiers (<code>Eq</code>, <code>a</code>, …), numbers (<code>2</code>), and symbols (<code>{</code>, <code>[</code>, <code>;</code>, …). Converting this piece of code into a stream of tokens would yield something like: <code>CHIP</code>, <code>ID("Eq")</code>, <code>LBRACE</code>, <code>IN</code>, <code>ID("a")</code>, <code>LBRACK</code>, <code>NUM(2)</code>, <code>RBRACK</code>, and so on.</p>
-<p>Based on the HDL primer inside the book <a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a> (the book accompanying the online course I mentioned in the intro of this article) I came up with the following regular expressions describing the lexical syntax of HDL.</p>
+<p>Based on the [sidenote label="HDL primer inside the book"]If you would like to learn more about Nand2Tetris HDL but don’t want to buy the book I can recommend the <cite><a href="https://www.ic.unicamp.br/~rodolfo/Cursos/mc404/2020s1/HDL_Survival_Guida-Nand2tetris.pdf">HDL Survival Guide</a></cite> by Mark Armbrust.[/sidenote] <a href="https://www.nand2tetris.org/book">The Elements of Computing Systems</a> (the book accompanying the online course I mentioned in the intro of this article) I came up with the following regular expressions describing the lexical syntax of HDL.</p>
 
 \begin{align}
 token &\rightarrow \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PARTS}\\
@@ -72,14 +72,14 @@ token &\rightarrow \texttt{CHIP}\ |\ \texttt{IN}\ |\ \texttt{OUT}\ |\ \texttt{PA
 num &\rightarrow digit\ digit*\\
 id &\rightarrow letter\ (letter\ |\ digit)*\\
 letter &\rightarrow \texttt{a}\ |\ …\ |\ \texttt{z}\ |\ \texttt{A}\ |\ …\ |\ \texttt{Z}\\
-digit &\rightarrow 0\ |\ …\ |\ 9
+digit &\rightarrow \texttt{0}\ |\ …\ |\ \texttt{9}
 \end{align}
 
 <p>That means a token is either one of the keywords, a certain symbol, a number, or an identifier. A number is a sequence of digits with at least one digit. An identifier is a letter followed by any sequence of letters and digits. HDL is case sensitive so I included lowercase and uppercase letters.</p>
 
-<p>You might ask yourself why I didn’t include the comment symbols <code>//</code>, <code>/**</code>, and <code>*/</code> in the list of tokens. Comments will be ignored by our interpreter and do not have to be part of our stream of tokens, just like whitespace (spaces, tabs, and line breaks),</p>
+<p>You might ask yourself why I didn’t include the comment symbols <code>//</code>, <code>/**</code>, and <code>*/</code> in the list of tokens. Comments will be ignored by the interpreter and do not have to be part of the stream of tokens, just like whitespace (spaces, tabs, and line breaks).</p>
 
-<p>This simple <code>token</code> type of the grammar above can now be transformed one-to-one into Reason code using a <i>variant</i>:</p>
+<p>This <i>token</i> type of the grammar above can now be transformed one-to-one into Reason code using a <i>variant</i>:</p>
 
 [code language="reason"]
 type token =
@@ -87,16 +87,16 @@ type token =
   | TRUE | FALSE
   | LPAR | RPAR | LBRACE | RBRACE | LBRACK | RBRACK | EQUAL | COLON | SEMIC | COMMA | DDOT
   | NUM(int)
-  | ID(string)
+  | ID(string);
 [/code]
 
 <p>Isn’t this gorgeous? <code>token</code> is a variant with a number of so-called <i>constructors</i>. A variant is a very elegant way to say that a token can either be this or that or that other thing. Constructors can even hold extra data, like <code>NUM</code> (holding an <code>int</code> value) and <code>ID</code> (holding the identifier <code>string</code>).</p>
 
-<p>Now that we defined the lexical syntax and introduced a <code>token</code> variant, we can move on to implementing the actual <code>scan</code> function that takes our code and transforms it into a list of tokens.</p>
+<p>Now that I defined the lexical syntax and introduced a <code>token</code> variant, I can move on to implementing the actual <code>scan</code> function that takes code and transforms it into a list of tokens.</p>
 
 [h level=2]Implementing the Scanner[/h]
 
-<p>Let’s recap our plan: We want to write a function that takes our code as a <code>string</code>, traverses it character by character and spits out a list of tokens. Unfortunately, a <code>string</code> in Reason is not a list of <code>char</code>s (unlike in Standard ML). So we have to write a little helper function that does that for us.</p>
+<p>Let’s recap the plan: I want to write a function that takes code as a <code>string</code>, traverses it character by character and spits out a list of tokens. Unfortunately, a <code>string</code> in Reason is not a list of <code>char</code>s (unlike in Standard ML). So I have to write a little helper function that does that for me.</p>
 
 [code language="reason"]
 let explode = (s) => {
@@ -107,7 +107,7 @@ let explode = (s) => {
 
 <p>Please note that the <code>exp</code> function is tail recursive. It uses the accumulator parameter <code>cs</code> to keep track of the list of characters and a wrapper function <code>explode</code> to hide this implementation detail. This is a pattern you will see frequently in functional programming. Feel free to visit my <a href="https://sketch.sh/s/AEnu2UbVgRrTTC0FRpExw9/">Reason sketch</a> to learn more about tail recursion and why it is important.</p>
 
-<p>I also introduce some helper functions to check whether a character is a digit, a letter, or alphanumerical (digit or letter). Finally, I declare an exception which is raised if we come across an unknown character.</p>
+<p>I also introduce some helper functions to check whether a character is a digit, a letter, or alphanumerical (digit or letter). Finally, I declare an exception which is raised if the scanner comes across an unknown character.</p>
 
 [code language="reason"]
 exception InvalidCharacter(char)
@@ -122,7 +122,7 @@ let isLetter = (c) => {
 let isAlphaNum = (c) => isLetter(c) || isDigit(c)
 [/code]
 
-<p>All that’s left to do now is implementing the actual <code>scan</code> function. This is the moment where Reason really shines and offers us two amazing features—<i>pattern matching</i> and <i>mutually recursive functions</i>—to produce concise and readable code.</p>
+<p>Now I get to the meaty part: Implementing the actual <code>scan</code> function. This is the moment where Reason really shines by offering two amazing features—<i>pattern matching</i> and <i>mutually recursive functions</i>—to produce concise and readable code.</p>
 
 [code language="reason"]
 let rec scan = (cs) =>
@@ -184,20 +184,20 @@ and scanCommBlock = (cs) => if (List.hd(cs) == '*' && List.hd(List.tl(cs)) == '/
   }
 [/code]
 
-<p>If <code>cs</code> (the source code as a list of characters) is empty we return the empty list and are done. If the first element (or <i>head</i>) of the character list is whitespace we ignore it and move on. If the characters match any of the reserved words or special symbols of HDL we consume those characters, append the respective token to our list, and move on.</p>
+<p>If <code>cs</code> (the source code as a list of characters) is empty I return the empty list and am done. If the first element (or <i>head</i>) of the character list is whitespace I ignore it and move on. If the characters match any of the reserved words or special symbols of HDL I consume those characters, append the respective token to the result list, and move on.</p>
 
-<p>Comments, numbers, and identifiers are a bit trickier and need some extra care. I call helper functions in case we detect a number, letter, or comment symbol. The functions <code>scanCommLine</code> and <code>scanCommBlock</code> use the next token(s) to detect whether the comment has ended. <code>scanNum</code> and <code>scanId</code> use the helper functions introduced earlier to return the variant constructors <code>NUM</code> and <code>ID</code>, respectively. <code>NUM</code> carries the <code>int</code> value of the number and <code>ID</code> the <code>string</code> value of the identifier. Once the helper functions are done with their work, we can call <code>scan</code> to carry on with the main task, thanks to mutually recursive functions (aka the <code>and</code> syntax).</p>
+<p>Comments, numbers, and identifiers are a bit trickier and need some extra care. I call helper functions in case I detect a number, letter, or comment symbol. The functions <code>scanCommLine</code> and <code>scanCommBlock</code> use the next token(s) to detect whether the comment has ended. <code>scanNum</code> and <code>scanId</code> use the helper functions introduced earlier to return the variant constructors <code>NUM</code> and <code>ID</code>, respectively. <code>NUM</code> carries the <code>int</code> value of the number and <code>ID</code> the <code>string</code> value of the identifier. Once the helper functions are done with their work, I can call <code>scan</code> to carry on with the main task, thanks to mutually recursive functions (the <code>and</code> syntax).</p>
 
 <p>Let me just highlight a couple of details:</p>
 
 <ul>
   <li>The expression <code>[CHIP, ...scan(cr)]</code> evaluates to a new list containing the <code>CHIP</code> token as the first element and all elements of the list that the call <code>scan(cr)</code> returns appended to the end. Reason’s syntax is based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">JavaScript’s spread operator</a>, in other languages it might be <code>CHIP::scan(cr)</code> or <code>cons(CHIP, scan(cr))</code>.</li>
-  <li>In line <code>A</code> I use the expression <code>10 * v + Char.code(List.hd(cs)) - Char.code('0')</code> to calculate the integer value of a sequence of characters. <code>Char.code</code> gives us the ASCII code of a character and can therefore be used to convert a character into a digit by subtracting the ASCII code of 0, the first digit in the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII table</a>.</li>
+  <li>In line <code>A</code> I use the expression <code>10 * v + Char.code(List.hd(cs)) - Char.code('0')</code> to calculate the integer value of a sequence of characters. <code>Char.code</code> returns the ASCII code of a character and can therefore be used to convert a character into a digit by subtracting the ASCII code of 0, the first digit in the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII table</a>.</li>
   <li>Line <code>B</code> heavily uses list methods like <code>hd</code> (head, the first element of a list) and <code>tl</code> (tail, the list without the first element). This is necessary because lists in Reason, unlike arrays, are single-linked and do not allow random access.</li>
-  <li>The <code>scan</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>scan</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>.</li>
+  <li>The <code>scan</code> function is not tail recursive. I made this decision in favor of readability and simplicity and will leave it to you as an exercise to make <code>scan</code> tail recursive. Hint: You will need an accumulator and <code>List.rev</code>. You can have a look at <a href="https://sketch.sh/s/dCdG9McVlz4qJzEFixGiNv/">version 2</a> of the scanner for a tail recursive <code>scan</code> function.</li>
 </ul>
 
-<p>Lastly, we wrap this auxiliary <code>scan</code> function with a wrapper function called <code>scanner</code>. The sole purpose of this function is converting a string of HDL code into an array of characters and calling <code>scan</code>.</p>
+<p>Lastly, I wrap this auxiliary <code>scan</code> function with a wrapper function called <code>scanner</code>. The sole purpose of this function is converting a string of HDL code into an array of characters and calling <code>scan</code>.</p>
 
 [code language="reason"]
 let scanner = (code) => {
@@ -216,4 +216,10 @@ scanner("!")
 /* Exception: InvalidCharacter('!'). */
 [/code]
 
-<p>And there you have it, our scanner is done! You can play around with a <a href="https://sketch.sh/s/dCdG9McVlz4qJzEFixGiNv/">working version on Sketch.sh</a>. In the next part of this series, we will deal with the phrasal and abstract syntax and use that knowledge to build a parser that generates an abstract syntax tree (AST).</p>
+<p>And there you have it, the scanner is done! You can play around with a <a href="https://sketch.sh/s/MXsE02alrhucFVlbBOmY3B/">working version on sketch.sh</a>. In the <a href="/writing/building-an-interpreter-part-2-the-parser">next part of this series</a>, I will deal with the phrasal syntax and use that knowledge to build a parser that generates a syntax tree.</p>
+
+[h level=2]The Scanner, Version 2[/h]
+
+<p>After stumbling upon Javier Chávarri’s <a href="https://medium.com/@javierwchavarri/building-the-super-tiny-compiler-with-reason-part-1-21460cd4ae7b">Building the Super Tiny Compiler with Reason (part 1)</a> I decided to incorporate his pattern matching [sidenote label="approach"]Apart from that his approach is actually pretty close to mine which makes me wonder if we took the same intro to programming class…[/sidenote] into my scanner.</p>
+
+<p>I also used that opportunity to make the <code>scan</code> function tail recursive.</p>

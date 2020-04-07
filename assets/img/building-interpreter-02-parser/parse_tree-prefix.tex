@@ -1,0 +1,19 @@
+\documentclass[crop,tikz]{standalone}
+
+\usepackage{tikz-qtree}
+
+\begin{document}
+\begin{tikzpicture}
+  \Tree [.exp
+    [.exp
+      [.num \texttt{2} ]
+    ]
+    [.opr
+      [\texttt{+} ]
+    ]
+    [.exp
+      [.num \texttt{3} ]
+    ]
+  ]
+\end{tikzpicture}
+\end{document}

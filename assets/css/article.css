@@ -6,12 +6,6 @@ article ul {
   padding-left: var(--g1);
 }
 
-article li + li,
-article li ol,
-article li ul {
-  margin-top: 0;
-}
-
 article {
   counter-reset: sidenote;
   display: grid;
@@ -74,22 +68,23 @@ article ol li::before {
   content: counter(ol-counter);
   counter-increment: ol-counter;
   display: block;
+  font-weight: bold;
   position: absolute;
   top: -.05em;
   left: calc(-.75 * var(--g1));
 }
 
 article ul li::before {
-  content: '\2727';
+  content: '\2726';
   display: block;
   font-size: var(--s-1);
   position: absolute;
-  top: .3em;
+  top: .2em;
   left: -1.25em;
 }
 
 article ul ul li::before {
-  content: '\2726';
+  content: '\2727';
 }
 
 abbr {
@@ -133,6 +128,19 @@ figcaption {
   text-align: center;
 }
 
+.gallery {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: calc(var(--g1) / 2);
+}
+
+.gallery > * {
+  flex: 0 0 7rem;
+  margin: calc(var(--g1) / 2);
+}
+
 hr {
   background-color: var(--color2);
   border: 0;
@@ -159,10 +167,9 @@ svg {
   display: block;
 }
 
-article > svg {
+article  svg {
   margin-right: auto;
   margin-left: auto;
-  max-width: 15rem;
 }
 
 .anchor {
@@ -182,8 +189,7 @@ article > svg {
 }
 
 pre,
-.mjpage {
-  
+.MJXc-display {
   overflow: auto;
 }
 
@@ -215,8 +221,8 @@ pre,
   content: counter(sidenote);
   font-size: var(--s-1);
   position: relative;
-  top: -.5em;
-  left: .1em;
+  top: -.7em;
+  left: .05em;
 }
 
 .sidenote:hover label:after {
@@ -233,6 +239,13 @@ pre,
 .sidenote small a {
   background: none;
   font-weight: normal;
+}
+
+.grammar .cmtt10 {
+  fill: var(--color2);
+}
+.grammar .MJXc-TeX-type-R {
+  color: var(--color2);
 }
 
 @media (min-width: 80rem) {
