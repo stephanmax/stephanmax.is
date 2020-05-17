@@ -109,7 +109,7 @@ body :focus .mjx-chtml[tabindex] {
   visibility: hidden;
 }
 .mjx-merror {
-  background-color: #ffff88;
+  background: #ffff88;
   color: #cc0000;
   border: 1px solid #cc0000;
   padding: 2px 3px;

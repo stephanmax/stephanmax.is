@@ -1,3 +1,26 @@
+nav {
+  margin-top: var(--g1);
+  text-align: center;
+}
+
+nav a {
+  background: #ebebeb;
+  border-radius: .1875rem;
+  color: #555;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: var(--s-1);
+  line-height: 2.5;
+  margin: 0 auto;
+  padding: .1em 1em 0;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: #dfdfdf;
+  color: #222;
+}
+
 article ol,
 article ul {
   counter-reset: ol-counter;
@@ -29,8 +52,7 @@ article header {
 
 article h1,
 article h2,
-article h3,
-article h4 {
+article h3 {
   color: #333;
 }
 
@@ -53,6 +75,19 @@ article h2 {
 article h3 {
   font-size: var(--s1);
   margin-top: var(--g1);
+}
+
+article h2:after,
+article h3:after {
+  color: #ccc;
+  content: ' #';
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+article h2:hover:after,
+article h3:hover:after {
+  opacity: 1;
 }
 
 article img {
@@ -105,7 +140,7 @@ cite {
 }
 
 code:not([class]) {
-  background-color: #fafafa;
+  background: #fafafa;
   border: 1px solid #ccc;
   border-radius: .2em;
   font-size: var(--s-1);
@@ -142,7 +177,7 @@ figcaption {
 }
 
 hr {
-  background-color: var(--color2);
+  background: var(--color2);
   border: 0;
   border-radius: 50%;
   margin: var(--g2) auto var(--g1);
@@ -171,17 +206,6 @@ article  svg {
   margin-right: auto;
   margin-left: auto;
   max-width: 100%;
-}
-
-.anchor {
-  --font-scale: calc(1 / var(--scale));
-  color: #ccc;
-  font-size: calc(1em * var(--font-scale));
-  font-weight: normal;
-  margin: 0;
-  position: absolute;
-  top: calc((1 - var(--font-scale)) * 1em * var(--scale));
-  right: calc(100% + 3px);
 }
 
 .demo {
@@ -252,6 +276,13 @@ pre,
 @media (min-width: 80rem) {
   :root {
     --fr: calc((100vw - 2 * var(--margin) - 32rem) / 3);
+  }
+
+  nav {
+    margin: 0;
+    position: fixed;
+    top: var(--g1);
+    left: var(--g1);
   }
 
   figure:not(.splash) figcaption {

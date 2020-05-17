@@ -1,5 +1,5 @@
 module.exports = (buf, opts) => {
   const id = encodeURIComponent(buf.trim().replace(/\s+/g, '-').toLowerCase());
   
-  return `<h${opts.level}>${buf} <a id="${id}" class="anchor" href="#${id}" aria-hidden="true">#</a></h${opts.level}>`;
+  return `<h${opts.level}><a id="${id}" href="#${id}">${buf}</a></h${opts.level}>`;
 }
