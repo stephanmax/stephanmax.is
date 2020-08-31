@@ -1,4 +1,4 @@
-const version = '-v4';
+const version = '-v5';
 const staticCacheName = `staticfiles${version}`;
 const dynamicCacheName = 'dynamicfiles';
 

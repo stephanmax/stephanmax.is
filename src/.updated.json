@@ -19,9 +19,9 @@
   },
   "writing/2018-07-16-generative-design-system.html": {
     "filename": "writing/2018-07-16-generative-design-system.html",
-    "hash": "6f1ebf3022baa95cb153a8152b373c4d17d56865",
+    "hash": "13d8172b4ddc4705af0d3bcce1580290ca76cd97",
     "created": "2020-03-23T20:20:48.429Z",
-    "updated": "2020-03-23T20:20:48.429Z"
+    "updated": "2020-08-28T16:27:54.803Z"
   },
   "writing/2019-06-13-gb01-cart-reader.html": {
     "filename": "writing/2019-06-13-gb01-cart-reader.html",
@@ -64,5 +64,17 @@
     "hash": "03d6de28249be55e22925a9609385f19844d4a0f",
     "created": "2020-04-04T16:17:26.551Z",
     "updated": "2020-05-17T06:14:29.291Z"
+  },
+  "writing/2020-06-04-x3d-in-browser.html": {
+    "filename": "writing/2020-06-04-x3d-in-browser.html",
+    "hash": "067bad6155c57b8a57307b7f005a0bacd4adc159",
+    "created": "2020-06-04T14:40:46.345Z",
+    "updated": "2020-06-04T14:40:46.345Z"
+  },
+  "writing/2020-08-31-open-up.html": {
+    "filename": "writing/2020-08-31-open-up.html",
+    "hash": "35b49d3160faed80a57ee0383fc40dd198ad644f",
+    "created": "2020-08-31T00:58:45.361Z",
+    "updated": "2020-08-31T00:58:45.361Z"
   }
 }
