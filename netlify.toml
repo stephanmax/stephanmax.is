@@ -8,6 +8,6 @@
     cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[redirects]]
-  from = "/feeding"
+  from = "/a-good-digital-citizen"
   to = "/feed.xml"
   status = 301
