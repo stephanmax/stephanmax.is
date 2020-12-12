@@ -18,7 +18,7 @@
     "url": "https://github.com/stephanmax/stephanmax.is/issues"
   },
   "homepage": "https://github.com/stephanmax/stephanmax.is#readme",
-  "devDependencies": {
+  "dependencies": {
     "async": "^3.2.0",
     "ejs": "^2.7.4",
     "marked": "^1.2.6",
