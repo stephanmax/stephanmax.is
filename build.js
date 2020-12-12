@@ -10,6 +10,10 @@ const syntaxHighlighting = require('metalsmith-prism');
 
 const metadata = require('./data/metadata.json');
 
+const filesToIgnore = [
+  '.DS_Store'
+];
+
 const mdRenderer = new marked.Renderer();
 
 mdRenderer.image = (href, title, text) => title ? `
@@ -21,15 +25,11 @@ mdRenderer.image = (href, title, text) => title ? `
   <img src="${href}" alt="${text}" />
 `;
 
-const filesToIgnore = [
-  '.DS_Store'
-];
-
 metalsmith(__dirname)
 .metadata(metadata)
 .source('./src')
 .destination('./build')
-.clean(true)
+.clean(false)
 .ignore(filesToIgnore)
 .use(markdown({
   renderer: mdRenderer
