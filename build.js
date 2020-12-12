@@ -8,8 +8,6 @@ const metalsmithDebug = require('metalsmith-debug');
 const moment = require('metalsmith-moment');
 const syntaxHighlighting = require('metalsmith-prism');
 
-const absoluteImagePaths = require('./plugins/absolute-imagepaths.js');
-
 const metadata = require('./data/metadata.json');
 
 const mdRenderer = new marked.Renderer();
@@ -49,11 +47,6 @@ metalsmith(__dirname)
   'published',
   'updated'
 ]))
-// Make image paths absolute in production so Netlify does not use Cloudfront CDN
-// https://community.netlify.com/t/cdn-change-netlify-cdn-or-cloudfront/3582/10
-.use(absoluteImagePaths({
-  hostname: process.env.NODE_ENV === 'production' ? metadata.site.url : ''
-}))
 .use(layouts({
   engine: 'ejs',
   directory: 'layouts',
