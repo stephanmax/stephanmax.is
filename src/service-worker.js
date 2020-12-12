@@ -1,4 +1,4 @@
-const version = '-v5';
+const version = '-v6';
 const staticCacheName = `staticfiles${version}`;
 const dynamicCacheName = 'dynamicfiles';
 
@@ -30,18 +30,8 @@ addEventListener('install', event => {
   event.waitUntil(async function() {
     const staticCache = await caches.open(staticCacheName);
 
-    staticCache.addAll([
-      'assets/fonts/cmmi10.woff',
-      'assets/fonts/cmr10.woff',
-      'assets/fonts/cmsy10.woff',
-      'assets/fonts/cmti10.woff',
-      'assets/fonts/cmtt10.woff'
-    ])
-
     await staticCache.addAll([
       '/assets/css/article.css',
-      '/assets/css/highlight.css',
-      '/assets/css/math.css',
       '/offline.html'
     ]);
   }());
