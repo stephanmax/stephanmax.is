@@ -16,14 +16,23 @@ const filesToIgnore = [
 
 const mdRenderer = new marked.Renderer();
 
-mdRenderer.image = (href, title, text) => title ? `
-  <figure>
-    <img src="${href}" alt="${text}" title="${title}" />
-    <figcaption>${title}</figcaption>
-  </figure>
-` : `
-  <img src="${href}" alt="${text}" />
-`;
+mdRenderer.image = (href, title, alt) => {
+  if (title) {
+    return `<figure><img src="${href}" alt="${alt}" title="${title}" /><figcaption>${title}</figcaption></figure>`;
+  }
+  else {
+    return `<img src="${href}" alt="${alt}" />`;
+  }
+}
+// https://github.com/markedjs/marked/issues/773
+mdRenderer.paragraph = (text) => {
+  if (text.startsWith('<figure') && text.endsWith('</figure>')) {
+    return text;
+  }
+  else {
+    return `<p>${text}</p>`;
+  }
+}
 
 metalsmith(__dirname)
 .metadata(metadata)
