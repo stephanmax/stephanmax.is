@@ -18,10 +18,10 @@ const mdRenderer = new marked.Renderer();
 
 mdRenderer.image = (href, title, alt) => {
   if (title) {
-    return `<figure><img src="${href}" alt="${alt}" title="${title}" /><figcaption>${title}</figcaption></figure>`;
+    return `<figure><img src="${href}" alt="${alt}" title="${title}"><figcaption>${title}</figcaption></figure>`;
   }
   else {
-    return `<img src="${href}" alt="${alt}" />`;
+    return `<img src="${href}" alt="${alt}">`;
   }
 }
 // https://github.com/markedjs/marked/issues/773
