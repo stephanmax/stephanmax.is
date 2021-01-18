@@ -2,4 +2,4 @@
 
 This is the code of my personal website [stephanmax.is](https://stephanmax.is).
 
-My website is built with [Metalsmith](https://github.com/metalsmith), hosten on [Netlify](https://www.netlify.com/), and open-sourced on [GitHub](https://github.com/stephanmax/stephanmax.is).
+My website is built with [Metalsmith](https://github.com/metalsmith), hosted on [Netlify](https://www.netlify.com/), and open-sourced on [GitHub](https://github.com/stephanmax/stephanmax.is).
