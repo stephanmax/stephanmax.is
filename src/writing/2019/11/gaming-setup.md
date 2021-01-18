@@ -115,7 +115,7 @@ Another real gem among the Vita’s homebrew apps is [Adrenaline](https://github
 
 I also own a Switch, an original Xbox, and an Xbox One X. I might cover those systems in future posts.
 
-Update: I recently bought a ASUS ROG Zephyrus G14 gaming laptop and… well, that is a whole nother story…
+Update (November 2020): I bought an ASUS ROG Zephyrus G14 gaming laptop and… well, that is a whole ‘nother story…
 
 ## Sources
 

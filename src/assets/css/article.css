@@ -37,10 +37,11 @@ p small {
 
 article ol,
 article ul {
-  counter-reset: ol-counter;
-  list-style: none;
-  overflow: hidden;
-  padding-left: var(--g1);
+  padding-left: 1rem;
+}
+
+article li + li {
+  margin-top: 0;
 }
 
 article {
@@ -76,12 +77,12 @@ article h3 {
 }
 
 article h2 {
-  font-size: var(--s0);
+  font-size: var(--s2);
   margin-top: var(--g2);
 }
 
 article h3 {
-  font-size: var(--s1);
+  font-size: var(--s0);
   margin-top: var(--g1);
 }
 
@@ -101,33 +102,6 @@ article h3:hover:after {
 article img {
   display: block;
   width: 100%;
-}
-
-article li {
-  position: relative;
-}
-
-article ol li::before {
-  content: counter(ol-counter);
-  counter-increment: ol-counter;
-  display: block;
-  font-weight: bold;
-  position: absolute;
-  top: -.05em;
-  left: calc(-.75 * var(--g1));
-}
-
-article ul li::before {
-  content: '\2726';
-  display: block;
-  font-size: var(--s-1);
-  position: absolute;
-  top: .2em;
-  left: -1.5em;
-}
-
-article ul ul li::before {
-  content: '\2727';
 }
 
 abbr {
