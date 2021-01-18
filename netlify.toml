@@ -1,6 +1,7 @@
 [build]
+  environment = { NODE_ENV = "production" }
   command = "npm run build"
-  publish = "build"
+  publish = "build/"
 
 [[headers]]
   for = "/service-worker.js"
@@ -8,6 +9,5 @@
     cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[redirects]]
-  from = "/a-good-digital-citizen"
+  from = "/a-good-internet-citizen"
   to = "/feed.xml"
-  status = 301

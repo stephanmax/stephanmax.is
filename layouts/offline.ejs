@@ -18,7 +18,7 @@
       let markup = '';
       
       keys.filter(
-        request => request.url.includes('/writing/')
+        request => request.url.includes('/writing/2')
       ).forEach(
         request => markup += `<li><a href="${request.url}">${request.url}</a></li>`
       );

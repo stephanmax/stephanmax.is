@@ -1,5 +1,9 @@
 <%- include('partials/top.ejs') %>
 
+<%
+  const {updated} = locals;
+%>
+
 <nav>
   <a href="/">Stephan Max</a>
 </nav>
@@ -7,10 +11,10 @@
 <article>
   <header>
     <h1><%= title %></h1>
-    <time datetime="<%= modified ? updated.format('YYYY-MM-DD') : date.format('YYYY-MM-DD') %>">
-      <%= date.format('LL') %>
-      <% if (modified) { %>
-      (updated <%= updated.format('LL') %>)
+    <time datetime="<%= updated ? updated.format('YYYY-MM-DD') : published.format('YYYY-MM-DD') %>">
+      <%= published.format('LL') %>
+      <% if (updated) { %>
+        (updated <%= updated.format('LL') %>)
       <% } %>
     </time>
   </header>

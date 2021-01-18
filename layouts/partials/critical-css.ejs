@@ -25,7 +25,7 @@
   html {
     box-sizing: border-box;
     color: #333;
-    font-family: georgia, serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     font-size: calc(100% + .2vw);
     line-height: var(--ratio);
     -webkit-text-size-adjust: 100%;
@@ -75,12 +75,9 @@
   }
 
   time {
-    color: #666;
+    color: #999;
     display: block;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: var(--s-2);
-    font-weight: 600;
-    line-height: calc(var(--ratio) * var(--scale) * var(--scale));
+    font-family: monospace;
     margin: 0;
     text-transform: uppercase;
   }
@@ -93,7 +90,6 @@
 
   main header {
     display: flex;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
   main header > * {
@@ -122,7 +118,6 @@
 
   main ul h2 {
     font-size: var(--s1);
-    font-weight: normal;
     line-height: 1.2;
   }
 
@@ -132,7 +127,6 @@
 
   main .writing li:first-child h2 {
     font-size: var(--s2);
-    font-weight: bold;
     max-width: 20ch;
   }
 </style>
