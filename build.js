@@ -33,6 +33,14 @@ mdRenderer.paragraph = (text) => {
     return `<p>${text}</p>`;
   }
 }
+mdRenderer.heading = (text, level, raw, slugger) => {
+  const slug = slugger.slug(text);
+  return `
+    <h${level} id="${slug}">
+      <a href="#${slug}" title="Permalink to '${text}'">${text}</a>
+    </h${level}>
+  `;
+};
 
 metalsmith(__dirname)
 .metadata(metadata)
