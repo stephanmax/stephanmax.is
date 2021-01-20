@@ -3,7 +3,7 @@ title: "A Decade in Review"
 published: 2021-01-18
 ---
 
-No, this is not my sassy way of starting the “Actually, the real decade is 2011–2020, not 2010–2019” argument. It just so happens that after a challenging 2020 I have an urge to scribble down some of the highlights of my passed life. So I can look at them and realize that—albeit times are weird right now—I’ve been lucky and blessed. Here’s to the future!
+No, this is not my sassy way of starting the “Actually, the real decade is 2011–2020, not 2010–2019” argument. It just so happens that after a challenging 2020 I have an urge to scribble down some of the highlights of my past life. So I can look at them and realize that—albeit times are weird right now—I’ve been lucky and blessed. Here’s to the future!
 
 ## Overview
 
