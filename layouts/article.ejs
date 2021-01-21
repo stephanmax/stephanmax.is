@@ -11,10 +11,10 @@
 <article>
   <header>
     <h1><%= title %></h1>
-    <time datetime="<%= updated ? updated.format('YYYY-MM-DD') : published.format('YYYY-MM-DD') %>">
-      <%= published.format('LL') %>
+    <time datetime="<%= (updated || published).toISOString() %>">
+      <%= published.toISOString().slice(0, 10) %>
       <% if (updated) { %>
-        (updated <%= updated.format('LL') %>)
+        (updated <%= updated.toISOString().slice(0, 10) %>)
       <% } %>
     </time>
   </header>
