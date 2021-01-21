@@ -50,6 +50,11 @@ article {
   margin: calc(var(--g2) + 4vw) auto;
 }
 
+ol ::marker {
+  color: var(--color1);
+  font-weight: bold;
+}
+
 pre {
   font-size: var(--s-1);
   grid-column: full-content;
