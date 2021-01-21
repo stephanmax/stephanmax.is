@@ -12,7 +12,10 @@
   <p>I am a computer scientist working as an infrastructure and automation engineer at <a href="https://eyeo.com">eyeo</a> in Cologne, Germany.</p>
 
   <ul class="writing">
-    <% collections.writing.forEach((article, index) => { %>
+    <%
+    collections.writing.forEach((article, index) => {
+      const published = article.published.toISOString().slice(0, 10);
+    %>
     <li>
       <%
         if (index === 0) { %>
@@ -25,7 +28,7 @@
         <a href="<%= article.path %>"><%= article.title %></a>
       </h2>
       <% } %>
-      <time datetime="<%= article.published.format('YYYY-MM-DD') %>"><%= article.published.format('LL') %></time>
+      <time datetime="<%= published %>"><%= published %></time>
       <% if (index === 0) { %>
       <%- article.excerpt %>
       <% } %>

@@ -8,7 +8,7 @@ The <i>GB01 Cart Reader</i> by <i>Submodule</i> reads all your Game Boy/Game Boy
 
 The GB01 comes in a nice and sturdy box with a lovely attention to detail. Let’s have a look.
 
-![The content of the GB01 Cart Reader box layed out on a table](../../images/gb01-cart-reader/content.jpg "From left to right, top to bottom: the box, disclaimer and support note (with a hand-written note on the back who assembled it—thanks, Ozana in Amsterdam), a little stick pin, the actual cart reader, and a USB-C cable.")
+![The content of the GB01 Cart Reader box layed out on a table](../../images/gb01-cart-reader/content.jpg#splash "From left to right, top to bottom: the box, disclaimer and support note (with a hand-written note on the back who assembled it—thanks, Ozana in Amsterdam), a little stick pin, the actual cart reader, and a USB-C cable.")
 
 Submodule also added a hand-written thank you note for buying the GB01 which I think is a great way of appreciating your (early) customers. Well done!
 

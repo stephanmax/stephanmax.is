@@ -5,7 +5,6 @@ const layouts = require('metalsmith-layouts');
 const markdown = require('metalsmith-markdown');
 const marked = require('marked');
 const metalsmithDebug = require('metalsmith-debug');
-const moment = require('metalsmith-moment');
 const syntaxHighlighting = require('metalsmith-prism');
 
 const metadata = require('./data/metadata.json');
@@ -60,10 +59,6 @@ metalsmith(__dirname)
 }))
 .use(syntaxHighlighting())
 .use(excerpts())
-.use(moment([
-  'published',
-  'updated'
-]))
 .use(layouts({
   engine: 'ejs',
   directory: 'layouts',
