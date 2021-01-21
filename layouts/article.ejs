@@ -11,15 +11,18 @@
 <article>
   <header>
     <h1><%= title %></h1>
+  </header>
+  <div class="article-meta">
     <time datetime="<%= (updated || published).toISOString() %>">
       <%= published.toISOString().slice(0, 10) %>
       <% if (updated) { %>
-        (updated <%= updated.toISOString().slice(0, 10) %>)
+        <span class="article-updated">(updated <%= updated.toISOString().slice(0, 10) %>)</span>
       <% } %>
     </time>
-  </header>
-
-  <%- contents %>
+  </div>
+  <div class="article-content">
+    <%- contents %>
+  </div>
 </article>
 
 <%- include('partials/bottom.ejs') %>
