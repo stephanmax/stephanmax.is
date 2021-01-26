@@ -1,24 +1,11 @@
 nav {
   margin-top: var(--g1);
-  text-align: center;
+  padding: 0 1rem;
 }
 
 nav a {
-  background: #ebebeb;
-  border-radius: .1875rem;
-  color: #555;
-  display: inline-block;
-  font-family: sans-serif;
-  font-size: var(--s-1);
-  line-height: 2.5;
-  margin: 0 auto;
-  padding: .1em 1em 0;
+  font-weight: bold;
   text-decoration: none;
-}
-
-nav a:hover {
-  background: #dfdfdf;
-  color: #222;
 }
 
 q {
@@ -83,7 +70,9 @@ article h3 {
   margin-top: var(--g1);
 }
 
-article p {
+article p,
+article ol,
+article ul {
   max-width: 55ch;
 }
 
@@ -214,16 +203,13 @@ pre {
   article {
     column-gap: var(--g1);
   }
+
+  nav {
+    padding: 0 calc(1rem + var(--g1));
+  }
 }
 
 @media (min-width: 65em) {
-  nav {
-    margin: 0;
-    position: fixed;
-    top: var(--g1);
-    left: var(--g1);
-  }
-
   article header {
     grid-column: main-content / full-content-end;
     margin-bottom: var(--g2);
