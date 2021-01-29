@@ -1,4 +1,4 @@
-const version = '-v12';
+const version = '-v13';
 const staticCacheName = `staticfiles${version}`;
 const dynamicCacheName = 'dynamicfiles';
 
@@ -31,7 +31,7 @@ addEventListener('install', event => {
     const staticCache = await caches.open(staticCacheName);
 
     await staticCache.addAll([
-      '/assets/css/article.css',
+      '/assets/css/main.css',
       '/offline.html'
     ]);
   }());
