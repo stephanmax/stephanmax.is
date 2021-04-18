@@ -24,7 +24,7 @@ The process is extremely easy: Just plug the cart reader into your laptop, [down
 
 ![A Mac OS screenshot of the GB01 software while dumping the rom of the game Final Fantasy Tactics Advance](../../images/gb01-cart-reader/close_up_ui.jpg "The UI is simple, slick, and gets the job done.")
 
-Submodule is constantly updating both the software and the cart reader’s firmware. (I already got numerous updates since I bought it.) Also, they offer to [contact their support](mailto:support@submodule.co)> in case the software doesn’t recognize one of your games.
+Submodule is constantly updating both the software and the cart reader’s firmware. (I already got numerous updates since I bought it.) Also, they offer to [contact their support](mailto:support@submodule.co) in case the software doesn’t recognize one of your games.
 
 ## Downloading and Uploading Saves
 
