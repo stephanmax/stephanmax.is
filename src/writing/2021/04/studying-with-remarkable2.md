@@ -5,7 +5,7 @@ published: 2021-04-18
 
 Last month I went through somewhat of an exam marathon. By my side: My trusty [Remarkable 2](https://remarkable.com/) tablet. A song of praise.
 
-![The Remarkable 2 tablet, the Marker Plus, and a cup of coffee on a wooden table](../../images/studying-with-remarkable2/remarkable2.jpg#splash "Studying withour distractions")
+![The Remarkable 2 tablet, the Marker Plus, and a cup of coffee on a wooden table](../../images/studying-with-remarkable2/remarkable2.jpg#splash "Studying without distractions")
 
 I do not want to get too much into the controversy around this device (huge hype, bad customer support) and would like to point you to [Reddit](https://www.reddit.com/r/RemarkableTablet/) to read up on that if you are interested. This is rather a description of how I set up my device and turned it into my daily companion for all things written.
 
@@ -54,7 +54,7 @@ It. Is. Fantastic!
 
 ## Final Verdict
 
-The Remarkable 2 has a hefty price tag (400 € + marker) and the company behind has yet to prove whether they want to create something useful for their fans and customers or only please their investors.
+The Remarkable 2 has a hefty price tag (400€ + marker) and the company behind has yet to prove whether they want to create something useful for their fans and customers or only please their investors.
 
 But damn I’ll say it: I love this little tablet!
 
