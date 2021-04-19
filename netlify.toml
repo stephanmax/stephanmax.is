@@ -10,4 +10,4 @@
 
 [[redirects]]
   from = "/rss"
-  to = "/feeds/all.xml"
+  to = "/feeding/everything.xml"

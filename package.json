@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node build.js",
     "server": "browser-sync start -s build -f build --port 4011 --no-notify",
-    "start": "concurrently --kill-others 'npm run server' 'npm run watch'",
+    "start": "DEBUG=metalsmith:* concurrently --kill-others 'npm run server' 'npm run watch'",
     "watch": "npm-watch"
   },
   "watch": {

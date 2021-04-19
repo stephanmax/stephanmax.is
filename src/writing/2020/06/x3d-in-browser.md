@@ -80,7 +80,7 @@ And that is almost it! All that’s left to do for us is adding an X3D scene and
 
 Open the HTML page above in your WebGL-capable browser and you will be greeted by a red cube that you can pan around, rotate, zoom in on…
 
-![A red rotated cube rendered inside the browser](../../images/x3d-in-browser/simple_demo.png)
+![A red rotated cube rendered inside the browser](/images/x3d-in-browser/simple_demo.png)
 
 I know it might not seem much, but remember that this is a declarative 3D scene right inside your browser that you have absolute control over. Head on over to my [app on Glitch](https://x3d-in-browser.glitch.me/) to see how you can easily change the material color—literally—at the push of a button.
 

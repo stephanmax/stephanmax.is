@@ -17,7 +17,7 @@ The PSP Go has been a loyal friend for a very long time, but I have to admit tha
 
 While I exclusively play on the PSP Go because of the superior form factor, the remainder of this chapter also applies to the PSP 1000/2000/3000/E1000.
 
-![A PSP Go running The Legend of Zelda: The Minish Cap](../../images/gaming-setup/pspgo.jpg "A Thing of Beauty")
+![A PSP Go running The Legend of Zelda: The Minish Cap](/images/gaming-setup/pspgo.jpg "A Thing of Beauty")
 
 ### Modifications
 
@@ -35,7 +35,7 @@ Last but not least, the PSP also makes for an excellent portable <b>PS1</b>. I h
 
 The Wii U is an underrated gem and the console I am spending the most time with. I wouldn’t go as far as calling it my favorite console—the PS3 will always have that special place in my heart—but the Wii U is a champion: It can play Wii U/Wii/GameCube games, has a fantastic <i>Virtual Console</i>, great input devices (and I am talking about the Pro Controller <em>and</em> the Gamepad), and it is the console that can play [almost every Zelda game](https://www.youtube.com/watch?v=KThuqZosM_g)! (All except the 3DS and GB/C games.)
 
-![A Wii U console with all its controllers and peripherals](../../images/gaming-setup/wiiu.jpg "Wii U—King of peripherals!")
+![A Wii U console with all its controllers and peripherals](/images/gaming-setup/wiiu.jpg "Wii U—King of peripherals!")
 
 ### Modifications
 
@@ -67,7 +67,7 @@ If you are running into the same kind of trouble, check out this [Reddit post](h
 
 Although I also own a Switch, I heavily use my 3DS. There are some real gems in the DS/3DS games library and I dig the clamshell/dual screen design. I still have quite the DS/3DS pile of shame, so for me this console is nowhere near dead! (Especially since [3DSident](https://github.com/joel16/3DSident) confirmed that I have a double IPS device 🤩)
 
-![A 3DS showing the main menu](../../images/gaming-setup/3ds.jpg "What’s not to love?")
+![A 3DS showing the main menu](/images/gaming-setup/3ds.jpg "What’s not to love?")
 
 ### Modifications
 
@@ -97,7 +97,7 @@ Eight years and counting, buddy.
 
 While the PS Vita is generally considered a failure in Sony’s console history, I’ve always been a big fan of the system. I used some freetime over Christmas 2019 to softmod my <i>PS Vita 1000</i> and am amazed what this handheld is capable of.
 
-![The main character from the Game Ys 8 is gazing into the distance](../../images/gaming-setup/ys8.png "Finally… Playing Ys VIII without a cartridge…")
+![The main character from the Game Ys 8 is gazing into the distance](/images/gaming-setup/ys8.png "Finally… Playing Ys VIII without a cartridge…")
 
 ### Modifications
 

@@ -6,7 +6,7 @@ updated: 2020-12-12
 
 The other day I finally watched Matthew Epler’s fantastic Youtube series [Designing Generative Systems with p5.js](https://www.youtube.com/playlist?list=PLyRZnpOSgMj3K8AV2I6UldnvTj6d_Zrf0). He takes you from setting up your [p5](https://p5js.org/) sketch to a full-fledged generative design system that creates crystals like these:
 
-![12 crystals made by a generative system on a 3 &times; 4 grid](../../images/generative-system-p5js/generative_crystals.png)
+![12 crystals made by a generative system on a 3 &times; 4 grid](/images/generative-system-p5js/generative_crystals.png)
 
 Here I want to go into a bit of detail on what I learned and changed in the course of implementing this crystal generator. Most notably: While Matthew is using the [p5.js-svg library](https://github.com/zenozeng/p5.js-svg) with p5 0.4.13, I decided to go for the latest p5 version (0.6.1 at the time of writing) and ditch the SVG support instead.
 
@@ -105,7 +105,7 @@ export function polygon(n, x, y, r, angleOffset = 0) {
 
 That way I was able to generate all needed shapes with just one function, passing in `angleOffset` if I needed to:
 
-![Several hexagons and triangles generated with one helper function](../../images/generative-system-p5js/polygons.png)
+![Several hexagons and triangles generated with one helper function](/images/generative-system-p5js/polygons.png)
 
 Better yet, this solution scales in case I decide to include pentagons or triangles with all sorts of directions in the future.
 
