@@ -9,5 +9,5 @@
     cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[redirects]]
-  from = "/a-good-internet-citizen"
-  to = "/feed.xml"
+  from = "/rss"
+  to = "/feeds/all.xml"
