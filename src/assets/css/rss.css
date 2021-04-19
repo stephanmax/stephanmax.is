@@ -37,6 +37,7 @@ item > title {
   display: block;
   font-weight: bold;
 }
+channel > image,
 item > link,
 item > guid,
 item > author,
