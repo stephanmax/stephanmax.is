@@ -63,7 +63,7 @@ metalsmith(__dirname)
   engine: 'ejs',
   directory: 'layouts',
   default: 'article.ejs',
-  pattern: ['**/*.html', '*.html', '**/*.xml']
+  pattern: ['**/*.xml', '**/*.html', '*.html']
 }))
 .use(metalsmithDebug())
 .build(err => {
