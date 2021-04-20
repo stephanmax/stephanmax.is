@@ -42,7 +42,7 @@
               .replace(/href="#/g, `href="${url}#`)
               .replace(/src="\//g, `src="${site.url}/`)
           %>
-          <p><a href="mailto:<%= site.email %>?subject=<%= encodeURIComponent(`Re:${article.title}`) %>">Reply via email</a></p>
+          <p><a href="mailto:<%= site.email %>?subject=<%= encodeURIComponent(`Re: ${article.title}`) %>">Reply via email</a></p>
         ]]>
       </content:encoded>
     </item>
