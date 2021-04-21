@@ -1,7 +1,21 @@
+  <div class="alert">
+    <p>This is a cached page. <a href="javascript:window.location.reload()">Reload</a> to get the latest version.</p>
+  </div>
+  
   <script>
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register('/service-worker.js');
 
+      navigator.serviceWorker.onmessage = function(msg) {
+        if (msg.data === 'newContent') {
+          const alertElem = document.querySelector('.alert');
+          requestAnimationFrame(() => {
+            alertElem.classList.add('show');
+          });
+        }
+      };
+      
+      // Cleanup
       if (navigator.serviceWorker.controller) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.controller.postMessage('trimCaches');

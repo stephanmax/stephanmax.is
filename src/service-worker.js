@@ -1,4 +1,4 @@
-const version = '-v14';
+const version = '-v15';
 const staticCacheName = `staticfiles${version}`;
 const dynamicCacheName = 'dynamicfiles';
 
@@ -7,11 +7,20 @@ const expectedCaches = [
   dynamicCacheName
 ];
 
-const fetchAndCache = async (request, cacheName) => {
+const fetchAndCache = async (request, cacheName, cachedEtag) => {
   try {
     const fetchedResponse = await fetch(request);
+    const fetchedEtag = fetchedResponse.headers.get('ETag');  
     const cache = await caches.open(cacheName);
     await cache.put(request, fetchedResponse.clone());
+
+    // Message client that an updated article was fetched from the network
+    if (cachedEtag !== fetchedEtag && request.url.includes('/writing/')) {
+      self.clients.matchAll().then(clients =>
+        clients.forEach(client => client.postMessage('newContent'))
+      );
+    }
+
     return fetchedResponse;
   }
   catch (error) {}
@@ -32,7 +41,9 @@ addEventListener('install', event => {
 
     await staticCache.addAll([
       '/assets/css/main.css',
-      '/offline.html'
+      '/assets/css/rss.css',
+      '/offline.html',
+      '/favicon.ico'
     ]);
   }());
 });
@@ -63,10 +74,10 @@ addEventListener('fetch', event => {
 
     if (requestURL.pathname === '/' ||
       requestURL.pathname.includes('/writing/') ||
-      requestURL.pathname.includes('/assets/img/')) {
+      requestURL.pathname.includes('/images/')) {
       if (cachedResponse) {
         event.waitUntil(
-          fetchAndCache(event.request, dynamicCacheName)
+          fetchAndCache(event.request, dynamicCacheName, cachedResponse.headers.get('ETag'))
         );
 
         return cachedResponse;
@@ -74,11 +85,11 @@ addEventListener('fetch', event => {
 
       try {
         const fetchedResponse = await fetch(event.request);
-        const copiedRespone = fetchedResponse.clone();
+        const copiedResponse = fetchedResponse.clone();
 
         event.waitUntil(
           caches.open(dynamicCacheName).then(cache =>
-            cache.put(event.request, copiedRespone)
+            cache.put(event.request, copiedResponse)
           )
         )
 

@@ -344,6 +344,22 @@ pre {
   overflow: auto;
 }
 
+.alert {
+  background: #f29544;
+  color: #333;
+  padding: var(--g1);
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 1s ease-out 2s;
+  width: 100%;
+}
+
+.alert.show {
+  transform: translateY(0%);
+}
+
 @media (min-width: 45em) {
   article {
     column-gap: var(--g1);
