@@ -36,8 +36,6 @@ Seriously, being able to download all your game saves to your computer, to archi
 
 ![A Game Boy Advance SP showing the save game screen from The Legend of Zelda: The Minish Cap](/images/gb01-cart-reader/save_gba.jpg "My emulator's save game from The Legend of Zelda: The Minish Cap uploaded to the actual cartridge and read by my Game Boy Advance SP.")
 
-<hr>
-
 I am amazed by this little device. It feels great to dump all my games to my computer and to know that my saves are… uhm, safe. The team over at Submodule put a lot of thought and love into this product.
 
 ![The cart reader on a table with the rear side up](/images/gb01-cart-reader/close_up_board.jpg "Just another lovely finish: The Great Wave off Kanagawa, by Japanese artist Hokusai on the back of the cart reader board.")

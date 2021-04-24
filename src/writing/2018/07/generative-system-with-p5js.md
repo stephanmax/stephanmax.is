@@ -46,7 +46,7 @@ const color = random([
 ])
 ```
 
-### No Global Scope Pollution
+## No Global Scope Pollution
 
 I appreciate that Matthew takes his time to shed some light on code organization, refactoring, and implementation best practices. Still, he heavily relies on global variables that he reuses in all his files and classes. I wanted to take things a bit further and settled with an implementation where
 

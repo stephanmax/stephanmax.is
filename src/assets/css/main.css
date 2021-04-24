@@ -145,14 +145,14 @@ main .writing li:first-child h2 {
   font-size: var(--s2);
 }
 
-nav {
-  margin-top: var(--g1);
-  padding: 0 1rem;
+nav a {
+  text-decoration: none;
 }
 
-nav a {
+nav[aria-label="Main"] {
   font-weight: bold;
-  text-decoration: none;
+  margin-top: var(--g1);
+  padding: 0 1rem;
 }
 
 q {
@@ -180,7 +180,7 @@ article li + li {
 
 article {
   display: grid;
-  grid-template-columns: [full-start] 1rem [full-content-start marginalia-start] repeat(2, 1fr) [marginalia-end main-content-start] repeat(4, 1fr) [main-content-end outdent-start] repeat(2, 1fr) [outdent-end full-content-end] minmax(1rem, calc(100vw - 72rem)) [full-end];
+  grid-template-columns: [full-start] 1rem [full-content-start marginalia-start] repeat(2, 1fr) .5fr [marginalia-end main-content-start] repeat(4, 1fr) [main-content-end outdent-start] repeat(2, 1fr) [outdent-end full-content-end] minmax(1rem, calc(100vw - 80rem)) [full-end];
   margin: calc(var(--g2) + 4vw) auto;
 }
 
@@ -198,13 +198,21 @@ pre {
 }
 
 article header {
+  display: contents;
+}
+
+article header h1 {
+  font-size: var(--s4);
   grid-column: full-content;
+  line-height: 1.25;
   margin-bottom: var(--g1);
 }
 
-article h1 {
-  font-size: var(--s4);
-  line-height: 1.25;
+article header time {
+  grid-column: full-content;
+  grid-row: 1;
+  line-height: calc(var(--ratio) * var(--scale) * var(--scale) * var(--scale) * var(--scale));
+  margin: 0;
 }
 
 article h2 {
@@ -281,18 +289,23 @@ figcaption {
   grid-column: full-content;
 }
 
-.article-meta {
-  grid-column: full-content;
-  grid-row: 1;
-  margin: 0;
-}
-
-.article-meta time {
-  line-height: calc(var(--ratio) * var(--scale) * var(--scale) * var(--scale) * var(--scale));
-}
-
 .article-updated {
   display: none;
+}
+
+[aria-label="Article Contents"] {
+  display: none;
+}
+
+[aria-label="Article Contents"] h1 {
+  border-bottom: 1px solid currentColor;
+  font-size: 1rem;
+  margin-bottom: var(--g1);
+}
+
+[aria-label="Article Contents"] ul {
+  font-size: var(--s-1);
+  margin-top: 0;
 }
 
 .gallery {
@@ -306,15 +319,6 @@ figcaption {
 .gallery > * {
   flex: 0 0 7rem;
   margin: calc(var(--g1) / 2);
-}
-
-hr {
-  background: var(--color-accent);
-  border: 0;
-  border-radius: 50%;
-  margin: var(--g2) auto var(--g1);
-  width: .4em;
-  height: .4em;
 }
 
 img {
@@ -365,15 +369,23 @@ pre {
     column-gap: var(--g1);
   }
 
-  nav {
+  nav[aria-label="Main"] {
     padding: 0 calc(1rem + var(--g1));
   }
 }
 
 @media (min-width: 65em) {
   article header {
-    grid-column: main-content / full-content-end;
     margin-bottom: var(--g2);
+  }
+
+  article header h1 {
+    grid-column: main-content / full-content-end;
+  }
+
+  article header time {
+    grid-column: 1 / 5;
+    text-align: right;
   }
 
   article p {
@@ -385,12 +397,17 @@ pre {
   }
 
   .article-content > pre {
-    grid-column: main-content-start / full-content-end;
+    grid-column: 4 / full-content-end;
   }
 
-  .article-meta {
-    grid-column: marginalia;
-    text-align: right;
+[aria-label="Article Contents"] {
+    display: block;
+    grid-column: marginalia-start / span 2;
+    /* https://stackoverflow.com/questions/49074633/using-negative-integers-with-implicit-rows-in-css-grid */
+    grid-row: 2 / span 5;
+    margin-top: 0;
+    position: sticky;
+    top: var(--g1);
   }
 
   figure img {
@@ -401,10 +418,9 @@ pre {
     grid-column: main-content;
   }
 
-
   img[src*="#splash"],
   img[src*="#splash"] + figcaption {
-    grid-column: main-content-start / full-content-end;
+    grid-column: 4 / full-content-end;
   }
 
   img:not([src*="#splash"]) + figcaption {
@@ -414,7 +430,7 @@ pre {
   }
 
   pre {
-    grid-column: main-content-start / full-content-end;
+    grid-column: 4 / full-content-end;
   }
 }
 

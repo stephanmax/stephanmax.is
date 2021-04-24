@@ -2,10 +2,10 @@ const metalsmith = require('metalsmith');
 const collections = require('metalsmith-collections');
 const excerpts = require('metalsmith-excerpts');
 const layouts = require('metalsmith-layouts');
-const markdown = require('metalsmith-markdown');
-const marked = require('marked');
 const metalsmithDebug = require('metalsmith-debug');
 const syntaxHighlighting = require('metalsmith-prism');
+
+const markdown = require('./plugins/metalsmith-markdown');
 
 const metadata = require('./data/metadata.json');
 
@@ -13,43 +13,13 @@ const filesToIgnore = [
   '.DS_Store'
 ];
 
-const mdRenderer = new marked.Renderer();
-
-mdRenderer.image = (href, title, alt) => {
-  if (title) {
-    return `<figure><img src="${href}" alt="${alt}" title="${title}"><figcaption>${title}</figcaption></figure>`;
-  }
-  else {
-    return `<img src="${href}" alt="${alt}">`;
-  }
-}
-// https://github.com/markedjs/marked/issues/773
-mdRenderer.paragraph = (text) => {
-  if (text.startsWith('<figure') && text.endsWith('</figure>')) {
-    return text;
-  }
-  else {
-    return `<p>${text}</p>`;
-  }
-}
-mdRenderer.heading = (text, level, raw, slugger) => {
-  const slug = slugger.slug(text);
-  return `
-    <h${level} id="${slug}">
-      <a href="#${slug}" title="Permalink to '${text}'">${text}</a>
-    </h${level}>
-  `;
-};
-
 metalsmith(__dirname)
 .metadata(metadata)
 .source('./src')
 .destination('./build')
 .clean(false)
 .ignore(filesToIgnore)
-.use(markdown({
-  renderer: mdRenderer
-}))
+.use(markdown())
 .use(collections({
   writing: {
     pattern: ['writing/**/*.html'],

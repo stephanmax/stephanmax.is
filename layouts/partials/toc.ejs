@@ -1,0 +1,19 @@
+<% const generateToc = items => { %>
+  <ul>
+  <% items.forEach(item => { %>
+    <li><a href="#<%= item.slug %>"><%- item.text %></a>
+      <% if (item.items.length > 0) {
+        generateToc(item.items);
+      }%>
+    </li>
+  <% }); %>
+  </ul>
+<% } %>
+
+
+<% if (toc.length > 0) { %>
+  <nav aria-label="Article Contents">
+    <h1>Contents</h1>
+    <%= generateToc(toc) %>
+  </nav>
+<% } %>

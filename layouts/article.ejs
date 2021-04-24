@@ -4,22 +4,23 @@
   const {updated} = locals;
 %>
 
-<nav>
+<nav aria-label="Main">
   <a href="/">Stephan Max</a>
 </nav>
 
 <article>
   <header>
     <h1><%= title %></h1>
-  </header>
-  <div class="article-meta">
     <time datetime="<%= (updated || published).toISOString() %>">
       <%= published.toISOString().slice(0, 10) %>
       <% if (updated) { %>
         <span class="article-updated">(updated <%= updated.toISOString().slice(0, 10) %>)</span>
       <% } %>
     </time>
-  </div>
+  </header>
+
+  <%- include('partials/toc.ejs', { toc }) %>
+
   <div class="article-content">
     <%- contents %>
   </div>
