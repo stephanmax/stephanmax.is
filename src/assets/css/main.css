@@ -305,7 +305,16 @@ figcaption {
 
 [aria-label="Article Contents"] ul {
   font-size: var(--s-1);
+  list-style: circle;
   margin-top: 0;
+}
+
+[aria-label="Article Contents"] .current {
+  list-style: disc;
+}
+
+[aria-label="Article Contents"] .current::marker {
+  color: var(--color-accent);
 }
 
 .gallery {
@@ -408,6 +417,7 @@ pre {
     margin-top: 0;
     position: sticky;
     top: var(--g1);
+    align-self: start;
   }
 
   figure img {

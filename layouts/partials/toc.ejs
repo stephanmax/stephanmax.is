@@ -1,7 +1,7 @@
 <% const generateToc = items => { %>
   <ul>
   <% items.forEach(item => { %>
-    <li><a href="#<%= item.slug %>"><%- item.text %></a>
+    <li data-slug="<%= item.slug %>"><a href="#<%= item.slug %>"><%- item.text %></a>
       <% if (item.items.length > 0) {
         generateToc(item.items);
       }%>
