@@ -12,7 +12,7 @@ Here I want to go into a bit of detail on what I learned and changed in the cour
 
 Check out the accompanying [app on Glitch](https://generative-crystals.glitch.me/) or the [source code on Github](https://github.com/stephanmax/generative-crystals).
 
-## The New `random` Function
+## The New random Function
 
 The whole generative system is based on using p5’s `random` function—a lot! We randomly choose color, shape, arity, stroke weight… you get the picture. Matthew had to implement this notion of choice from nothing but random float numbers which lead to helper functions like these:
 

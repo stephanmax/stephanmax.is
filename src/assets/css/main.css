@@ -1,7 +1,6 @@
 :root {
   --ratio: 1.7;
   --scale: 1.25;
-  --margin: 16px;
 
   --s-2: calc(var(--s-1) / var(--scale));
   --s-1: calc(var(--s0) / var(--scale));
@@ -85,10 +84,6 @@ h3 {
   max-width: 45ch;
 }
 
-.writing {
-  list-style: none;
-}
-
 time {
   display: block;
   font-family: monospace;
@@ -128,23 +123,6 @@ main h1 {
   font-size: var(--s0);
 }
 
-main > p {
-  margin-bottom: var(--g3);
-}
-
-main ul h2 {
-  font-size: var(--s1);
-  line-height: 1.2;
-}
-
-main .writing li:first-child {
-  margin-bottom: var(--g2);
-}
-
-main .writing li:first-child h2 {
-  font-size: var(--s2);
-}
-
 nav a {
   text-decoration: none;
 }
@@ -167,6 +145,42 @@ q:after {
 p small {
   color: #999;
   font-size: inherit;
+}
+
+.article-list {
+  list-style: none;
+}
+
+.article-list li {
+  padding-left: 7rem;
+  position: relative;
+}
+
+.article-list li:first-of-type {
+  margin: var(--g2) 0;
+}
+
+.article-list li:first-of-type h2 {
+  font-size: var(--s2);
+  line-height: calc(var(--ratio) / (var(--scale) * var(--scale)));
+}
+
+.article-list li:not(.new-year) {
+  margin-top: 0;
+}
+
+.article-list h2 {
+  font-size: 1rem;
+}
+
+.article-list h2 a {
+  text-decoration: none;
+}
+
+.article-list time {
+  position: absolute;
+  top: 0.05em;
+  left: 0;
 }
 
 article ol,

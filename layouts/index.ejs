@@ -11,23 +11,20 @@
 
   <p>I am a computer scientist working as an infrastructure and automation engineer at <a href="https://eyeo.com">eyeo</a> in Cologne, Germany.</p>
 
-  <ul class="writing">
+  <ul class="article-list">
     <%
+    let year;
     collections.writing.forEach((article, index) => {
       const published = article.published.toISOString().slice(0, 10);
+      const currentYear = published.slice(0, 4);
+      if (currentYear !== year) {
+        year = currentYear;
     %>
+    <li class="new-year">
+    <% } else {%>
     <li>
-      <%
-        if (index === 0) { %>
-      %>
-      <h2>
-        <a href="<%= article.path %>"><%= article.title %></a>
-      </h2>
-      <% } else { %>
-      <h2>
-        <a href="<%= article.path %>"><%= article.title %></a>
-      </h2>
-      <% } %>
+    <% } %>
+      <h2><a href="<%= article.path %>"><%= article.title %></a></h2>
       <time datetime="<%= published %>"><%= published %></time>
       <% if (index === 0) { %>
       <%- article.excerpt %>
