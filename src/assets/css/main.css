@@ -94,8 +94,8 @@ time {
 }
 
 main {
-  margin: var(--g1) auto 0;
-  padding: 0 var(--s0) var(--g3);
+  margin: 0 auto;
+  padding: var(--g1) var(--s0) var(--g2);
   max-width: 55ch;
 }
 
@@ -152,7 +152,6 @@ p small {
 }
 
 .article-list li {
-  padding-left: 7rem;
   position: relative;
 }
 
@@ -171,6 +170,7 @@ p small {
 
 .article-list h2 {
   font-size: 1rem;
+  padding-left: 6rem;
 }
 
 .article-list h2 a {
@@ -388,6 +388,14 @@ pre {
 }
 
 @media (min-width: 45em) {
+  .article-list li {
+    padding-left: 6rem;
+  }
+
+  .article-list h2 {
+    padding: 0;
+  }
+
   article {
     column-gap: var(--g1);
   }
