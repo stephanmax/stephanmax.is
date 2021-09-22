@@ -1,0 +1,37 @@
+---
+import moment from 'moment';
+
+const { post, path } = Astro.props;
+
+const location = `${post.area}, ${post.country}`
+const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
+const imageHeroPath = post.heroImagegExt && `/images${path}${post.heroImagegExt}`;
+const imageGalleryPaths = (post.galleryImages || []).map(image => `/images${path}${image}`);
+---
+
+<article>
+  <header>
+    <time datetime={post.time}>{timeHumanreadable}</time> &middot;
+    <span>{location}</span> &middot;
+    <a href={path} title="Permalink">#</a>
+  </header>
+
+  {imageGalleryPaths.length > 0 &&
+    <figure>
+      {imageGalleryPaths.map(image => <img src={image} />)}
+    </figure>
+  }
+
+  <div class="babble-content">
+    {imageHeroPath &&
+      <p class="babble-hero"><img src={imageHeroPath} /></p>
+    }
+    <slot />
+  </div>
+
+  <footer>
+    <ul>
+      {post.tags.map(tag => <li>{tag}</li>)}
+    </ul>
+  </footer>
+</article>

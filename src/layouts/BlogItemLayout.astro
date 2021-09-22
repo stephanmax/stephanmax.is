@@ -1,0 +1,13 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogItem from '../components/BlogItem.astro';
+
+const post = Astro.props.content;
+const { pathname } = Astro.request.url;
+---
+
+<BaseLayout>
+  <BlogItem post={post} path={pathname}>
+    <slot />
+  </BlogItem>
+</BaseLayout>
