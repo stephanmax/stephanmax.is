@@ -17,7 +17,7 @@ export async function getStaticPaths({ paginate, rss }) {
       // Add image to the post content for RSS readers
       let rssDescription = post.astro.html;
       if (post.images && post.images.length > 0) {
-        rssDescription = `<p><img src="${site.url}${post.url}${post.images[0]}"></p>` + rssDescription;
+        rssDescription = `<p><img src="${site.url}/images${post.url}${post.images[0]}"></p>` + rssDescription;
       }
       return {
         title: `Update ${moment.unix(post.time).format('YYYY-MM-DD, HH:mm')}`,
