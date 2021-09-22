@@ -4,7 +4,7 @@ area: Hamburg
 country: Germany
 tags: [ hamburg, living ]
 layout: ../../../../../layouts/BlogItemLayout.astro
-galleryImages:
+images:
   - "01.jpg"
   - "02.jpg"
   - "03.jpg"

@@ -4,6 +4,8 @@ import BlogItem from '../components/BlogItem.astro';
 
 const post = Astro.props.content;
 const { pathname } = Astro.request.url;
+
+console.log(Astro.request);
 ---
 
 <BaseLayout>

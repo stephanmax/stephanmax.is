@@ -78,7 +78,7 @@ p img {
 
 article {
   display: grid;
-  grid-template-columns: [full-start] minmax(1rem, 2fr) [wide-start] 1fr [main-start] minmax(auto, 55ch) [main-end] 1fr [wide-end] minmax(1rem, 2fr) [full-end];
+  grid-template-columns: [full-start] 2fr [wide-start] minmax(1rem, 1fr) [main-start] minmax(auto, 55ch) [main-end] minmax(1rem, 1fr) [wide-end] 2fr [full-end];
   row-gap: calc(1rem * var(--ratio));
 }
 

@@ -9,8 +9,9 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
+console.log(page);
 ---
 
 <BaseLayout>
-  {page.data.map(post => <BlogItem post={post} path={post.url}>{post.astro.html}</BlogItem>)}
+  {page.data.map(post => <BlogItem post={post} path={`${post.url}/`}>{post.astro.html}</BlogItem>)}
 </BaseLayout>

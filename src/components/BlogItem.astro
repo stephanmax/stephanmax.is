@@ -9,8 +9,7 @@ const pathWithoutTrailingSlash = path.replace(/\/$/, '');
 const location = `${post.area}, ${post.country}`
 const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
 
-const imageHeroPath = post.heroImagegExt && `/images${pathWithoutTrailingSlash}${post.heroImagegExt}`;
-const imageGalleryPaths = (post.galleryImages || []).map(image => `/images${pathWithoutTrailingSlash}${image}`);
+const imagePaths = (post.images || []).map(image => `/images${pathWithoutTrailingSlash}${image}`);
 ---
 
 <article>
@@ -20,16 +19,13 @@ const imageGalleryPaths = (post.galleryImages || []).map(image => `/images${path
     <a href={path} title="Permalink">#</a>
   </header>
 
-  {imageGalleryPaths.length > 0 &&
+  {imagePaths.length > 0 &&
     <figure>
-      {imageGalleryPaths.map(image => <img src={image} />)}
+      {imagePaths.map(image => <img src={image} />)}
     </figure>
   }
 
   <div class="babble-content">
-    {imageHeroPath &&
-      <p class="babble-hero"><img src={imageHeroPath} /></p>
-    }
     <slot />
   </div>
 
