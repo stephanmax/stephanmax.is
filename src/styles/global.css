@@ -117,25 +117,30 @@ article footer li {
   padding: 0 .5em;
 }
 
-article figure {
+article > ul {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  list-style: none;
+  padding: 0;
 }
 
-article figure img {
-  flex-grow: 1;
+article > ul img {
   width: 100%;
 }
 
-article figure img:nth-child(6n+1),
-article figure img:nth-child(6n+2) {
+article > ul li {
+  flex: 1 1 auto;
+}
+
+article > ul li:nth-child(6n+1),
+article > ul li:nth-child(6n+2) {
   flex-basis: calc(50% - .5rem);
 }
 
-article figure img:nth-child(6n+3),
-article figure img:nth-child(6n+4),
-article figure img:nth-child(6n+5) {
+article > ul li:nth-child(6n+3),
+article > ul li:nth-child(6n+4),
+article > ul li:nth-child(6n+5) {
   flex-basis: calc(33% - .667rem);
 }
 
@@ -148,6 +153,6 @@ article figure img:nth-child(6n+5) {
 }
 
 .babble-hero,
-article figure {
+article > ul {
   grid-column: wide;
 }

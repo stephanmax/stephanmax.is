@@ -20,9 +20,9 @@ const imagePaths = (post.images || []).map(image => `/images${pathWithoutTrailin
   </header>
 
   {imagePaths.length > 0 &&
-    <figure>
-      {imagePaths.map(image => <img src={image} />)}
-    </figure>
+    <ul>
+      {imagePaths.map(image => <li><img src={image} /></li>)}
+    </ul>
   }
 
   <div class="babble-content">
