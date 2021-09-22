@@ -13,4 +13,4 @@ images:
   - "06.jpg"
 ---
 
-Here we will be sitting friends’ apartments and living for the next two months. I love this city!
+Got the great opportunity to sit friends’ apartments. We’ll be in Hamburg for the next two months! I love this city!

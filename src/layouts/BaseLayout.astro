@@ -15,6 +15,7 @@ import site from '../data/site.js';
     <meta name="description" content={site.description} />
 
     <link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+    <link rel="alternate" href="/feeding.xml" title={`RSS feed for ${site.title}`} type="application/rss+xml">
   </head>
 
   <body>
