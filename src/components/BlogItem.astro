@@ -3,10 +3,14 @@ import moment from 'moment';
 
 const { post, path } = Astro.props;
 
+// Make sure `path` does not have a trailing slash
+const pathWithoutTrailingSlash = path.replace(/\/$/, '');
+
 const location = `${post.area}, ${post.country}`
 const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
-const imageHeroPath = post.heroImagegExt && `/images${path}${post.heroImagegExt}`;
-const imageGalleryPaths = (post.galleryImages || []).map(image => `/images${path}${image}`);
+
+const imageHeroPath = post.heroImagegExt && `/images${pathWithoutTrailingSlash}${post.heroImagegExt}`;
+const imageGalleryPaths = (post.galleryImages || []).map(image => `/images${pathWithoutTrailingSlash}${image}`);
 ---
 
 <article>
