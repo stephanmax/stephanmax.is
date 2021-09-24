@@ -20,7 +20,7 @@ export async function getStaticPaths({ paginate, rss }) {
         rssDescription = `<p><img src="${site.url}/images${post.url}${post.images[0]}"></p>` + rssDescription;
       }
       return {
-        title: `Update ${moment.unix(post.time).format('YYYY-MM-DD, HH:mm')}`,
+        title: `Update ${moment.unix(post.time).local().format('YYYY-MM-DD, HH:mm')}`,
         description: rssDescription,
         link: `${post.url}/`,
         pubDate: moment.unix(post.time).format()
