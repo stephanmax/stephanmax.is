@@ -20,7 +20,7 @@ export async function getStaticPaths({ paginate, rss }) {
       if (post.images && post.images.length > 0) {
         rssDescription = `<p><img src="${site.url}/images${post.url}${post.images[0]}"></p>` + rssDescription;
       }
-      rssDescription += `<p><a href="mailto:${site.email}?subject=${encodeURIComponent(`Re:${title}`)}">Reply via email</a></p>`;
+      rssDescription += `<p><a href="mailto:${site.email}?subject=${encodeURIComponent(`Re: ${title}`)}">Reply via email</a></p>`;
       return {
         title,
         description: rssDescription,
