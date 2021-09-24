@@ -7,7 +7,7 @@ const { post, path } = Astro.props;
 const pathWithoutTrailingSlash = path.replace(/\/$/, '');
 
 const location = `${post.area}, ${post.country}`
-const timeHumanreadable = moment.unix(post.time).local().format('YYYY-MM-DD, HH:mm');
+const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
 
 const imagePaths = (post.images || []).map(image => `/images${pathWithoutTrailingSlash}${image}`);
 ---

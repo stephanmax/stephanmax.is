@@ -2,7 +2,7 @@
 time: 1560438000
 area: Cologne
 country: Germany
-tags: [ gaming, retro, game boy ]
+tags: [ gaming, retro, gameboy ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 images:
   - ".jpg"
