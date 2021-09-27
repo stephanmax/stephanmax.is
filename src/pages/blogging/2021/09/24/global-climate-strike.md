@@ -5,7 +5,7 @@ country: Germany
 tags: [ environment, politics ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 images:
-  - ".jpg"
+  - { ext: ".jpg", w: 1200, h: 675 }
 ---
 
 Today is **Global Climate Strike** day! Find your closest rally [in Germany](https://fridaysforfuture.de/allefuersklima/) or [worldwide](https://fridaysforfuture.org/september24/).

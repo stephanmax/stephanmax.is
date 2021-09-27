@@ -126,7 +126,9 @@ article > ul {
 }
 
 article > ul img {
+  background: #ccc;
   width: 100%;
+  height: auto;
 }
 
 article > ul li {

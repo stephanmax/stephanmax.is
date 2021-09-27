@@ -1,7 +1,7 @@
 ---
 import moment from 'moment';
 
-const { post, path } = Astro.props;
+const { post, path, loading } = Astro.props;
 
 // Make sure `path` does not have a trailing slash
 const pathWithoutTrailingSlash = path.replace(/\/$/, '');
@@ -9,7 +9,10 @@ const pathWithoutTrailingSlash = path.replace(/\/$/, '');
 const location = `${post.area}, ${post.country}`
 const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
 
-const imagePaths = (post.images || []).map(image => `/images${pathWithoutTrailingSlash}${image}`);
+const images = (post.images || []).map(image => ({
+  ...image,
+  path: `/images${pathWithoutTrailingSlash}${image.ext}`
+}));
 ---
 
 <article>
@@ -19,9 +22,9 @@ const imagePaths = (post.images || []).map(image => `/images${pathWithoutTrailin
     <a href={path} title="Permalink">#</a>
   </header>
 
-  {imagePaths.length > 0 &&
+  {images.length > 0 &&
     <ul>
-      {imagePaths.map(image => <li><img src={image} /></li>)}
+      {images.map(image => <li><img src={image.path} width={image.w} height={image.h} loading={loading} /></li>)}
     </ul>
   }
 
