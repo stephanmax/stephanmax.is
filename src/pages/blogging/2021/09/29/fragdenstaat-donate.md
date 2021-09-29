@@ -1,0 +1,13 @@
+---
+time: 1632945503
+area: Hamburg
+country: Germany
+tags: [ opendata, politics, art ]
+layout: ../../../../../layouts/BlogItemLayout.astro
+images:
+  - { ext: ".png", w: 1140, h: 1498 }
+---
+
+If you live in Germany and are concerned about the Freedom of Information Act in this country, please consider donating to [Frag den Staat](https://fragdenstaat.de/), a nonprofit organization of the [Open Knowledge Foundation Germany](https://okfn.de/en/) that “brings light into the darkness of the authorities.” I am not affiliated with them, but I follow and admire their work since I became a mentor with [Jugend Hackt](https://jugendhackt.org/), another <abbr title="Open Knowledge Foundation Deutschland">OKFDE</abbr> venture.
+
+They just released their [latest art print](https://fragdenstaat.de/spenden/kunstedition/) as an additional goody for a 250€ donation—and it is a beauty!
