@@ -66,6 +66,16 @@ body {
   padding: 5rem 0;
 }
 
+blockquote {
+  border-left: 4px solid #ccc;
+  font-style: italic;
+  padding-left: 1rem;
+}
+
+img {
+  display: block;
+}
+
 main {
   margin: 0 auto;
   max-width: 55ch;
@@ -73,7 +83,6 @@ main {
 }
 
 p img {
-  display: block;
   max-width: 100%;
 }
 
@@ -120,7 +129,7 @@ article footer li {
 article > ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1vw;
   list-style: none;
   padding: 0;
 }
@@ -137,13 +146,13 @@ article > ul li {
 
 article > ul li:nth-child(6n+1),
 article > ul li:nth-child(6n+2) {
-  flex-basis: calc(50% - .5rem);
+  flex-basis: calc(50% - .5vw - 1px);
 }
 
 article > ul li:nth-child(6n+3),
 article > ul li:nth-child(6n+4),
 article > ul li:nth-child(6n+5) {
-  flex-basis: calc(33% - .667rem);
+  flex-basis: calc(33% - .667vw - 2px);
 }
 
 .babble-content {
