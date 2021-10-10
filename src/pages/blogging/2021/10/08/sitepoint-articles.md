@@ -6,7 +6,7 @@ tags: [ webdev, nostalgia ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 ---
 
-I stumbled upon an old SitePoint article of mine while cleaning up my [GitHub repositories](https://github.com/stephanmax?tab=repositories). And I thought I could collect the [four articles I wrote](https://www.sitepoint.com/author/smax/) here for later reference. For me they are an emotional testament of a time when I was contemplating becoming a web development evangelist 😎
+I stumbled upon an old SitePoint article of mine while cleaning up [my GitHub repositories](https://github.com/stephanmax?tab=repositories). And I thought I could collect the [four articles I wrote](https://www.sitepoint.com/author/smax/) here for later reference. For me they are an emotional testament of a time when I was contemplating becoming a web development evangelist 😎
 
 
 * [An Introduction to WAI-ARIA](https://www.sitepoint.com/introduction-wai-aria/) (2014-07-21)
