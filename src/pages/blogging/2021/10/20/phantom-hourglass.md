@@ -1,0 +1,48 @@
+---
+time: 1634718854
+area: Hamburg
+country: Germany
+tags: [ gaming, zelda ]
+layout: ../../../../../layouts/BlogItemLayout.astro
+images:
+  - { ext: "01.jpg", w: 1200, h: 1200 }
+---
+
+On my quest to play all the Zelda games I finished the Nintendo DS game *The Legend of Zelda: Phantom Hourglass* (Nintendo, 2007) today—and I loved it! Here are the hard facts:
+
+* I played the game on a Nintendo DSi XL
+* I finished the game with 12 heart containers (out of 16)
+* I finished the trading cycle
+* I got all gear upgrades (bombs, bombchus, and arrows)
+* I found the six golden frogs
+* My *Temple of the Ocean King* time record is 19:41
+* I did not find all the power gems (17/20 power, 16/20 courage, 15/20 wisdom)
+* I found 17/31 treasure maps
+* I did not really care for ship parts, so I am far from completing any set
+* I was also not into the fishing mini game
+
+Feel free to grab my [save game](/files/The%20Legend%20of%20Zelda%20-%20Phantom%20Hourglass%20(E).sav). I don’t want to do a full review of the game here, but highlight a couple of aspects that are usually held against the title.
+
+## Progression and Puzzles
+
+The game has a great progression. You first need to rescue the *three spirits*, then jump on the *Ghost Ship* for a nice spooky interlude, and ultimately obtain the pure metals for the final fight. Which is epic, by the way. Not so much the fight itself, but the whole staging around it. The level of the puzzles and the general difficulty of the game is easy if you know the basic mechanics of the Zelda franchise. I was able to defeat every boss on first or second try and none of the puzzles made me break a sweat.
+
+But the puzzles are imaginative, rich in variety, and use the DS gimmicks in clever ways. I also enjoyed the mini games in this Zelda title!
+
+## DS Gimmicks
+
+I really enjoyed taking notes on the map with the stylus—I wish more games would use that feature. I remember one puzzle that uses the DS mechanics in a *really* clever way, but I won’t spoil that here. It is true, though, that there are quite some occasions where you have to shout/whistle/blow into the microphone. So keep that in mind if you plan on playing that game on a train ride.
+
+The overall stylus controls worked flawlessly!
+
+## The Temple of the Ocean King
+
+This is probably the most infamous feature of the game that sparked a lot of discussions and controversy: You have to revisit the main temple of the game multiple times. What others call repetitive and a chore, I call a mini-Metroidvania/mini-rogue-like (without the random dungeon generation) and I really enjoyed coming back to the temple and using my new items and powers to find better and faster ways to get through it.
+
+Every visit comes with new puzzles, shortcuts, and checkpoints. For me, those Ocean King temple runs were one of the highlights of the game.
+
+<hr />
+
+Final verdict: ★★★★☆
+
+So grab yourself a copy of the game and a Nintendo DS (I can recommend the DSi XL—the screens are gorgeous!) or get it on the *Wii U Virtual Console* and enjoy this funny, clever, and unusual entry of the Zelda series.

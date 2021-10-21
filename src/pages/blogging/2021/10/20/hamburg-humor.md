@@ -1,0 +1,11 @@
+---
+time: 1634745814
+area: Hamburg
+country: Germany
+tags: [ hamburg, street art ]
+layout: ../../../../../layouts/BlogItemLayout.astro
+images:
+  - { ext: "01.jpg", w: 1200, h: 1200 }
+---
+
+Gotta love the humor of the Hamburgers! (As in citizens of the city of Hamburg, not the fast food.)
