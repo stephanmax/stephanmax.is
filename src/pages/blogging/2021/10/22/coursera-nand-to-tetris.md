@@ -1,0 +1,18 @@
+---
+time: 1634888917
+area: Hamburg
+country: Germany
+tags: [ computer science, mooc ]
+layout: ../../../../../layouts/BlogItemLayout.astro
+images:
+  - { ext: "01.png", w: 792, h: 612 }
+---
+
+🎉 I [finished](https://coursera.org/share/49c462b7194dd90882fc13fc6a357d52) the Coursera <abbr title="Massive Open Online Course">MOOC</abbr> [From NAND to Tetris](https://www.coursera.org/learn/build-a-computer) today and I had a blast with it! I learned how to build a full-fledged von-Neumann-inspired computer in software from the simplest logic gates (like the eponymous *NAND* or “not and” gate). If you are into puzzle-solving and interested in how even the most powerful computers work at their very core, I can highly recommend this course.
+
+It is so rewarding! It comes with a whole suite of simulators and test suites to guide you through the six weeks of hands-on projects and is absolutely doable without any programming skills.
+
+The course inspired me to tackle two projects (hopefully soon):
+
+* Take the follow-up course [Nand to Tetris Part II](https://www.coursera.org/learn/nand2tetris2) that focuses on implementing a high-level programming language on top of the computer built in part 1
+* Create an interactive Hack Assembler in JavaScript
