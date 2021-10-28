@@ -39,9 +39,10 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout>
+  <h1><a href="/">Stephan Max</a></h1>
   <!--
     Only lazy-load images beginning with post #2
     (We want to load images of post #1 eagerly as they are likely to be above the fold)
   -->
-  {page.data.map((post, i) => <BlogItem post={post} path={`${post.url}/`} loading={i > 1 && 'lazy'}>{post.astro.html}</BlogItem>)}
+  {page.data.map((post, i) => <BlogItem post={post} path={`${post.url}/`} loading={i > 0 && 'lazy'}>{post.astro.html}</BlogItem>)}
 </BaseLayout>
