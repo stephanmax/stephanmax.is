@@ -28,7 +28,10 @@ const images = (post.images || []).map(image => ({
     </ul>
   }
 
-  <div class="babble-content">
+  <div class="blog-item-content">
+    {post.title &&
+      <h1>{post.title}</h1>
+    }
     <slot />
   </div>
 

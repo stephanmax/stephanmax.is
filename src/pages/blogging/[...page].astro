@@ -15,7 +15,7 @@ export async function getStaticPaths({ paginate, rss }) {
     customData: `<language>en-us</language><lastBuildDate>${(new Date()).toISOString()}</lastBuildDate>`,
     items: postsSorted.map(post => {
       // Add image and email reply link to the post content for RSS readers
-      const title = `${moment.unix(post.time).format('YYYY-MM-DD, HH:mm')} (${post.tags.map(tag => `#${tag}`).join(', ')})`;
+      const title = post.title || `${moment.unix(post.time).format('YYYY-MM-DD, HH:mm')} (${post.tags.map(tag => `#${tag}`).join(', ')})`;
       let rssDescription = post.astro.html;
       if (post.images && post.images.length > 0) {
         rssDescription = `<p><img src="${site.url}/images${post.url}${post.images[0].ext}"></p>` + rssDescription;

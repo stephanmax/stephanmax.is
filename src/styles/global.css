@@ -155,15 +155,19 @@ article > ul li:nth-child(6n+5) {
   flex-basis: calc(33% - .667vw - 2px);
 }
 
-.babble-content {
+.blog-item-content {
   display: contents;
 }
 
-.babble-content > * {
+.blog-item-content > * {
   grid-column: main;
 }
 
-.babble-hero,
+.blog-item-content > pre {
+  grid-column: wide;
+  overflow-x: scroll;
+}
+
 article > ul {
   grid-column: wide;
 }
