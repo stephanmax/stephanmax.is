@@ -3,7 +3,6 @@ import moment from 'moment';
 
 const { post, path, loading } = Astro.props;
 
-const location = `${post.area}, ${post.country}`
 const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
 
 const images = (post.images || []).map(image => ({
@@ -14,9 +13,12 @@ const images = (post.images || []).map(image => ({
 
 <article>
   <header>
-    <time datetime={post.time}>{timeHumanreadable}</time> &middot;
-    <span>{location}</span> &middot;
-    <a href={path} title="Permalink">#</a>
+    <a href={path} title="Permalink">
+      <time datetime={post.time}>{timeHumanreadable}</time>
+    </a>
+    <ul>
+      {post.tags.map(tag => <li>{tag}</li>)}
+    </ul>
   </header>
 
   {images.length > 0 &&
@@ -26,15 +28,6 @@ const images = (post.images || []).map(image => ({
   }
 
   <div class="blog-item-content">
-    {post.title &&
-      <h1>{post.title}</h1>
-    }
     <slot />
   </div>
-
-  <footer>
-    <ul>
-      {post.tags.map(tag => <li>{tag}</li>)}
-    </ul>
-  </footer>
 </article>

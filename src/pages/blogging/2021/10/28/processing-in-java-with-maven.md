@@ -1,8 +1,6 @@
 ---
 title: "Processing in Java with Maven"
 time: 1635423833
-area: Hamburg
-country: Germany
 tags: [ programming, java, maven, processing ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 ---
@@ -48,8 +46,8 @@ It turns out that there is an [elegant solution](https://stackoverflow.com/quest
 Then install the Processing core library (make sure to change the `file` parameter to point to your local Processing download/installation) using Maven’s `install:install-file` and the `localRepositoryPath` parameter:
 
 ```shell
-$ mvn install:install-file -Dfile=/Applications/Processing.app/Contents/Java/core/library/core.jar \
-    -DgroupId=org.processing -DartifactId=core -Dversion=3.5.4 -Dpackaging=jar \
+$ mvn install:install-file -Dfile=/Applications/Processing.app/Contents/Java/core/library/core.jar \\
+    -DgroupId=org.processing -DartifactId=core -Dversion=3.5.4 -Dpackaging=jar \\
     -DlocalRepositoryPath=mvn-repo
 ```
 
