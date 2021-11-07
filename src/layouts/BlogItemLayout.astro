@@ -8,7 +8,7 @@ const { pathname } = Astro.request.url;
 
 <BaseLayout>
   <h1><a href="/">Stephan Max</a></h1>
-  <BlogItem post={post} path={pathname}>
+  <BlogItem post={post} path={pathname} showHeading={true}>
     <slot />
   </BlogItem>
 </BaseLayout>

@@ -1,7 +1,7 @@
 ---
 import moment from 'moment';
 
-const { post, path, loading } = Astro.props;
+const { post, path, loading, showHeading } = Astro.props;
 
 const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
 
@@ -28,6 +28,9 @@ const images = (post.images || []).map(image => ({
   }
 
   <div class="blog-item-content">
+    {post.title && showHeading &&
+      <h1>{post.title}</h1>
+    }
     <slot />
   </div>
 </article>
