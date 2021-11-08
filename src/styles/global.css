@@ -1,44 +1,9 @@
 :root {
-  --ratio: 1.7;
-  --scale: 1.25;
-
-  --s-2: calc(var(--s-1) / var(--scale));
-  --s-1: calc(var(--s0) / var(--scale));
-  --s0: 1rem;
-  --s1: calc(var(--s0) * var(--scale));
-  --s2: calc(var(--s1) * var(--scale));
-  --s3: calc(var(--s2) * var(--scale));
-  --s4: calc(var(--s3) * var(--scale));
-
-  --g1: calc(1rem * var(--ratio));
-  --g2: calc(2rem * var(--ratio));
-  --g3: calc(3rem * var(--ratio));
-  --g4: calc(4rem * var(--ratio));
-  --g6: calc(6rem * var(--ratio));
-
-  --color-accent: #cc0e74;
   --color-bg: #f8f8f8;
-  --color-clear: #000;
   --color-fg: #333;
+  --color-link: #a5ddff;
+  --ratio: 1.7;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #333;
-    --color-clear: #fff;
-    --color-fg: #f8f8f8;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-[id] {
-  scroll-margin-top: 2ex;
-} */
 
 html {
   background-color: var(--color-bg);
@@ -50,15 +15,27 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+a {
+  color: #000;
+  text-decoration-color: var(--color-link);
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: .5em;
+  text-underline-offset: -.2em;
+}
+
+a:focus,
+a:hover {
+  background: var(--color-link);
+}
+
+a:visited {
+  --color-link: #e2e2e2;
 }
 
 body {
