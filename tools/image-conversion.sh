@@ -6,6 +6,7 @@ output_dir="public/images"
 # for each jpg in the input directory
 for img in $( find $input_dir -type f -iname "*.jpg" -o -iname "*.jpeg" );
 do
+  
   # convert to png first
   convert $img ${img%.*}.png
   cwebp ${img%.*}.png -resize 1000 0 -o ${img%.*}.webp

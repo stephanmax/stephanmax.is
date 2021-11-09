@@ -1,7 +1,8 @@
 :root {
   --color-bg: #f8f8f8;
   --color-fg: #333;
-  --color-link: #a5ddff;
+  --color-link: #113CFC;
+  --color-link-2: #113CFC;
   --ratio: 1.7;
 }
 
@@ -22,20 +23,20 @@ html {
 }
 
 a {
-  color: #000;
-  text-decoration-color: var(--color-link);
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: .5em;
-  text-underline-offset: -.2em;
+  color: var(--color-link);
+  text-decoration-color: var(--color-link2);
+  text-decoration-thickness: .1em;
 }
 
-a:focus,
-a:hover {
-  background: var(--color-link);
+@supports (text-underline-offset: 2px) {
+  a {
+    text-underline-offset: 2px;
+  }
 }
 
 a:visited {
-  --color-link: #e2e2e2;
+  --color-link: #000;
+  --color-link-2: #000;
 }
 
 body {
@@ -74,7 +75,7 @@ article {
 }
 
 article + article {
-  margin-top: 10rem;
+  margin-top: 16rem;
 }
 
 article * {

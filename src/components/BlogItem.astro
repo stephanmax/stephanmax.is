@@ -3,7 +3,7 @@ import moment from 'moment';
 
 const { post, path, loading, showHeading } = Astro.props;
 
-const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD, HH:mm');
+const timeHumanreadable = moment.unix(post.time).format('YYYY-MM-DD HH:mm');
 
 const images = (post.images || []).map(image => ({
   ...image,
