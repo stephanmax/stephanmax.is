@@ -1,5 +1,4 @@
 :root {
-  --color-bg: #f8f8f8;
   --color-fg: #666;
   --color-link: #113CFC;
   --color-link-2: #113CFC;
@@ -7,7 +6,6 @@
 }
 
 html {
-  background-color: var(--color-bg);
   box-sizing: border-box;
   color: var(--color-fg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -90,14 +88,14 @@ article + article {
 }
 
 article + article::before {
-  background-color: #ddd;
+  background-color: #eee;
   content: '';
   display: block;
+  grid-column: main;
   position: absolute;
-  left: calc(50% - 27.5ch);
   top: calc(-4em - 1px);
   height: 1px;
-  width: 55ch;
+  width: 100%;
 }
 
 article * {
