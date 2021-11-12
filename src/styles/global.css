@@ -1,6 +1,6 @@
 :root {
   --color-bg: #f8f8f8;
-  --color-fg: #333;
+  --color-fg: #666;
   --color-link: #113CFC;
   --color-link-2: #113CFC;
   --ratio: 1.7;
@@ -14,6 +14,7 @@ html {
   font-size: 100%;
   line-height: var(--ratio);
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 *,
@@ -23,9 +24,10 @@ html {
 }
 
 a {
-  color: var(--color-link);
-  text-decoration-color: var(--color-link2);
+  color: #000;
+  text-decoration-color: #FF0075;
   text-decoration-thickness: .1em;
+  transition: color .2s ease-in-out;
 }
 
 @supports (text-underline-offset: 2px) {
@@ -35,8 +37,16 @@ a {
 }
 
 a:visited {
-  --color-link: #000;
-  --color-link-2: #000;
+  text-decoration-color: #000;
+}
+
+a:hover {
+  color: #FF0075;
+}
+
+a:active {
+  color: #FF0075;
+  text-decoration-color: #FF0075;
 }
 
 body {
@@ -70,34 +80,51 @@ p img {
 
 article {
   display: grid;
-  grid-template-columns: [full-start] 2fr [wide-start] minmax(1rem, 1fr) [main-start] minmax(auto, 55ch) [main-end] minmax(1rem, 1fr) [wide-end] 2fr [full-end];
+  grid-template-columns: [full-start] minmax(1rem, 2fr) [wide-start] 1fr [main-start] minmax(auto, 55ch) [main-end] 1fr [wide-end] minmax(1rem, 2fr) [full-end];
   row-gap: calc(1rem * var(--ratio));
+  position: relative;
 }
 
 article + article {
-  margin-top: 16rem;
+  margin-top: calc(8em + 1px);
+}
+
+article + article::before {
+  background-color: #ddd;
+  content: '';
+  display: block;
+  position: absolute;
+  left: calc(50% - 27.5ch);
+  top: calc(-4em - 1px);
+  height: 1px;
+  width: 55ch;
 }
 
 article * {
   margin: 0;
 }
 
-article header,
 article footer {
-  grid-column: main;
-}
-
-article header {
-  color: #999;
   display: flex;
-  font-family: monospace;
   font-size: .8em;
+  grid-column: main;
   justify-content: space-between;
 }
 
-article header ul {
+article footer a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+article footer time {
+  text-transform: uppercase;
+}
+
+article footer ul {
+  color: #bbb;
   display: flex;
   flex-wrap: wrap;
+  font-family: monospace;
   gap: 1em;
   list-style: none;
   padding: 0;
@@ -113,6 +140,7 @@ article > ul {
 
 article > ul img {
   background: #ccc;
+  border-radius: 5px;
   width: 100%;
   height: auto;
 }
