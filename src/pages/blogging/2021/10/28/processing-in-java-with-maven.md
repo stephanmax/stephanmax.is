@@ -1,7 +1,7 @@
 ---
 title: "Processing in Java with Maven"
 time: 1635423833
-tags: [ programming, java, maven, processing ]
+tags: [ programming, java, processing ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 ---
 

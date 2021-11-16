@@ -121,6 +121,7 @@ article footer time {
 article footer ul {
   color: #bbb;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   font-family: monospace;
   gap: 1em;
