@@ -4,7 +4,7 @@ import moment from 'moment';
 const { post, path, loading, showHeading } = Astro.props;
 
 const timeMachineReadable = moment.unix(post.time).format();
-const timeHumanReadable = moment.unix(post.time).format('MMM DD, H:mm');
+const timeHumanReadable = moment.unix(post.time).format('MMMM DD, H:mm');
 
 const images = (post.images || []).map(image => ({
   ...image,
@@ -13,6 +13,12 @@ const images = (post.images || []).map(image => ({
 ---
 
 <article>
+  <header>
+    <a href={path} title="Permalink">
+      <time datetime={timeMachineReadable}>{timeHumanReadable} →</time>
+    </a>
+  </header>
+
   {images.length > 0 &&
     <ul>
       {images.map(image => <li><img src={image.path} width={image.w} height={image.h} loading={loading} /></li>)}
@@ -25,13 +31,4 @@ const images = (post.images || []).map(image => ({
     }
     <slot />
   </div>
-
-  <footer>
-    <a href={path} title="Permalink">
-      <time datetime={timeMachineReadable}>→ {timeHumanReadable}</time>
-    </a>
-    <ul>
-      {post.tags.map(tag => <li>{tag}</li>)}
-    </ul>
-  </footer>
 </article>

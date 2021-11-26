@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import BaseHeader from './BaseHeader.astro';
 import BlogItem from '../components/BlogItem.astro';
 
 const post = Astro.props.content;
@@ -7,7 +8,7 @@ const { pathname } = Astro.request.url;
 ---
 
 <BaseLayout>
-  <h1><a href="/">Stephan Max</a></h1>
+  <BaseHeader />
   <BlogItem post={post} path={pathname} showHeading={true}>
     <slot />
   </BlogItem>
