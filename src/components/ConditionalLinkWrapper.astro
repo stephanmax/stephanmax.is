@@ -1,0 +1,8 @@
+---
+const { link, title } = Astro.props;
+---
+
+{link
+  ? <a href={link} title={title}><slot /></a>
+  : <slot />
+}
