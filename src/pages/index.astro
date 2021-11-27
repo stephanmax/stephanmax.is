@@ -8,12 +8,21 @@ import BaseHeader from '../layouts/BaseHeader.astro';
   <BaseHeader />
   <main>
     <p>I am a computer scientist working as an infrastructure and automation engineer at <a href="https://eyeo.com">eyeo</a> in Cologne, Germany.</p>
-    <p>I am currently reworking this website. For now, it’s gonna be a micro blog. <a href="/blogging/">Check it out!</a> And feel free to <a href="/feeding.xml">subscribe via RSS</a>.</p>
+    <p>I am currently reworking this website. For now, it’s gonna be a <a href="/blogging/">micro blog</a>. Feel free to <a href="/feeding.xml">subscribe via RSS</a>.</p>
+    
     <h2>Contact</h2>
-    <ul>
-      <li><a href={`mailto:${site.email}`} rel="me">Email</a> (<a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3" rel="me">public key</a>)</li>
-      <li><a href="https://twitter.com/betterThanMin" rel="me">Twitter</a></li>
-      <li><a href="https://github.com/stephanmax" rel="me">Github</a></li>
-    </ul>
+
+    <address>
+      <dl>
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@stephanmax.com" rel="me">hello@stephanmax.com</a> <a href="https://keybase.io/stephanmax/pgp_keys.asc?fingerprint=c39b112b14c13ff673a30963a1cd0f9a894601f3" rel="me" class="naked-link" title="Public Key">🔒</a></dd>
+
+        <dt>Twitter</dt>
+        <dd><a href="https://twitter.com/betterThanMin">betterThanMin</a></dd>
+
+        <dt>Github</dt>
+        <dd><a href="https://github.com/stephanmax">stephanmax</a></dd>
+      </dl>
+    </address>
   </main>
 </BaseLayout>

@@ -9,7 +9,7 @@ const { pathname } = Astro.request.url;
 
 <BaseLayout>
   <BaseHeader />
-  <BlogItem post={post} path={pathname} showHeading={true} standalone={true}>
+  <BlogItem post={post} path={pathname} standalone={true}>
     <slot />
   </BlogItem>
 </BaseLayout>

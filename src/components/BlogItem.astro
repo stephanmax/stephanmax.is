@@ -2,7 +2,7 @@
 import ConditionalLinkWrapper from './ConditionalLinkWrapper.astro';
 import moment from 'moment';
 
-const { post, path, loading, showHeading, standalone } = Astro.props;
+const { post, path, loading, standalone } = Astro.props;
 
 const timeMachineReadable = moment.unix(post.time).format();
 const timeHumanReadable = moment.unix(post.time).format('MMMM DD, H:mm');
@@ -13,9 +13,9 @@ const images = (post.images || []).map(image => ({
 }));
 ---
 
-<article>
+<article class={post.title && standalone ? 'article' : false}>
   <header>
-    {post.title && showHeading &&
+    {post.title && standalone &&
       <h1>{post.title}</h1>
     }
     <ConditionalLinkWrapper link={standalone ? '' : path} title="Permalink">

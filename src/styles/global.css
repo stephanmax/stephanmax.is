@@ -1,7 +1,7 @@
 :root {
   --color-default: #3b3a38;
   --color-highlight: #ff0075;
-  --color-link: #000;
+  --color-strong: #000;
   --color-subtle: #93918f;
   --color-subtler: #c9c5c1;
 
@@ -10,8 +10,9 @@
   --line-height: 1.5;
   --width-max: 55ch;
 
+  --spacing-s: calc(0.5 * var(--spacing));
   --spacing: calc(1rem * var(--line-height));
-  --spacing-l: calc(3 * var(--spacing));
+  --spacing-l: calc(2 * var(--spacing));
   --spacing-xl: calc(4 * var(--spacing));
   --spacing-xxl: calc(6 * var(--spacing));
 }
@@ -31,6 +32,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
 }
 
 body {
@@ -50,14 +52,21 @@ body > header {
 
 body > header * {
   font-weight: 500;
-  margin: 0;
+}
+
+body > main h2 {
+  margin: var(--spacing-l) 0 var(--spacing);
+}
+
+body > main p + p {
+  margin-top: var(--spacing);
 }
 
 a {
-  color: var(--color-link);
+  color: var(--color-strong);
   text-decoration-color: var(--color-highlight);
-  text-decoration-thickness: .1em;
-  transition: color .2s ease-in-out;
+  text-decoration-thickness: 0.1em;
+  transition: color 0.2s ease-in-out;
 }
 
 @supports (text-underline-offset: 2px) {
@@ -79,8 +88,13 @@ a:active {
   text-decoration-color: var(--color-highlight);
 }
 
-header a {
+header a,
+.naked-link {
   text-decoration: none;
+}
+
+address {
+  font-style: normal;
 }
 
 blockquote {
@@ -92,7 +106,7 @@ blockquote {
 h1,
 h2,
 h3 {
-  color: var(--color-default);
+  color: var(--color-strong);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -108,6 +122,17 @@ img {
 
 p img {
   max-width: 100%;
+}
+
+address dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: var(--spacing-l);
+  row-gap: var(--spacing-s);
+}
+
+address dt {
+  color: var(--color-subtle);
 }
 
 article {
@@ -132,32 +157,16 @@ article + article::before {
   width: 100%;
 }
 
-article * {
-  margin: 0;
-}
-
 article header {
   grid-column: main;
 }
 
-article header a {
-  text-decoration: none;
+.article header {
+  margin-bottom: var(--spacing);
 }
 
 article header time {
   color: var(--color-subtle);
-  font-weight: 500;
-}
-
-article footer ul {
-  color: #bbb;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-family: monospace;
-  gap: 1em;
-  list-style: none;
-  padding: 0;
 }
 
 article > ul {
@@ -181,13 +190,13 @@ article > ul li {
 
 article > ul li:nth-child(6n+1),
 article > ul li:nth-child(6n+2) {
-  flex-basis: calc(50% - .5vw - 1px);
+  flex-basis: calc(50% - 0.5vw - 1px);
 }
 
 article > ul li:nth-child(6n+3),
 article > ul li:nth-child(6n+4),
 article > ul li:nth-child(6n+5) {
-  flex-basis: calc(33% - .667vw - 2px);
+  flex-basis: calc(33% - 0.667vw - 2px);
 }
 
 .blog-item-content {
