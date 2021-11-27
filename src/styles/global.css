@@ -8,11 +8,11 @@
   --font-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
   --line-height: 1.5;
-  --width-max: 35rem;
+  --width-max: 55ch;
 
   --spacing: calc(1rem * var(--line-height));
   --spacing-l: calc(3 * var(--spacing));
-  --spacing-xl: calc(5 * var(--spacing));
+  --spacing-xl: calc(4 * var(--spacing));
   --spacing-xxl: calc(6 * var(--spacing));
 }
 
@@ -22,6 +22,7 @@ html {
   font-family: var(--font-default);
   font-size: 100%;
   line-height: var(--line-height);
+  padding: var(--spacing);
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
@@ -33,7 +34,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 3vw 0;
 }
 
 body > header,
@@ -44,11 +45,11 @@ body > main {
 
 body > header {
   color: var(--color-subtle);
-  font-weight: 500;
-  margin: var(--spacing-l) auto var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 }
 
 body > header * {
+  font-weight: 500;
   margin: 0;
 }
 
@@ -111,7 +112,7 @@ p img {
 
 article {
   display: grid;
-  grid-template-columns: [full-start] minmax(1rem, 2fr) [wide-start] 1fr [main-start] minmax(auto, var(--width-max)) [main-end] 1fr [wide-end] minmax(1rem, 2fr) [full-end];
+  grid-template-columns: [full-start] 3fr [wide-start] 1fr [main-start] minmax(auto, var(--width-max)) [main-end] 1fr [wide-end] 3fr [full-end];
   row-gap: var(--spacing);
   position: relative;
 }
@@ -140,11 +141,11 @@ article header {
 }
 
 article header a {
-  color: var(--color-subtle);
   text-decoration: none;
 }
 
 article header time {
+  color: var(--color-subtle);
   font-weight: 500;
 }
 
