@@ -5,7 +5,7 @@ tags: [ programming, java, processing ]
 layout: ../../../../../layouts/BlogItemLayout.astro
 ---
 
-I am currently attending a co-op program at the distance university called *Cooperative Algortihmic Art*. We are supposed to use [Processing](https://processing.org/)—**the** framework for creative coding—and while I adore Processing and its rich ecosystem it also means that I have to revisit the Java programming language.
+I am currently attending a co-op program at the distance university called *Cooperative Algorithmic Art*. We are supposed to use [Processing](https://processing.org/)—**the** framework for creative coding—and while I adore Processing and its rich ecosystem it also means that I have to revisit the Java programming language.
 
 And holy crap, my Java skills have become rusty.
 
