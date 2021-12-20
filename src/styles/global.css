@@ -103,6 +103,10 @@ blockquote {
   padding-left: 1rem;
 }
 
+blockquote * + * {
+  margin-top: var(--spacing);
+}
+
 h1,
 h2,
 h3 {
